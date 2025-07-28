@@ -3,10 +3,12 @@ import {Route, Routes} from "react-router-dom";
 import WelcomePage from "./pages/WelcomePage.jsx";
 import QuizPage from "./pages/QuizPage.jsx";
 import ResultPage from "./pages/ResultPage.jsx";
+import Header from "./components/Header.jsx";
 
 function App() {
     return (
         <div>
+            <Header/>
             <Routes>
                 <Route path='/' element={<WelcomePage/>}></Route>
                 <Route path='/quiz'>
