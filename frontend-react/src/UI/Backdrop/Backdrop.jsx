@@ -4,10 +4,10 @@ import ReactDOM from 'react-dom';
 
 const backdropRoot = document.querySelector('#modal-root');
 
-const Backdrop = (props) => {
-    return ReactDOM.createPortal(<div className={`${classes.Backdrop} ${props.className}`}>
-        {props.children}
-    </div>, backdropRoot)
+const Backdrop = ({onClick}) => {
+    return (
+      <div className={classes.Backdrop} onClick = {onClick}>
+    </div>)
 };
 
 export default Backdrop;
