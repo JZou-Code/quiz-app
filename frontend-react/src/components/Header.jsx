@@ -1,58 +1,68 @@
 import React from 'react';
 import useAuth from '../hooks/useAuth';
-import {useNavigate} from "react-router-dom";
+import {NavLink} from "react-router-dom";
+import classes from '../style/Header.module.css'
+
 
 const Header = () => {
-  const { isAuthenticated, user, openLoginModal, logout, openSignupModal } = useAuth();
-  const navigete = useNavigate();
+    const {isAuthenticated, user, openLoginModal, logout, openSignupModal} = useAuth();
 
-  const toTest = ()=>{
-      navigete('/quiz/test')
-  }
+    return (
+        <div className={classes.Container}>
+            <div className={classes.TitleArea}>
 
-  return (
-    <header style={headerStyle}>
-      <div style={leftStyle}>
-        <a href="#/guidelines" style={linkStyle}>Guidelines & Announcements</a>
-      </div>
-      <div style={centerStyle}>
-        <h1 style={{ margin: 0 }}>Welcome</h1>
-      </div>
-      <div style={rightStyle}>
-        {isAuthenticated ? (
-          <span>
-            {user.name}
-            <button onClick={logout} style={buttonStyle}>Logout</button>
-          </span>
-        ) : (
-          <>
-            <button onClick={openLoginModal} style={buttonStyle}>Login</button>
-            <button onClick={openSignupModal} style={{ marginLeft: '1rem' }}>Sign up</button>
-            <button onClick={toTest} style={{ marginLeft: '1rem' }}>Test</button>
-          </>
-        )}
-      </div>
-    </header>
-  );
+                <div>
+                    <div className={classes.Title}>Online Quiz</div>
+                </div>
+
+                <div className={classes.LoginContainer}>
+          {/*          {isAuthenticated ? (*/}
+          {/*              <span>*/}
+          {/*  {user.name}*/}
+          {/*                  <button onClick={logout}>Logout</button>*/}
+          {/*</span>*/}
+          {/*          ) : (*/}
+          {/*              <>*/}
+          {/*                  <button onClick={openLoginModal}>Login</button>*/}
+          {/*                  <button onClick={openSignupModal}>Sign up</button>*/}
+          {/*              </>*/}
+          {/*          )}*/}
+
+                    <div className={`${classes.Button} ${classes.Login}`} onClick={openSignupModal}>Log In</div>
+                    <div className={`${classes.Button} ${classes.SignUp}`} onClick={openLoginModal}>Sign Up</div>
+                </div>
+
+            </div>
+
+            <div className={classes.LinkContainer}>
+                <NavLink
+                    className={({isActive}) => isActive ?
+                        `${classes.Active} ${classes.Link}` : classes.Link}
+                    to='/' end>
+                    Home
+                </NavLink>
+                <NavLink
+                    className={({isActive}) => isActive ?
+                        `${classes.Active} ${classes.Link}` : classes.Link}
+                    to='/guidelines' end>
+                    Guidelines
+                </NavLink>
+                <NavLink
+                    className={({isActive}) => isActive ?
+                        `${classes.Active} ${classes.Link}` : classes.Link}
+                    to='/announcement' end>
+                    Announcement
+                </NavLink>
+                <NavLink
+                    className={({isActive}) => isActive ?
+                        `${classes.Active} ${classes.Link}` : classes.Link}
+                    to='/quiz/test' end>
+                    Quiz
+                </NavLink>
+            </div>
+
+        </div>
+    );
 };
-
-const headerStyle = {
-  display: 'flex',
-  alignItems: 'ccenter',
-  justifyContent: 'space-between',
-  padding: '1rem 2 rem',
-  backgroundColor: '#f5f5f5',
-  borderBottom: '1px solid',
-  position: 'sticky',
-  top: 0,
-  zIndex: 100
-}
-
-const leftStyle = { flex: 1, textAlign: 'left' };
-const centerStyle = { flex: 1, textAlign: 'center' };
-const rightStyle = { flex: 1, textAlign: 'right' };
-
-const linkStyle = { textDecoration: 'none', fontweight: 'bold', color: '#333' };
-const buttonStyle = { marginLeft: '0.5rem' }
 
 export default Header;

@@ -1,0 +1,19 @@
+.Dismiss {
+    font-size: 1.2rem;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    transition: 0.1s;
+}
+
+.Dismiss:hover {
+    transform: rotate(90deg);
+    color: orangered;
+    cursor: pointer;
+}
+
+.Dismiss:active {
+    transform: rotate(90deg) scale(0.8);
+    color: black;
+}
+

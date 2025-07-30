@@ -2,16 +2,20 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import Backdrop from '../UI/Backdrop/Backdrop';
 import LoginForm from '../components/LoginForm';
+import classes from '../style/Login.module.css'
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faXmark} from "@fortawesome/free-solid-svg-icons";
 
 const LoginPage = ({onClose}) => {
   return ReactDom.createPortal(
-      <div>
           <Backdrop onClick = {onClose}>
           <div onClick={(e)=>e.stopPropagation()} style={modalStyle}>
+              <div onClick={onClose} className={classes.Dismiss}>
+                  <FontAwesomeIcon icon={faXmark}></FontAwesomeIcon>
+              </div>
             <LoginForm onClose={onClose}/>
           </div>
-          </Backdrop>
-      </div>,
+          </Backdrop>,
       document.body
   );
 };

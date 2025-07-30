@@ -13,7 +13,7 @@ const LoginForm = () => {
 
     return (
       <form onSubmit={handleSubmit} >
-        <h2>User Login: </h2>
+        <h2>User Login</h2>
         <div>
             <label>Name: </label>
             <input value={name} onChange={(e)=>setName(e.target.value)} required/>
