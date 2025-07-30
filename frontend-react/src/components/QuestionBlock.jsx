@@ -19,9 +19,9 @@ const QuestionBlock = (props) => {
             <div className={classes.OptionContainer}>
                 {props.quizData.options.map((item, index) =>
                     <label
-                        className={selected === index ? `${classes.Option} ${classes.Selected}` : classes.Option}
+                        className={props.selected === index ? `${classes.Option} ${classes.Selected}` : classes.Option}
                         key={index}
-                        for={props.quizNum + '' + index}>
+                        htmlFor={props.quizNum + '' + index}>
                         <input
                             type="radio"
                             name={props.quizNum}

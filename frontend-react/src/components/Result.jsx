@@ -1,0 +1,41 @@
+import React from 'react';
+import classes from '../style/Reuslt.module.css'
+import Backdrop from "../UI/Backdrop/Backdrop.jsx";
+import {useNavigate} from "react-router-dom";
+
+const Result = (props) => {
+    const navigate = useNavigate();
+
+    const onQuit = ()=>{
+        navigate('/')
+    }
+
+    return (
+        <Backdrop>
+            <div className={classes.Container}>
+                <div className={classes.Text}>
+                    You have finished the test!
+                </div>
+                <div className={classes.Text}>
+                    Your Score : {props.score}
+                </div>
+                <div className={classes.BtnContainer}>
+                    <div
+                        className={`${classes.Button} ${classes.Restart}`}
+                        onClick={props.onRestart}
+                    >
+                        Restart
+                    </div>
+                    <div
+                        className={`${classes.Button} ${classes.Quit}`}
+                        onClick={onQuit}
+                    >
+                        Quit
+                    </div>
+                </div>
+            </div>
+        </Backdrop>
+    );
+};
+
+export default Result;

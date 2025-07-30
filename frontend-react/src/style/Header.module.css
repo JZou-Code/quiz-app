@@ -1,6 +1,6 @@
 .Container {
     padding: 1rem 2rem;
-    border: 1px solid skyblue;
+    border-bottom: 1px solid skyblue;
 }
 
 .TitleArea {
@@ -36,7 +36,7 @@
 }
 
 .SignUp{
-    background-color: rgb(15, 3, 115);
+    background-color: rgba(19, 5, 143, 0.9);
     color: white;
 }
 

@@ -1,0 +1,57 @@
+.Container {
+    width: 30rem;
+    height: 20rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -80%);
+    background-color: #f2f2f2;
+    box-shadow: 0 0 20px 20px gray;
+    border-radius: 2rem;
+    padding: 2rem;
+}
+
+.Text {
+    font-size: 2rem;
+    text-align: center;
+    margin: 1rem;
+}
+
+.BtnContainer {
+    width: 80%;
+    margin: 0 auto;
+    position: absolute;
+    bottom: 1rem;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.Button {
+    width: 40%;
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 1rem;
+    border: 2px solid skyblue;
+    border-radius: 2rem;
+}
+
+.Button:hover{
+    cursor: pointer;
+    box-shadow: 0 0 2px 2px skyblue;
+}
+
+.Button:active{
+    box-shadow: none;
+    transform: scale(0.95);
+}
+
+.Restart{
+
+}
+
+.Quit{
+
+}
+

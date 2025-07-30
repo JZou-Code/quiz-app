@@ -1,12 +1,10 @@
 import React from 'react';
-import {useLocation} from "react-router-dom";
+import classes from '../style/Reuslt.module.css'
 
 const ResultPage = () => {
-    const {state} = useLocation();
-    const {score} = state || {score: 0};
     return (
-        <div>
-            Your Score : {score}
+        <div className={classes.Container}>
+
         </div>
     );
 };

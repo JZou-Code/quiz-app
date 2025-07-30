@@ -10,7 +10,7 @@ const LoginPage = ({onClose}) => {
   return ReactDom.createPortal(
           <Backdrop onClick = {onClose}>
           <div onClick={(e)=>e.stopPropagation()} style={modalStyle}>
-              <div onClick={onClose} className={classes.Dismiss}>
+              <div onClick={onClose} className='dismiss'>
                   <FontAwesomeIcon icon={faXmark}></FontAwesomeIcon>
               </div>
             <LoginForm onClose={onClose}/>
