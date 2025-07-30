@@ -1,8 +1,14 @@
 import React from 'react';
 import useAuth from '../hooks/useAuth';
+import {useNavigate} from "react-router-dom";
 
 const Header = () => {
   const { isAuthenticated, user, openLoginModal, logout, openSignupModal } = useAuth();
+  const navigete = useNavigate();
+
+  const toTest = ()=>{
+      navigete('/quiz/test')
+  }
 
   return (
     <header style={headerStyle}>
@@ -22,6 +28,7 @@ const Header = () => {
           <>
             <button onClick={openLoginModal} style={buttonStyle}>Login</button>
             <button onClick={openSignupModal} style={{ marginLeft: '1rem' }}>Sign up</button>
+            <button onClick={toTest} style={{ marginLeft: '1rem' }}>Test</button>
           </>
         )}
       </div>

@@ -19,14 +19,14 @@
     border: 2px solid skyblue;
 }
 
-button:hover{
+.ButtonContainer button:hover{
     cursor: pointer;
     color: white;
     background-color: skyblue;
     box-shadow: 0 0 5px 2px gray;
 }
 
-button:active{
+.ButtonContainer button:active{
     transform: scale(0.95);
     box-shadow: none;
 }
