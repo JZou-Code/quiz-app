@@ -1,4 +1,4 @@
-const num = 10;
+const num = 3;
 const quizArr = [];
 for (let i = 0; i < num; i++) {
     const options= [
@@ -11,6 +11,7 @@ for (let i = 0; i < num; i++) {
         quiz: 'Lorem ababababa',
         options,
         answer: Math.ceil(Math.random() * options.length)
+        // answer: 0
     }
     quizArr.push(question)
 }
