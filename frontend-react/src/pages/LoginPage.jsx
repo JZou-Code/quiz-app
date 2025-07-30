@@ -6,10 +6,11 @@ import LoginForm from '../components/LoginForm';
 const LoginPage = ({onClose}) => {
   return ReactDom.createPortal(
       <div>
-          <Backdrop onClick = {onClose} />
+          <Backdrop onClick = {onClose}>
           <div onClick={(e)=>e.stopPropagation()} style={modalStyle}>
             <LoginForm onClose={onClose}/>
           </div>
+          </Backdrop>
       </div>,
       document.body
   );

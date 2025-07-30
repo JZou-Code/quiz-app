@@ -1,0 +1,32 @@
+.Container{
+    width: 100%;
+    padding: 0 10%;
+}
+
+.ButtonContainer{
+    font-size: 1.5rem;
+    padding: 1rem 5rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.Submit,
+.Cancel{
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    border-radius: 2rem;
+    border: 2px solid skyblue;
+}
+
+button:hover{
+    cursor: pointer;
+    color: white;
+    background-color: skyblue;
+    box-shadow: 0 0 5px 2px gray;
+}
+
+button:active{
+    transform: scale(0.95);
+    box-shadow: none;
+}

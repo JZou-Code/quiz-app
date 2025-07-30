@@ -8,12 +8,13 @@ import useAuth from './hooks/useAuth.js';
 import { AuthProvider } from "./context/AuthContext.jsx";
 import Guidelines from "./pages/Guidelines.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
-import SignupPage from './pages/SignupPage.jsx'; 
+import SignupPage from './pages/SignupPage.jsx';
+import classes from './style/App.module.css'
 
 function AppContent() {
   const {showLoginModal, closeLoginModal, showSignupModal, closeSignupModal} = useAuth(); 
     return (
-        <div>
+        <div className={classes.Body}>
             <Header/>
             <Routes>
                 <Route path='/' element={<WelcomePage/>}></Route>
