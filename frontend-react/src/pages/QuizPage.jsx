@@ -30,7 +30,6 @@ const QuizPage = () => {
         console.log(userAnswers)
         console.log(quizArr)
 
-        // navigate('/quiz/result', {state: {score: result}});
         setIsActive(true)
     }
 
@@ -47,6 +46,7 @@ const QuizPage = () => {
         setScore(0);
         setUserAnswers(() => quizArr.map(() => -1));
         setIsActive(false);
+        window.scroll(0, 0)
     }
 
     return (
@@ -55,8 +55,13 @@ const QuizPage = () => {
                 <QuestionBlock
                     quizData={item}
                     quizNum={index + 1}
-                    answers={userAnswers}
                     key={index}
+                    selected={userAnswers[index]}
+                    onAnswer={ans => {
+                        const copy = [...userAnswers];
+                        copy[index] = ans;
+                        setUserAnswers(copy);
+                    }}
                 />
             )}
             <div className={classes.ButtonContainer}>

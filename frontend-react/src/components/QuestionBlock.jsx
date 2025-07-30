@@ -1,13 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import classes from '../style/QuestionBlock.module.css'
 
 const QuestionBlock = (props) => {
-    const [selected, setSelected] = useState(-1)
-
-    const returnAnswer = (idx) => {
-        setSelected(idx);
-        props.answers[props.quizNum - 1] = idx;
-    }
 
     return (
         <div className={classes.Container}>
@@ -27,8 +21,8 @@ const QuestionBlock = (props) => {
                             name={props.quizNum}
                             id={props.quizNum + '' + index}
                             value={index}
-                            checked={selected === index}
-                            onChange={() => returnAnswer(index)}
+                            checked={props.selected === index}
+                            onChange={() => props.onAnswer(index)}
                         />
                         <span>{String.fromCharCode(65 + index) + '. ' + item}</span>
                     </label>

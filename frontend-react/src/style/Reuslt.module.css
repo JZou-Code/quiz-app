@@ -4,11 +4,14 @@
     position: absolute;
     top: 50%;
     left: 50%;
+    transform-origin: center center;
     transform: translate(-50%, -80%);
     background-color: #f2f2f2;
     box-shadow: 0 0 20px 20px gray;
     border-radius: 2rem;
     padding: 2rem;
+
+    animation: bounceIn 0.6s ease-out forwards;
 }
 
 .Text {
@@ -53,5 +56,20 @@
 
 .Quit{
 
+}
+
+@keyframes bounceIn {
+    0% {
+        transform-origin: center center;
+        transform: translate(-50%, -80%) scale(0.5);
+    }
+    60% {
+        transform-origin: center center;
+        transform: translate(-50%, -80%) scale(1.2);
+    }
+    100% {
+        transform-origin: center center;
+        transform: translate(-50%, -80%) scale(1);
+    }
 }
 
