@@ -1,0 +1,36 @@
+.Container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f2f2f2;
+    padding: 3rem;
+    border-radius: 1.5rem;
+    width: 30rem;
+    height: 20rem;
+}
+
+.Notification{
+    margin-top: 2rem;
+}
+
+.Forget{
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+.LinkContainer{
+    display: flex;
+    justify-content: center;
+}
+
+.Link{
+    color: cornflowerblue;
+}
+
+.Link:hover{
+    color: #0a0a0a;
+    cursor: pointer;
+}
+
+

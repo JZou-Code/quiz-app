@@ -25,10 +25,10 @@ const LoginForm = () => {
         <div style={{marginTop: '1rem'}}>
           <button type='sumbit'>Login</button>
         </div>
-        <p>Forgot Password?</p>
-        <p style={{marginTop: '1rem'}}>
-          <a href="#" onClick={openSignupModal}>Don't have an account? Sign up</a>
-        </p>
+        {/*<p>Forgot Password?</p>*/}
+        {/*<p style={{marginTop: '1rem'}}>*/}
+        {/*  <a href="#" onClick={openSignupModal}>Don't have an account? Sign up</a>*/}
+        {/*</p>*/}
       </form>
         
     );

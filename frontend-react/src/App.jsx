@@ -2,12 +2,11 @@ import React from "react";
 import {Route, Routes} from "react-router-dom";
 import WelcomePage from "./pages/WelcomePage.jsx";
 import QuizPage from "./pages/QuizPage.jsx";
-import ResultPage from "./pages/ResultPage.jsx";
 import Header from "./components/Header.jsx";
 import useAuth from './hooks/useAuth.js';
 import {AuthProvider} from "./context/AuthContext.jsx";
 import Guidelines from "./pages/Guidelines.jsx";
-import LoginPage from "./pages/LoginPage.jsx";
+import TopCorner from "./pages/TopCorner.jsx";
 import SignupPage from './pages/SignupPage.jsx';
 import Announcement from "./pages/Announcement.jsx";
 import classes from './style/App.module.css'
@@ -23,10 +22,9 @@ function AppContent() {
                 <Route path='/announcement' element={<Announcement/>}></Route>
                 <Route path='/quiz'>
                     <Route path='test' element={<QuizPage/>}></Route>
-                    <Route path='result' element={<ResultPage/>}></Route>
                 </Route>
             </Routes>
-            {showLoginModal && <LoginPage onClose={closeLoginModal}/>}
+            {showLoginModal && <TopCorner onClose={closeLoginModal}/>}
             {showSignupModal && <SignupPage onClose={closeSignupModal}/>}
         </div>
     )

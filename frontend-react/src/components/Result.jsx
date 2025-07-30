@@ -12,7 +12,7 @@ const Result = (props) => {
 
     return (
         <Backdrop>
-            <div className={classes.Container}>
+            <div className={`${classes.Container} popup`}>
                 <div className={classes.Text}>
                     You have finished the test!
                 </div>
