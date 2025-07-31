@@ -15,7 +15,7 @@ function AppContent() {
     const {showLoginModal, closeLoginModal, showSignupModal, closeSignupModal} = useAuth();
     return (
         <div className={classes.Body}>
-            <Header/>
+            {/*<Header/>*/}
             <Routes>
                 <Route path='/' element={<WelcomePage/>}></Route>
                 <Route path='/guidelines' element={<Guidelines/>}></Route>

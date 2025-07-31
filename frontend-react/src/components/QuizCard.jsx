@@ -17,7 +17,8 @@ const cardStyle = {
   justifyContent: 'center',
   borderRadius: '8px',
   boxShadow: '0 1px 3px rgba(0,0,0,0.2)',
-  cursor: 'pointer'
+  cursor: 'pointer',
+    flex:'0 0 auto'
 };
 
 export default QuizCard;

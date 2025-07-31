@@ -1,0 +1,15 @@
+.Container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.CardContainer{
+    display: flex;
+    justify-content: start;
+    width: 75%;
+    flex-wrap: wrap;
+}
+
+.SideContainer{
+    width: 20%;
+}
