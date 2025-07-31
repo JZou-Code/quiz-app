@@ -9,6 +9,7 @@ const WelcomePage = () => {
     const [tags, setTags] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const originalTags = useRef([]);
+    const [timer, setTimer] = useState()
 
     useEffect(() => {
         fetchQuizCards()
@@ -20,8 +21,15 @@ const WelcomePage = () => {
     }, []);
 
     const onSearch = (keyword) => {
-        const newTags = originalTags.current.filter(item => item.includes(keyword.trim()));
-        setTags(newTags);
+        if(timer){
+            timer.clear();
+            setTimer()
+        }
+        setTimer(setTimeout(() => {
+            const newTags = originalTags.current.filter(item =>
+                item.toLowerCase().includes(keyword.toLowerCase().trim()));
+            setTags(newTags);
+        }, 500));
     }
 
     return (

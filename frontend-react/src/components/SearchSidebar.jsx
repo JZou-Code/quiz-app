@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import classes from '../style/SearchSidebar.module.css'
 
-const SearchSidebar = () => {
+const SearchSidebar = (props) => {
     const [searchContent, setSearchContent] = useState('');
 
-    const onSearch = (e) => {
-        setSearchContent(e.target.value);
+    const searchCard= (e)=>{
+        const val = e.target.value
+        setSearchContent(val)
+        props.onSearch(val);
     }
 
     useEffect(() => {
@@ -18,7 +20,7 @@ const SearchSidebar = () => {
                 className={classes.Input}
                 placeholder={'Search'}
                 value={searchContent}
-                onChange={onSearch}
+                onChange={searchCard}
             />
 
         </div>

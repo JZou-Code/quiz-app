@@ -1,0 +1,22 @@
+.CardContainer {
+    width: 240px;
+    height: 150px;
+    background-color: #e0f0ff;
+    margin: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    flex: 0 0 auto;
+}
+
+.CardContainer:hover{
+    box-shadow: 0 0 5px 5px lightgray;
+}
+
+.CardContainer:active{
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    transform: scale(0.95);
+}

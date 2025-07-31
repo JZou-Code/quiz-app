@@ -1,7 +1,8 @@
 .Container{
-    background-color: #cfa;
     width: 100%;
     padding: 2rem 0;
+    height: 40rem;
+    border: 2px solid skyblue;
 }
 
 .Input{
