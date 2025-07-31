@@ -10,6 +10,7 @@ import TopCorner from "./pages/TopCorner.jsx";
 import SignupPage from './pages/SignupPage.jsx';
 import Announcement from "./pages/Announcement.jsx";
 import classes from './style/App.module.css'
+import AccountPage from "./pages/AccountPage.jsx";
 
 function AppContent() {
     const {showLoginModal, closeLoginModal, showSignupModal, closeSignupModal} = useAuth();
@@ -23,6 +24,7 @@ function AppContent() {
                 <Route path='/quiz'>
                     <Route path='test' element={<QuizPage/>}></Route>
                 </Route>
+                <Route path='/account' element={<AccountPage/>}></Route>
             </Routes>
             {showLoginModal && <TopCorner onClose={closeLoginModal}/>}
             {showSignupModal && <SignupPage onClose={closeSignupModal}/>}
