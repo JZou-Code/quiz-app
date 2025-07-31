@@ -7,8 +7,15 @@ const AccountPage = () => {
         <div>
             <Header/>
             <div className={classes.Container}>
-
-            Account Page
+                <div className={`${classes.History} ${classes.Block}`}>
+                    History Area
+                </div>
+                <div className={`${classes.Record} ${classes.Block}`}>
+                    Record Area
+                </div>
+                <div className={`${classes.Visualization} ${classes.Block}`}>
+                    Visualization Area
+                </div>
             </div>
         </div>
     );
