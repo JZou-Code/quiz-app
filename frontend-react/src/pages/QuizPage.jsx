@@ -50,6 +50,10 @@ const QuizPage = () => {
     }
 
     return (
+        <>
+            <div className={classes.Header}>
+                Logo
+            </div>
         <div className={classes.Container}>
             {quizArr.map((item, index) =>
                 <QuestionBlock
@@ -72,6 +76,7 @@ const QuizPage = () => {
                 isActive ? <Result onRestart={onRestart} score={score}/> : ''
             }
         </div>
+        </>
     );
 };
 
