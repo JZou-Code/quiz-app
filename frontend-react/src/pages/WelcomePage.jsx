@@ -22,14 +22,14 @@ const WelcomePage = () => {
 
     const onSearch = (keyword) => {
         if(timer){
-            timer.clear();
+            clearTimeout(timer);
             setTimer()
         }
         setTimer(setTimeout(() => {
             const newTags = originalTags.current.filter(item =>
                 item.toLowerCase().includes(keyword.toLowerCase().trim()));
             setTags(newTags);
-        }, 500));
+        }, 200));
     }
 
     return (

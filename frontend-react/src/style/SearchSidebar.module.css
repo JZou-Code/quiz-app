@@ -15,3 +15,19 @@
     border: 1px solid black;
     border-radius: 0.5rem;
 }
+
+.Clear{
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    padding: 0 0.3rem;
+    text-align: right;
+}
+
+.Clear:hover{
+    color: orangered;
+    cursor: pointer;
+}
+
+.Clear:active{
+    color: black;
+}
