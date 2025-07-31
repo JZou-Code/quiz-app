@@ -1,0 +1,59 @@
+.FormContainer{
+    text-align: center;
+}
+
+.Title{
+    font-size: 2rem;
+}
+
+.InputContainer{
+    font-size: 1.2rem;
+}
+
+.Input{
+    border: 1px solid black;
+    border-radius: 0.5rem;
+    width: 16rem;
+    height: 2rem;
+    line-height: 2rem;
+    margin: 0.5rem;
+    padding-left: 0.3rem;
+}
+
+.Button{
+    font-size: 1.2rem;
+    border: 1px solid black;
+    padding: 0.3rem 1rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+}
+
+.Button:hover{
+    cursor: pointer;
+    color: white;
+    box-shadow: 0 0 5px 5px gray;
+    background-color: skyblue;
+}
+
+.Notification{
+    margin-top: 2rem;
+}
+
+.Forget{
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+.LinkContainer{
+    display: flex;
+    justify-content: center;
+}
+
+.Link{
+    color: cornflowerblue;
+}
+
+.Link:hover{
+    color: #0a0a0a;
+    cursor: pointer;
+}

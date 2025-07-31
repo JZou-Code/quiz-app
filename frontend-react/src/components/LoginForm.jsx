@@ -1,36 +1,58 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import useAuth from '../hooks/useAuth';
+import classes from "../style/LoginForm.module.css";
 
-const LoginForm = () => {
-  const [name, setName] = useState('');
-  const [password, setPassword] = useState(''); 
-  const {login, openSignupModal} = useAuth(); 
+const LoginForm = (props) => {
+    const [name, setName] = useState('');
+    const [password, setPassword] = useState('');
+    const {login, openSignupModal} = useAuth();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    login(name);
-  }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        login(name);
+    }
 
     return (
-      <form onSubmit={handleSubmit} >
-        <h2>User Login</h2>
-        <div>
-            <label>Name: </label>
-            <input value={name} onChange={(e)=>setName(e.target.value)} required/>
-        </div>
-        <div>
-          <label>Password: </label>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required/>
-        </div>
-        <div style={{marginTop: '1rem'}}>
-          <button type='sumbit'>Login</button>
-        </div>
-        {/*<p>Forgot Password?</p>*/}
-        {/*<p style={{marginTop: '1rem'}}>*/}
-        {/*  <a href="#" onClick={openSignupModal}>Don't have an account? Sign up</a>*/}
-        {/*</p>*/}
-      </form>
-        
+        <>
+            <form className={classes.FormContainer} onSubmit={handleSubmit} style={{marginTop:'1.5rem'}}>
+                <div className={classes.Title}>User Login</div>
+                <div className={classes.InputContainer}>
+                    <input
+                        className={classes.Input}
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        required
+                        placeholder={'Username'}
+                    />
+                </div>
+                <div className={classes.InputContainer}>
+                    <input
+                        className={classes.Input}
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                        placeholder={'Password'}
+                    />
+                </div>
+                <button className={classes.Button} type='sumbit'>Login</button>
+            </form>
+            <div className={classes.Notification}>
+                <div className={classes.Forget}>
+                <span className={classes.Link}>
+                    Forgot password?
+                </span>
+                </div>
+                <div className={classes.LinkContainer}>
+                    <div>
+                        Not registered yet?
+                    </div>
+                    <div onClick={() => props.onSetStatus(props.statusObj.SIGNUP)} className={classes.Link}>
+                        &nbsp;Signup for an account
+                    </div>
+                </div>
+            </div>
+        </>
     );
 };
 

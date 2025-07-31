@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import LoginForm from '../components/LoginForm';
 import classes from '../style/TopCorner.module.css'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -11,28 +11,17 @@ const TopCorner = (props) => {
         LOGIN: 0,
         SIGNUP: 1
     }
+    const [popupStatus, setPopupStatus] = useState(props.status);
     return <div className={`${classes.Container} popup`}>
         <div onClick={props.onClose}>
             <FontAwesomeIcon icon={faXmark} className={'dismiss'}></FontAwesomeIcon>
         </div>
         {
-            props.status === statusObj.LOGIN ? <LoginForm/> : <SignupForm/>
+            popupStatus === statusObj.LOGIN ?
+                <LoginForm status={popupStatus} onSetStatus={setPopupStatus} statusObj={statusObj}/> :
+                <SignupForm status={popupStatus} onSetStatus={setPopupStatus} statusObj={statusObj}/>
         }
-        <div className={classes.Notification}>
-            <div className={classes.Forget}>
-                <span className={classes.Link}>
-                    Forgot password?
-                </span>
-            </div>
-            <div className={classes.LinkContainer}>
-                <div>
-                    Not registered yet?
-                </div>
-                <div onClick={props.onSetStatus(statusObj.SIGNUP)} className={classes.Link}>
-                    Signup for an account
-                </div>
-            </div>
-        </div>
+
     </div>
 };
 
