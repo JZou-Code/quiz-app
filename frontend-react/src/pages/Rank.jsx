@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from "../components/Header.jsx";
 
-const Guidelines = () => {
+const Rank = () => {
     return (
         <div>
             <Header/>
@@ -10,4 +10,4 @@ const Guidelines = () => {
     );
 };
 
-export default Guidelines;
+export default Rank;

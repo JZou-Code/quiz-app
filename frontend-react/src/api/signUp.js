@@ -5,3 +5,12 @@ export const requestCaptcha = () => {
         'api/captcha'
     )
 }
+
+export const requestValidationCode = (email)=>{
+    return axios.post(
+        'api/send-validation-code',
+        {
+            email
+        }
+    )
+}

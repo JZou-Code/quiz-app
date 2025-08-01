@@ -66,15 +66,15 @@ const Header = () => {
                     <NavLink
                         className={({isActive}) => isActive ?
                             `${classes.Active} ${classes.Link}` : classes.Link}
-                        to='/guidelines' end>
-                        Guidelines
+                        to='/Rank' end>
+                        Rank
                     </NavLink>
-                    <NavLink
-                        className={({isActive}) => isActive ?
-                            `${classes.Active} ${classes.Link}` : classes.Link}
-                        to='/announcement' end>
-                        Announcement
-                    </NavLink>
+                    {/*<NavLink*/}
+                    {/*    className={({isActive}) => isActive ?*/}
+                    {/*        `${classes.Active} ${classes.Link}` : classes.Link}*/}
+                    {/*    to='/announcement' end>*/}
+                    {/*    Announcement*/}
+                    {/*</NavLink>*/}
                     <NavLink
                         className={({isActive}) => isActive ?
                             `${classes.Active} ${classes.Link}` : classes.Link}

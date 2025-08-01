@@ -59,6 +59,22 @@
     background-color: skyblue;
 }
 
+.Send{
+    border: 1px solid gray;
+    padding: 0.3rem 1rem;
+    border-radius: 0.5rem;
+    height: 2rem;
+    width: 5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: rgba(129, 215, 218, 0.73);
+}
+
+.disabled{
+    background-color: lightgray;
+    color: white;
+}
+
 .Notification{
     margin-top: 2rem;
 }

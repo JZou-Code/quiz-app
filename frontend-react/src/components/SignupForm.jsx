@@ -1,30 +1,37 @@
-import React, {use, useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import classes from '../style/LoginForm.module.css'
-import {requestCaptcha} from "../api/signUp.js";
 import CaptCha from "./captCha.jsx";
+import {requestValidationCode} from "../api/signUp.js";
 
 const SignupForm = (props) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    // const [captchaSrc, setCaptchaSrc] = useState('')
-    // const [captchaFail, setCaptchaFail] = useState(false)
-    // const [isCaptchaLoading, setIsCaptchaLoading] = useState(true)
+    const [captcha, setCaptcha] = useState('');
+    const [code, setCode] = useState('')
+    const [buttonContent, setButtonContent] = useState('Send')
+    const [disabled, setDisabled] = useState(false)
 
-    // useEffect(() => {
-    //     requestCaptcha
-    //         .then(result => {
-    //             console.log(result.data.image)
-    //             setCaptchaSrc('data:image/png;base64,' + result.data.data.image);
-    //             setIsCaptchaLoading(false);
-    //         }).catch(e=>{
-    //             setIsCaptchaLoading(false);
-    //             setCaptchaFail(true)
-    //     }
-    //     )
-    //
-    // }, []);
+    const onSendCode = () => {
+        console.log('hello')
+        let seconds = 60
+        setDisabled(true);
+        requestValidationCode(email)
+        setButtonContent(`${seconds}s`)
+
+        const timer = setInterval(() => {
+
+            seconds--
+            setButtonContent(`${seconds}s`)
+            if (seconds <= 0) {
+                clearInterval(timer);
+                setButtonContent('Resend');
+                setDisabled(false);
+            }
+
+        }, 1000)
+    }
 
     return (
         <>
@@ -50,6 +57,29 @@ const SignupForm = (props) => {
                         placeholder={'Email'}
                     />
                 </div>
+                <div className={`${classes.InputContainer} ${classes.CaptchaContainer}`}>
+                    <input
+                        className={classes.CaptchaInput}
+                        type="text"
+                        value={code}
+                        onChange={(e) => setCode(e.target.value)}
+                        required
+                        placeholder={'Code'}
+                    />
+                    <div
+                        className={classes.CaptchaImg}
+                    >
+                        <button
+                            type={'button'}
+                            disabled={disabled}
+                            className={`${classes.Send} ${disabled? classes.disabled : ''}`}
+                            onClick={onSendCode}
+
+                        >
+                            {buttonContent}
+                        </button>
+                    </div>
+                </div>
                 <div className={classes.InputContainer}>
                     <input
                         className={classes.Input}
@@ -73,18 +103,15 @@ const SignupForm = (props) => {
                 <div className={`${classes.InputContainer} ${classes.CaptchaContainer}`}>
                     <input
                         className={classes.CaptchaInput}
-                        type="password"
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        type="text"
+                        value={captcha}
+                        onChange={(e) => setCaptcha(e.target.value)}
                         required
                         placeholder={'Captcha'}
                     />
                     <div
                         className={classes.CaptchaImg}
                     >
-                        {/*{*/}
-                        {/*    isCaptchaLoading ? '' : <img src={captchaSrc} alt='Captcha'/>*/}
-                        {/*}*/}
                         <CaptCha/>
                     </div>
                 </div>

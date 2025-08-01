@@ -5,7 +5,7 @@ import QuizPage from "./pages/QuizPage.jsx";
 import Header from "./components/Header.jsx";
 import useAuth from './hooks/useAuth.js';
 import {AuthProvider} from "./context/AuthContext.jsx";
-import Guidelines from "./pages/Guidelines.jsx";
+import Rank from "./pages/./Rank.jsx";
 import TopCorner from "./pages/TopCorner.jsx";
 import SignupPage from './pages/SignupPage.jsx';
 import Announcement from "./pages/Announcement.jsx";
@@ -19,8 +19,8 @@ function AppContent() {
             {/*<Header/>*/}
             <Routes>
                 <Route path='/' element={<WelcomePage/>}></Route>
-                <Route path='/guidelines' element={<Guidelines/>}></Route>
-                <Route path='/announcement' element={<Announcement/>}></Route>
+                <Route path='/rank' element={<Rank/>}></Route>
+                {/*<Route path='/announcement' element={<Announcement/>}></Route>*/}
                 <Route path='/quiz'>
                     <Route path='test' element={<QuizPage/>}></Route>
                 </Route>
