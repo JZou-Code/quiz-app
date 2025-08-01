@@ -6,7 +6,7 @@ import TopCorner from "../pages/TopCorner.jsx";
 
 
 const Header = () => {
-    const [isLogin, setIsLogin] = useState(true)
+    const [isLogin, setIsLogin] = useState(false)
     const statusObj = {
         NONE: -1,
         LOGIN: 0,

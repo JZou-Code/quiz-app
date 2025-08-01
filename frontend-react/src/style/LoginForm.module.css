@@ -20,6 +20,30 @@
     padding-left: 0.3rem;
 }
 
+.CaptchaContainer{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    gap: 1rem;
+}
+
+.CaptchaInput{
+    height: 2rem;
+    width: 10rem;
+    border: 1px solid black;
+    border-radius: 0.5rem;
+}
+
+.CaptchaImg{
+    width: 5rem;
+    height: 2rem;
+}
+
+.CaptchaImg img{
+    height: 2rem;
+    cursor: pointer;
+}
+
 .Button{
     font-size: 1.2rem;
     border: 1px solid black;
