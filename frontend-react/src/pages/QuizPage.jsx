@@ -4,6 +4,7 @@ import QuestionBlock from "../components/QuestionBlock.jsx";
 import generateQuiz from '../mock/fakeQuestions.js'
 import {useNavigate} from 'react-router-dom'
 import Result from "../components/Result.jsx";
+import Timer from "../components/Timer.jsx";
 
 const QuizPage = () => {
     const navigate = useNavigate();
@@ -49,33 +50,35 @@ const QuizPage = () => {
         window.scroll(0, 0)
     }
 
+
     return (
         <>
             <div className={classes.Header}>
                 Logo
+                <Timer seconds={20 * 60 * 1000}/>
             </div>
-        <div className={classes.Container}>
-            {quizArr.map((item, index) =>
-                <QuestionBlock
-                    quizData={item}
-                    quizNum={index + 1}
-                    key={index}
-                    selected={userAnswers[index]}
-                    onAnswer={ans => {
-                        const copy = [...userAnswers];
-                        copy[index] = ans;
-                        setUserAnswers(copy);
-                    }}
-                />
-            )}
-            <div className={classes.ButtonContainer}>
-                <button onClick={onSubmit} className={classes.Submit}>Submit</button>
-                <button onClick={onCancel} className={classes.Cancel}>Cancel</button>
+            <div className={classes.Container}>
+                {quizArr.map((item, index) =>
+                    <QuestionBlock
+                        quizData={item}
+                        quizNum={index + 1}
+                        key={index}
+                        selected={userAnswers[index]}
+                        onAnswer={ans => {
+                            const copy = [...userAnswers];
+                            copy[index] = ans;
+                            setUserAnswers(copy);
+                        }}
+                    />
+                )}
+                <div className={classes.ButtonContainer}>
+                    <button onClick={onSubmit} className={classes.Submit}>Submit</button>
+                    <button onClick={onCancel} className={classes.Cancel}>Cancel</button>
+                </div>
+                {
+                    isActive ? <Result onRestart={onRestart} score={score}/> : ''
+                }
             </div>
-            {
-                isActive ? <Result onRestart={onRestart} score={score}/> : ''
-            }
-        </div>
         </>
     );
 };

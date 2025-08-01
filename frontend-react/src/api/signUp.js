@@ -14,3 +14,10 @@ export const requestValidationCode = (email)=>{
         }
     )
 }
+
+export const requestSignUp = (data)=>{
+    return axios.post(
+        'api/user/register',
+        data
+    )
+}

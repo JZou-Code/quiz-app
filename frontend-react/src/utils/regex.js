@@ -6,3 +6,27 @@ export const regexObj = {
     VALIDATION_CODE: /^\d{6}$/,
     CAPTCHA_ID: /^.{5}$/
 }
+
+export function isValidUsername(name) {
+    return regexObj.USERNAME.test(name);
+}
+
+export function isValidPassword(password) {
+    return regexObj.PASSWORD.test(password);
+}
+
+export function isValidEmail(email) {
+    return regexObj.EMAIL.test(email);
+}
+
+export function isValidPhone(phone) {
+    return regexObj.PHONE.test(phone);
+}
+
+export function isValidCode(code) {
+    return regexObj.VALIDATION_CODE.test(code);
+}
+
+export function isValidCaptchaId(id) {
+    return regexObj.CAPTCHA_ID.test(id);
+}
