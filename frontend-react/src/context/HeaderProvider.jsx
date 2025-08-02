@@ -1,6 +1,6 @@
 import React, {useReducer} from 'react';
 import HeaderContext from './HeaderContext';
-import {pageState} from "../utils/pageStatus.js";
+import {pageState} from "../utils/pageState.js";
 
 export default function HeaderProvider({children}) {
     const [popupStatus, dispatchPopupStatus] = useReducer(
@@ -20,6 +20,8 @@ export default function HeaderProvider({children}) {
                     return pageState.FAIL;
                 case pageState.FORGET:
                     return pageState.FORGET;
+                case pageState.CONFIRM:
+                    return pageState.CONFIRM;
                 default:
                     return prevState
             }

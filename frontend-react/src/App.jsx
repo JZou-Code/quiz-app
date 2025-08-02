@@ -6,9 +6,8 @@ import Header from "./components/Header.jsx";
 import useAuth from './hooks/useAuth.js';
 import {AuthProvider} from "./context/AuthContext.jsx";
 import Rank from "./pages/./Rank.jsx";
-import TopCorner from "./pages/TopCorner.jsx";
+import TopCorner from "./components/TopCorner.jsx";
 import SignupPage from './pages/SignupPage.jsx';
-import Announcement from "./pages/Announcement.jsx";
 import classes from './style/App.module.css'
 import AccountPage from "./pages/AccountPage.jsx";
 import ResultPage from "./pages/ResultPage.jsx";

@@ -1,11 +1,13 @@
-import React, {useReducer, useState} from 'react';
+import React, {useContext, useReducer, useState} from 'react';
 import classes from '../style/LoginForm.module.css'
 import CaptCha from "./captCha.jsx";
 import {requestSignUp, requestValidationCode} from "../api/signUp.js";
 import {isValidEmail, isValidPassword, isValidUsername} from "../utils/regex.js";
-import {pageState} from "../utils/pageStatus.js";
+import {pageState} from "../utils/pageState.js";
+import HeaderContext from "../context/HeaderContext.jsx";
+import ValidationCode from "./ValidationCode.jsx";
 
-const SignUpForm = (props) => {
+const SignUpForm = () => {
     // Input values, all string
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
@@ -15,28 +17,9 @@ const SignUpForm = (props) => {
     const [validationCode, setValidationCode] = useState('')
     const [captcha, setCaptcha] = useState('');
 
-
-    const [buttonContent, setButtonContent] = useState('Send')
-    const [disabled, setDisabled] = useState(false)
-
     const [errorMsg, setErrorMsg] = useState('')
 
-    const onSendCode = () => {
-        let seconds = 60
-        setDisabled(true);
-        requestValidationCode(email)
-        setButtonContent(`${seconds}s`)
-
-        const timer = setInterval(() => {
-            seconds--
-            setButtonContent(`${seconds}s`)
-            if (seconds <= 0) {
-                clearInterval(timer);
-                setButtonContent('Resend');
-                setDisabled(false);
-            }
-        }, 1000)
-    }
+    const ctx = useContext(HeaderContext);
 
     const validationRules = [
         {
@@ -66,7 +49,6 @@ const SignUpForm = (props) => {
             return;
         }
 
-
         requestSignUp({
             username,
             email,
@@ -76,7 +58,7 @@ const SignUpForm = (props) => {
             captcha
         }).then(result => {
             console.log(result)
-            props.onSetStatus(pageState.LOGIN)
+            ctx.dispatch(pageState.LOGIN)
         }).catch(e => {
             setErrorMsg(e.message)
         })
@@ -110,28 +92,7 @@ const SignUpForm = (props) => {
                         placeholder={'Email'}
                     />
                 </div>
-                <div className={`${classes.InputContainer} ${classes.CaptchaContainer}`}>
-                    <input
-                        className={classes.CaptchaInput}
-                        type="text"
-                        value={validationCode}
-                        onChange={(e) => setValidationCode(e.target.value)}
-                        required
-                        placeholder={'Code'}
-                    />
-                    <div
-                        className={classes.CaptchaImg}
-                    >
-                        <button
-                            type={'button'}
-                            disabled={disabled}
-                            className={`${classes.Send} ${disabled ? classes.disabled : ''}`}
-                            onClick={onSendCode}
-                        >
-                            {buttonContent}
-                        </button>
-                    </div>
-                </div>
+                <ValidationCode code={validationCode} setCode={setValidationCode} email={email}></ValidationCode>
                 <div className={classes.InputContainer}>
                     <input
                         className={classes.Input}
@@ -184,7 +145,7 @@ const SignUpForm = (props) => {
                     <div>
                         Already have an account?
                     </div>
-                    <div onClick={() => props.onSetStatus({type: pageState.LOGIN})} className={classes.Link}>
+                    <div onClick={() => ctx.dispatch({type: pageState.LOGIN})} className={classes.Link}>
                         &nbsp;Login
                     </div>
                 </div>

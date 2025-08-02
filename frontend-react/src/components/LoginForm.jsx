@@ -1,10 +1,13 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import classes from "../style/LoginForm.module.css";
-import {pageState} from "../utils/pageStatus.js";
+import {pageState} from "../utils/pageState.js";
+import HeaderContext from "../context/HeaderContext.jsx";
 
-const LoginForm = (props) => {
+const LoginForm = () => {
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
+
+    const ctx = useContext(HeaderContext);
 
     const handleSubmit = (e) => {
 
@@ -36,7 +39,7 @@ const LoginForm = (props) => {
                 <button className={classes.Button} type='sumbit'>Login</button>
             </form>
             <div className={classes.Notification}>
-                <div className={classes.Forget}>
+                <div className={classes.Forget} onClick={() => ctx.dispatch({type: pageState.FORGET})}>
                 <span className={classes.Link}>
                     Forgot password?
                 </span>
@@ -45,7 +48,7 @@ const LoginForm = (props) => {
                     <div>
                         Not registered yet?
                     </div>
-                    <div onClick={() => props.onSetStatus({type: pageState.SIGNUP})} className={classes.Link}>
+                    <div onClick={() => ctx.dispatch({type: pageState.SIGNUP})} className={classes.Link}>
                         &nbsp;Signup for an account
                     </div>
                 </div>

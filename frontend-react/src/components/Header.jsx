@@ -2,9 +2,9 @@ import React, {useContext} from 'react';
 import {NavLink} from "react-router-dom";
 import classes from '../style/Header.module.css'
 import Backdrop from "../UI/Backdrop/Backdrop.jsx";
-import TopCorner from "../pages/TopCorner.jsx";
+import TopCorner from "./TopCorner.jsx";
 import HeaderContext from "../context/HeaderContext.jsx";
-import {pageState} from "../utils/pageStatus.js";
+import {pageState} from "../utils/pageState.js";
 
 
 const Header = () => {
@@ -49,12 +49,6 @@ const Header = () => {
                         to='/Rank' end>
                         Rank
                     </NavLink>
-                    {/*<NavLink*/}
-                    {/*    className={({isActive}) => isActive ?*/}
-                    {/*        `${classes.Active} ${classes.Link}` : classes.Link}*/}
-                    {/*    to='/announcement' end>*/}
-                    {/*    Announcement*/}
-                    {/*</NavLink>*/}
                     <NavLink
                         className={({isActive}) => isActive ?
                             `${classes.Active} ${classes.Link}` : classes.Link}
