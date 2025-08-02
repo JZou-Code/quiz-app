@@ -4,7 +4,10 @@ function formatMMSS(ms) {
     return new Date(ms + 999).toISOString().slice(14, 19)
 }
 
-export default function Timer({seconds = 100}) {
+export default function Timer({
+                                  seconds = 10, onTimeOver = () => {
+    }
+                              }) {
     const [timeLeft, setTimeLeft] = useState(formatMMSS(seconds * 1000))
 
     useEffect(() => {
@@ -14,6 +17,7 @@ export default function Timer({seconds = 100}) {
             if (left <= 0) {
                 setTimeLeft("00:00")
                 clearInterval(id)
+                onTimeOver(null, true);
             } else {
                 setTimeLeft(formatMMSS(left))
             }

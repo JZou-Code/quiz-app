@@ -11,6 +11,8 @@ import SignupPage from './pages/SignupPage.jsx';
 import Announcement from "./pages/Announcement.jsx";
 import classes from './style/App.module.css'
 import AccountPage from "./pages/AccountPage.jsx";
+import ResultPage from "./pages/ResultPage.jsx";
+import QuizProvider from "./context/QuizProvider.jsx";
 
 function AppContent() {
     const {showLoginModal, closeLoginModal, showSignupModal, closeSignupModal} = useAuth();
@@ -22,7 +24,16 @@ function AppContent() {
                 <Route path='/rank' element={<Rank/>}></Route>
                 {/*<Route path='/announcement' element={<Announcement/>}></Route>*/}
                 <Route path='/quiz'>
-                    <Route path='test' element={<QuizPage/>}></Route>
+                    <Route path='test' element={
+                        <QuizProvider>
+                            <QuizPage/>
+                        </QuizProvider>
+                    }></Route>
+                    <Route path='result' element={
+                        <QuizProvider>
+                            <ResultPage/>
+                        </QuizProvider>
+                    }></Route>
                 </Route>
                 <Route path='/account' element={<AccountPage/>}></Route>
             </Routes>

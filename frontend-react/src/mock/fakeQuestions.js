@@ -16,7 +16,11 @@ function generateQuiz() {
         }
         quizArr.push(question)
     }
-    return quizArr
+    return {
+        code: '200',
+        message: 'test',
+        quizArr
+    }
 }
 
 export default generateQuiz
