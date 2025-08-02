@@ -9,6 +9,7 @@ export default function QuizProvider({children}) {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [score, setScore] = useState(0)
+    const [isResult, setIsResult] = useState(false);
 
     const navigate = useNavigate();
 
@@ -39,12 +40,14 @@ export default function QuizProvider({children}) {
             return sum + (userAnswers[i] === q.answer ? 1 : 0);
         }, 0);
 
-        setScore(count)
-
         console.log(quizArr);
         console.log(userAnswers)
 
-        navigate('/quiz/result')
+        setScore(count);
+        setIsResult(true);
+
+        navigate('/quiz/result',{replace:true})
+        // window.scroll(0, 0)
     };
     const reset = () => {
         setUserAnswers(new Array(quizArr.length).fill(-1));
@@ -59,6 +62,7 @@ export default function QuizProvider({children}) {
                 error,
                 score,
                 userAnswers,
+                isResult,
                 setUserAnswers,
                 submit,
                 reset,

@@ -60,3 +60,11 @@
     color: white;
     background-color: rgba(98, 184, 211, 0.8);
 }
+
+.Correct{
+    background-color: green;
+}
+
+.Incorrect{
+    background-color: orangered;
+}

@@ -5,6 +5,7 @@ const QuizContext = React.createContext({
     loading: false,
     error: null,
     userAnswers: [],
+    isResult: false,
     setUserAnswers: () => {
     },
     submit: () => {
