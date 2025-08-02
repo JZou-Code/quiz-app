@@ -21,10 +21,18 @@ const QuizPage = () => {
         return () => window.removeEventListener('beforeunload', warn);
     }, []);
 
+    const onRestart = ()=>{
+        ctx.reset()
+        navigate('/quiz/test',{replace:true})
+    }
+
     return (
         <>
             <div className={classes.Header}>
                 Logo
+            </div>
+            <div className={classes.ScoreContainer}>
+                Your score: {ctx.score}
             </div>
             <div className={classes.Container}>
                 {ctx.quizArr.map((item, index) =>
@@ -35,7 +43,7 @@ const QuizPage = () => {
                 )}
 
                 <div className={classes.ButtonContainer}>
-                    <button onClick={ctx.submit} className={classes.Submit}>Submit</button>
+                    <button onClick={onRestart} className={classes.Restart}>Restart</button>
                     <button onClick={onCancel} className={classes.Cancel}>Cancel</button>
                 </div>
             </div>

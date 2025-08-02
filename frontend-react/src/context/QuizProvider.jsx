@@ -13,7 +13,7 @@ export default function QuizProvider({children}) {
 
     const navigate = useNavigate();
 
-    useEffect(() => {
+    const setNewQuiz = () => {
         fetchQuizzes()
             .then(data => {
                 if (data.code === '200') {
@@ -25,6 +25,10 @@ export default function QuizProvider({children}) {
             })
             .catch(err => setError(err.message))
             .finally(() => setLoading(false));
+    }
+
+    useEffect(() => {
+        setNewQuiz();
     }, []);
 
     const submit = (options) => {
@@ -46,12 +50,17 @@ export default function QuizProvider({children}) {
         setScore(count);
         setIsResult(true);
 
-        navigate('/quiz/result',{replace:true})
-        // window.scroll(0, 0)
+        navigate('/quiz/result', {replace: true})
+        window.scroll(0, 0)
     };
     const reset = () => {
         setUserAnswers(new Array(quizArr.length).fill(-1));
         setScore(0);
+        setIsResult(false);
+
+        setLoading(true);
+        setNewQuiz();
+        window.scroll(0,0)
     };
 
     return (
