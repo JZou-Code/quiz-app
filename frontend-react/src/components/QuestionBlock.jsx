@@ -21,19 +21,6 @@ const QuestionBlock = (props) => {
                         let incorrectOpt = -1;
                         let extraClass = '';
 
-                        // if (ctx.isResult) {
-                        //     if (quizData.answer !== selectedOpt) {
-                        //         incorrectOpt = selectedOpt;
-                        //     }
-                        //     if (index === incorrectOpt) {
-                        //         extraClass += classes.Incorrect
-                        //     } else if (index === correctOpt) {
-                        //         extraClass += classes.Correct;
-                        //     }
-                        // } else {
-                        //     extraClass = selectedOpt === index ? classes.Selected : ''
-                        // }
-
                         if (index === selectedOpt) {
                             extraClass += classes.Selected
                         }

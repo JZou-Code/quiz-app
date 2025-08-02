@@ -1,20 +1,18 @@
 import React, {useState} from 'react';
-import useAuth from '../hooks/useAuth';
 import classes from "../style/LoginForm.module.css";
+import {pageState} from "../utils/pageStatus.js";
 
 const LoginForm = (props) => {
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
-    const {login, openSignupModal} = useAuth();
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        login(name);
+
     }
 
     return (
         <>
-            <form className={classes.FormContainer} onSubmit={handleSubmit} style={{marginTop:'1.5rem'}}>
+            <form className={classes.FormContainer} onSubmit={handleSubmit} style={{marginTop: '1.5rem'}}>
                 <div className={classes.Title}>User Login</div>
                 <div className={classes.InputContainer}>
                     <input
@@ -47,7 +45,7 @@ const LoginForm = (props) => {
                     <div>
                         Not registered yet?
                     </div>
-                    <div onClick={() => props.onSetStatus(props.statusObj.SIGNUP)} className={classes.Link}>
+                    <div onClick={() => props.onSetStatus({type: pageState.SIGNUP})} className={classes.Link}>
                         &nbsp;Signup for an account
                     </div>
                 </div>

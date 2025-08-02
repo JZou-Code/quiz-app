@@ -4,6 +4,7 @@ import QuizCard from '../components/QuizCard';
 import classes from '../style/WelcomPage.module.css';
 import Header from "../components/Header.jsx";
 import {fetchQuizCards} from "../api/quizCards.js";
+import HeaderProvider from "../context/HeaderProvider.jsx";
 
 const WelcomePage = () => {
     const [tags, setTags] = useState([]);
@@ -21,7 +22,7 @@ const WelcomePage = () => {
     }, []);
 
     const onSearch = (keyword) => {
-        if(timer){
+        if (timer) {
             clearTimeout(timer);
             setTimer()
         }
@@ -34,7 +35,9 @@ const WelcomePage = () => {
 
     return (
         <>
-            <Header/>
+            <HeaderProvider>
+                <Header/>
+            </HeaderProvider>
             <div className={classes.Container}>
                 {isLoading ?
                     <p>

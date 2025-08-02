@@ -1,32 +1,18 @@
-import React, {useState} from 'react';
+import React, {useContext} from 'react';
 import {NavLink} from "react-router-dom";
 import classes from '../style/Header.module.css'
 import Backdrop from "../UI/Backdrop/Backdrop.jsx";
 import TopCorner from "../pages/TopCorner.jsx";
+import HeaderContext from "../context/HeaderContext.jsx";
+import {pageState} from "../utils/pageStatus.js";
 
 
 const Header = () => {
-    const [isLogin, setIsLogin] = useState(false)
-    const statusObj = {
-        NONE: -1,
-        LOGIN: 0,
-        SIGNUP: 1
-    }
-    const [status, setStatus] = useState(-1);
-
-    const onLogIn = () => {
-        setStatus(statusObj.LOGIN);
-    }
-
-    const onSignUp = () => {
-        setStatus(statusObj.SIGNUP);
-    }
-
     const onClose = () => {
-        setStatus(statusObj.NONE)
+        ctx.dispatch({type: pageState.NONE})
     }
 
-
+    const ctx = useContext(HeaderContext);
 
     return (
         <>
@@ -36,24 +22,18 @@ const Header = () => {
                     <div>
                         <div className={classes.Title}>Online Quiz</div>
                     </div>
-                    {isLogin ?
-                        <div className={classes.Greeting}>
-                            <div className={classes.Message}>
-                                Hello
-                            </div>
-                            <div
-                                onClick={alert}
-                                className={classes.Account}
-                            >
-
-                            </div>
-                        </div>:
-                        <div className={classes.LoginContainer}>
-                            <div className={`${classes.Button} ${classes.Login}`} onClick={onLogIn}>Log In</div>
-                            <div className={`${classes.Button} ${classes.SignUp}`} onClick={onSignUp}>Sign Up</div>
+                    <div className={classes.LoginContainer}>
+                        <div className={`${classes.Button} ${classes.Login}`}
+                             onClick={() => {
+                                 ctx.dispatch({type: pageState.LOGIN})
+                             }}>Log In
                         </div>
-                    }
-
+                        <div className={`${classes.Button} ${classes.SignUp}`}
+                             onClick={() => {
+                                 ctx.dispatch({type: pageState.SIGNUP})
+                             }}>Sign Up
+                        </div>
+                    </div>
                 </div>
 
                 <div className={classes.LinkContainer}>
@@ -91,11 +71,11 @@ const Header = () => {
 
             </div>
             {
-                status !== statusObj.NONE ?
+                ctx.state === pageState.NONE ?
+                    '' :
                     <Backdrop>
-                        <TopCorner status={status} onClose={onClose} onSetStatus={setStatus}></TopCorner>
-                    </Backdrop> :
-                    ''
+                        <TopCorner status={ctx.state} onClose={onClose}></TopCorner>
+                    </Backdrop>
             }
 
         </>

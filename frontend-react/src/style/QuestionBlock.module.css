@@ -63,12 +63,12 @@
 
 .Correct{
     /*background-color: green;*/
-    border: 2px solid green;
-    box-shadow: 0 0 5px green;
+    border: 2px solid rgba(49, 209, 102, 0.8);
+    box-shadow: 0 0 5px rgba(49, 209, 102, 0.8);
 }
 
 .Incorrect{
     /*background-color: orangered;*/
-    border: 2px solid orangered;
-    box-shadow: 0 0 10px orangered;
+    border: 2px solid rgb(227, 129, 19);
+    box-shadow: 0 0 10px rgb(227, 129, 19);
 }

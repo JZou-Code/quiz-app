@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import Backdrop from '../UI/Backdrop/Backdrop';
 import useAuth from '../hooks/useAuth';
-import SignupForm from '../components/SignupForm';
+import SignUpForm from '../components/SignUpForm.jsx';
 
 const SignupPage = () => {
   const { closeSignupModal, login } = useAuth();
@@ -16,7 +16,7 @@ const SignupPage = () => {
     <div>
       <Backdrop onClick={closeSignupModal} />
       <div onClick={(e)=>e.stopPropagation()} style={modalStyle}>
-        <SignupForm onSubmit={handleSignup} />
+        <SignUpForm onSubmit={handleSignup} />
       </div>
     </div>,
     document.body

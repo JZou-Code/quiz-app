@@ -1,5 +1,5 @@
 import React from "react";
-import {Route, Routes} from "react-router-dom";
+import {Outlet, Route, Routes} from "react-router-dom";
 import WelcomePage from "./pages/WelcomePage.jsx";
 import QuizPage from "./pages/QuizPage.jsx";
 import Header from "./components/Header.jsx";
@@ -23,17 +23,13 @@ function AppContent() {
                 <Route path='/' element={<WelcomePage/>}></Route>
                 <Route path='/rank' element={<Rank/>}></Route>
                 {/*<Route path='/announcement' element={<Announcement/>}></Route>*/}
-                <Route path='/quiz'>
-                    <Route path='test' element={
-                        <QuizProvider>
-                            <QuizPage/>
-                        </QuizProvider>
-                    }></Route>
-                    <Route path='result' element={
-                        <QuizProvider>
-                            <ResultPage/>
-                        </QuizProvider>
-                    }></Route>
+                <Route path='/quiz' element={
+                    <QuizProvider>
+                        <Outlet />
+                    </QuizProvider>
+                }>
+                    <Route path='test' element={<QuizPage/>}></Route>
+                    <Route path='result' element={<ResultPage/>}></Route>
                 </Route>
                 <Route path='/account' element={<AccountPage/>}></Route>
             </Routes>

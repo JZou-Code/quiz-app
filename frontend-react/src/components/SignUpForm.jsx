@@ -1,11 +1,12 @@
-import React, {useState} from 'react';
+import React, {useReducer, useState} from 'react';
 import classes from '../style/LoginForm.module.css'
 import CaptCha from "./captCha.jsx";
 import {requestSignUp, requestValidationCode} from "../api/signUp.js";
 import {isValidEmail, isValidPassword, isValidUsername} from "../utils/regex.js";
-import result from "./Result.jsx";
+import {pageState} from "../utils/pageStatus.js";
 
-const SignupForm = (props) => {
+const SignUpForm = (props) => {
+    // Input values, all string
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -34,7 +35,6 @@ const SignupForm = (props) => {
                 setButtonContent('Resend');
                 setDisabled(false);
             }
-
         }, 1000)
     }
 
@@ -66,6 +66,7 @@ const SignupForm = (props) => {
             return;
         }
 
+
         requestSignUp({
             username,
             email,
@@ -74,9 +75,9 @@ const SignupForm = (props) => {
             validationCode,
             captcha
         }).then(result => {
-                console.log(result)
-                props.onSetStatus(props.statusObj.LOGIN)
-            }).catch(e => {
+            console.log(result)
+            props.onSetStatus(pageState.LOGIN)
+        }).catch(e => {
             setErrorMsg(e.message)
         })
     }
@@ -183,7 +184,7 @@ const SignupForm = (props) => {
                     <div>
                         Already have an account?
                     </div>
-                    <div onClick={() => props.onSetStatus(props.statusObj.LOGIN)} className={classes.Link}>
+                    <div onClick={() => props.onSetStatus({type: pageState.LOGIN})} className={classes.Link}>
                         &nbsp;Login
                     </div>
                 </div>
@@ -192,4 +193,4 @@ const SignupForm = (props) => {
     );
 };
 
-export default SignupForm;
+export default SignUpForm;
