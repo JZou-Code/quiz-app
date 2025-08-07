@@ -18,6 +18,8 @@ const QuizPage = () => {
     }
 
     useEffect(() => {
+        ctx.reset();
+
         const warn = e => {
             e.preventDefault();
             e.returnValue = 'Refreshing the page will cause data loss. Continue?';
