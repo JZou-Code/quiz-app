@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from "../components/Header.jsx";
 import classes from '../style/AccountPage.module.css'
+import History from "../components/History.jsx";
 
 const AccountPage = () => {
     return (
@@ -8,7 +9,7 @@ const AccountPage = () => {
             <Header/>
             <div className={classes.Container}>
                 <div className={`${classes.History} ${classes.Block}`}>
-                    History Area
+                    <History/>
                 </div>
                 <div className={`${classes.Record} ${classes.Block}`}>
                     Record Area

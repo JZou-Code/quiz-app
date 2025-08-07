@@ -5,7 +5,7 @@ import classes from '../style/WelcomPage.module.css';
 import {fetchQuizCards} from "../api/quizCards.js";
 import Header from "../components/Header.jsx";
 
-const WelcomePage = () => {
+const HomePage = () => {
     const [tags, setTags] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const originalTags = useRef([]);
@@ -55,4 +55,4 @@ const WelcomePage = () => {
     );
 };
 
-export default WelcomePage;
+export default HomePage;

@@ -23,11 +23,9 @@ const LoginForm = () => {
             .then(result => {
                 const {data} = result;
 
-                console.log(data)
-                console.log(result)
-
                 if (data.code === '200') {
                     accountCtx.setIsLogin(true);
+                    accountCtx.setUsername(username);
                     pageCtx.dispatch({type:pageState.NONE});
                     navigate('/')
                 }else {

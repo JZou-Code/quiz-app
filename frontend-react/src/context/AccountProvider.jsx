@@ -3,7 +3,7 @@ import AccountContext from "./AccountContext.jsx";
 
 export default function AccountProvider({children}) {
     const [isLogin, setIsLogin] = useState(false);
-    const [username, setUsername] = useState('');
+    const [username, setUsername] = useState('Kidd');
     const [email, setEmail] = useState('');
 
     return (

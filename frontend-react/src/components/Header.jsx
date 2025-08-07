@@ -3,11 +3,13 @@ import {NavLink, useNavigate} from "react-router-dom";
 import classes from '../style/Header.module.css'
 import {pageState} from "../utils/pageState.js";
 import PageStateContext from "../context/PageStateContext.jsx";
+import HeaderLogin from "./HeaderLogin.jsx";
+import AccountContext from "../context/AccountContext.jsx";
+import HeaderAccount from "./HeaderAccount.jsx";
 
 
 const Header = () => {
-    const ctx = useContext(PageStateContext);
-    const navigate = useNavigate();
+    const ctx = useContext(AccountContext);
 
     return (
         <>
@@ -17,19 +19,22 @@ const Header = () => {
                     <div>
                         <div className={classes.Title}>Online Quiz</div>
                     </div>
-                    <div className={classes.LoginContainer}>
-                        <div className={`${classes.Button} ${classes.Login}`}
-                             onClick={() => {
-                                 ctx.dispatch({type: pageState.LOGIN});
-                                 navigate('/account/login');
-                             }}>Log In
-                        </div>
-                        <div className={`${classes.Button} ${classes.SignUp}`}
-                             onClick={() => {
-                                 ctx.dispatch({type: pageState.SIGNUP});
-                                 navigate('/account/sign-up');
-                             }}>Sign Up
-                        </div>
+                    <div className={classes.Corner}>
+                        {/*<div className={`${classes.Button} ${classes.Login}`}*/}
+                        {/*     onClick={() => {*/}
+                        {/*         ctx.dispatch({type: pageState.LOGIN});*/}
+                        {/*         navigate('/account/login');*/}
+                        {/*     }}>Log In*/}
+                        {/*</div>*/}
+                        {/*<div className={`${classes.Button} ${classes.SignUp}`}*/}
+                        {/*     onClick={() => {*/}
+                        {/*         ctx.dispatch({type: pageState.SIGNUP});*/}
+                        {/*         navigate('/account/sign-up');*/}
+                        {/*     }}>Sign Up*/}
+                        {/*</div>*/}
+                        {
+                            ctx.isLogin ? <HeaderAccount/>: <HeaderLogin/>
+                        }
                     </div>
                 </div>
 
@@ -55,7 +60,7 @@ const Header = () => {
                     <NavLink
                         className={({isActive}) => isActive ?
                             `${classes.Active} ${classes.Link}` : classes.Link}
-                        to='/account/detail' end>
+                        to='/account' end>
                         Account
                     </NavLink>
                 </div>

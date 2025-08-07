@@ -2,18 +2,19 @@ import React from 'react';
 import {Outlet, Route, Routes} from "react-router-dom";
 import LoginPage from "./pages/LoginPage.jsx";
 import ErrorBoundary from "./utils/ErrorBoundary.jsx";
-import WelcomePage from "./pages/WelcomePage.jsx";
+import HomePage from "./pages/HomePage.jsx";
 import QuizPage from "./pages/QuizPage.jsx";
 import ResultPage from "./pages/ResultPage.jsx";
-import DetailPage from "./pages/DetailPage.jsx";
 import RankPage from "./pages/RankPage.jsx";
+import AccountPage from "./pages/AccountPage.jsx";
+import SignupPage from "./pages/SignupPage.jsx";
 
 const RoutesController = () => {
     return (
         <div>
             <ErrorBoundary>
                 <Routes>
-                    <Route path='/' element={<WelcomePage/>}></Route>
+                    <Route path='/' element={<HomePage/>}></Route>
                     <Route path='/rank' element={<RankPage/>}></Route>
                     <Route path='/quiz' element={<Outlet/>}>
                         <Route path='test' element={<QuizPage/>}></Route>
@@ -22,9 +23,9 @@ const RoutesController = () => {
                     <Route path='/account' element={
                             <Outlet/>
                     }>
-                        <Route path='detail' element={<DetailPage/>}></Route>
+                        <Route path='' element={<AccountPage/>}></Route>
                         <Route path='login' element={<LoginPage/>}></Route>
-                        <Route path='sign-up' element={<LoginPage/>}></Route>
+                        <Route path='sign-up' element={<SignupPage/>}></Route>
                     </Route>
                 </Routes>
             </ErrorBoundary>
