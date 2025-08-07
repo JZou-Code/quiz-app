@@ -1,11 +1,12 @@
 import React, {useContext, useState} from 'react';
-import classes from '../style/LoginForm.module.css'
+import classes from '../style/Forms.module.css'
 import Captcha from "./Captcha.jsx";
 import {requestSignUp} from "../api/signUp.js";
 import {isValidEmail, isValidPassword, isValidUsername} from "../utils/regex.js";
 import {pageState} from "../utils/pageState.js";
 import ValidationCode from "./ValidationCode.jsx";
 import PageStateContext from "../context/PageStateContext.jsx";
+import ErrorMsg from "./ErrorMsg.jsx";
 
 const SignUpForm = () => {
     // Input values, all string
@@ -141,9 +142,10 @@ const SignUpForm = () => {
                 >
                     Sign Up
                 </button>
-                <div className={classes.Message}>
-                    {errorMsg}
-                </div>
+                {/*<div className={classes.Message}>*/}
+                {/*    {errorMsg}*/}
+                {/*</div>*/}
+                <ErrorMsg errorMsg={errorMsg}/>
             </form>
 
             <div className={classes.Notification_Login}>

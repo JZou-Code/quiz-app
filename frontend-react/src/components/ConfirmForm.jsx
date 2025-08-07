@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react';
-import classes from "../style/LoginForm.module.css";
+import classes from "../style/Forms.module.css";
 import ValidationCode from "./ValidationCode.jsx";
 import {pageState} from "../utils/pageState.js";
 import PageStateContext from "../context/PageStateContext.jsx";

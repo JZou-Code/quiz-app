@@ -1,8 +1,6 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import classes from '../style/Reuslt.module.css'
-import Backdrop from "../UI/Backdrop/Backdrop.jsx";
 import {useNavigate} from "react-router-dom";
-import QuizContext from "../context/QuizContext.jsx";
 
 const Result = (props) => {
     const navigate = useNavigate();

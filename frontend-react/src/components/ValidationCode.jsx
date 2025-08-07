@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import classes from "../style/LoginForm.module.css";
+import classes from "../style/Forms.module.css";
 import {requestValidationCode} from "../api/signUp.js";
 
 const ValidationCode = (props) => {

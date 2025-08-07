@@ -1,16 +1,41 @@
 import React, {useContext, useState} from 'react';
-import classes from "../style/LoginForm.module.css";
+import classes from "../style/Forms.module.css";
 import {pageState} from "../utils/pageState.js";
 import PageStateContext from "../context/PageStateContext.jsx";
+import AccountContext from "../context/AccountContext.jsx";
+import {login} from "../api/login.js";
+import ErrorMsg from "./ErrorMsg.jsx";
+import {useNavigate} from "react-router-dom";
 
 const LoginForm = () => {
-    const [name, setName] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMsg, setErrorMsg] = useState('');
 
-    const ctx = useContext(PageStateContext);
+    const pageCtx = useContext(PageStateContext);
+    const accountCtx = useContext(AccountContext);
+
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
+        e.preventDefault();
+        login(username, password)
+            .then(result => {
+                const {data} = result;
 
+                console.log(data)
+                console.log(result)
+
+                if (data.code === '200') {
+                    accountCtx.setIsLogin(true);
+                    pageCtx.dispatch({type:pageState.NONE});
+                    navigate('/')
+                }else {
+                    setErrorMsg(data.message);
+                }
+            }).catch(e=>{
+                setErrorMsg('Internal server error, please try again later.');
+        })
     }
 
     return (
@@ -20,8 +45,8 @@ const LoginForm = () => {
                 <div className={classes.InputContainer}>
                     <input
                         className={classes.Input}
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
                         required
                         placeholder={'Username'}
                     />
@@ -36,10 +61,13 @@ const LoginForm = () => {
                         placeholder={'Password'}
                     />
                 </div>
-                <button className={classes.Button} type='sumbit'>Login</button>
+                <button className={classes.Button} type='submit'>Login</button>
             </form>
+
+            <ErrorMsg errorMsg={errorMsg}/>
+
             <div className={classes.Notification}>
-                <div className={classes.Forget} onClick={() => ctx.dispatch({type: pageState.FORGET})}>
+                <div className={classes.Forget} onClick={() => pageCtx.dispatch({type: pageState.FORGET})}>
                 <span className={classes.Link}>
                     Forgot password?
                 </span>
@@ -48,7 +76,7 @@ const LoginForm = () => {
                     <div>
                         Not registered yet?
                     </div>
-                    <div onClick={() => ctx.dispatch({type: pageState.SIGNUP})} className={classes.Link}>
+                    <div onClick={() => pageCtx.dispatch({type: pageState.SIGNUP})} className={classes.Link}>
                         &nbsp;Signup for an account
                     </div>
                 </div>
