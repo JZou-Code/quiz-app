@@ -1,18 +1,13 @@
 import React, {useContext} from 'react';
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import classes from '../style/Header.module.css'
-import Backdrop from "../UI/Backdrop/Backdrop.jsx";
-import TopCorner from "./TopCorner.jsx";
-import HeaderContext from "../context/HeaderContext.jsx";
 import {pageState} from "../utils/pageState.js";
+import PageStateContext from "../context/PageStateContext.jsx";
 
 
 const Header = () => {
-    const onClose = () => {
-        ctx.dispatch({type: pageState.NONE})
-    }
-
-    const ctx = useContext(HeaderContext);
+    const ctx = useContext(PageStateContext);
+    const navigate = useNavigate();
 
     return (
         <>
@@ -25,12 +20,14 @@ const Header = () => {
                     <div className={classes.LoginContainer}>
                         <div className={`${classes.Button} ${classes.Login}`}
                              onClick={() => {
-                                 ctx.dispatch({type: pageState.LOGIN})
+                                 ctx.dispatch({type: pageState.LOGIN});
+                                 navigate('/account/login');
                              }}>Log In
                         </div>
                         <div className={`${classes.Button} ${classes.SignUp}`}
                              onClick={() => {
-                                 ctx.dispatch({type: pageState.SIGNUP})
+                                 ctx.dispatch({type: pageState.SIGNUP});
+                                 navigate('/account/sign-up');
                              }}>Sign Up
                         </div>
                     </div>
@@ -58,20 +55,12 @@ const Header = () => {
                     <NavLink
                         className={({isActive}) => isActive ?
                             `${classes.Active} ${classes.Link}` : classes.Link}
-                        to='/account' end>
+                        to='/account/detail' end>
                         Account
                     </NavLink>
                 </div>
 
             </div>
-            {
-                ctx.state === pageState.NONE ?
-                    '' :
-                    <Backdrop>
-                        <TopCorner status={ctx.state} onClose={onClose}></TopCorner>
-                    </Backdrop>
-            }
-
         </>
     );
 };

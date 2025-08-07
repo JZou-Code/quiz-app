@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {requestCaptcha} from "../api/signUp.js";
 
-const CaptCha = (props) => {
+const Captcha = (props) => {
     const [captchaSrc, setCaptchaSrc] = useState('')
     const [captchaFail, setCaptchaFail] = useState(false)
     const [isCaptchaLoading, setIsCaptchaLoading] = useState(true)
@@ -13,7 +13,7 @@ const CaptCha = (props) => {
     const onCaptchaClick = () => {
         requestCaptcha()
             .then(result => {
-                props.setCaptchaId(result.data.data.captchId);
+                props.setCaptchaId(result.data.data.captchaId);
                 setCaptchaSrc('data:image/png;base64,' + result.data.data.image);
                 setIsCaptchaLoading(false);
             }).catch(e => {
@@ -45,4 +45,4 @@ const CaptCha = (props) => {
     );
 };
 
-export default CaptCha;
+export default Captcha;

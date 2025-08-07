@@ -2,13 +2,13 @@ import React, {useContext, useState} from 'react';
 import classes from "../style/LoginForm.module.css";
 import ValidationCode from "./ValidationCode.jsx";
 import {pageState} from "../utils/pageState.js";
-import HeaderContext from "../context/HeaderContext.jsx";
+import PageStateContext from "../context/PageStateContext.jsx";
 
 const ConfirmForm = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('')
 
-    const ctx = useContext(HeaderContext);
+    const ctx = useContext(PageStateContext);
 
     const handleSubmit = (e)=>{
         e.preventDefault();

@@ -2,9 +2,8 @@ import React, {useEffect, useRef, useState} from 'react';
 import SearchSidebar from '../components/SearchSidebar';
 import QuizCard from '../components/QuizCard';
 import classes from '../style/WelcomPage.module.css';
-import Header from "../components/Header.jsx";
 import {fetchQuizCards} from "../api/quizCards.js";
-import HeaderProvider from "../context/HeaderProvider.jsx";
+import Header from "../components/Header.jsx";
 
 const WelcomePage = () => {
     const [tags, setTags] = useState([]);
@@ -35,9 +34,7 @@ const WelcomePage = () => {
 
     return (
         <>
-            <HeaderProvider>
-                <Header/>
-            </HeaderProvider>
+            <Header/>
             <div className={classes.Container}>
                 {isLoading ?
                     <p>
@@ -54,7 +51,6 @@ const WelcomePage = () => {
                     <SearchSidebar onSearch={onSearch}/>
                 </div>
             </div>
-
         </>
     );
 };

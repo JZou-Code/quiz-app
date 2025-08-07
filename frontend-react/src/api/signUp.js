@@ -2,13 +2,13 @@ import axios from "axios";
 
 export const requestCaptcha = () => {
     return axios.get(
-        'api/captcha'
+        '/api/captcha'
     )
 }
 
 export const requestValidationCode = (email)=>{
     return axios.post(
-        'api/send-validation-code',
+        '/api/send-validation-code',
         {
             email
         }
@@ -16,8 +16,9 @@ export const requestValidationCode = (email)=>{
 }
 
 export const requestSignUp = (data)=>{
+    console.log(data.captchaId)
     return axios.post(
-        'api/user/register',
+        '/api/user/register',
         data
     )
 }

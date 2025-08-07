@@ -2,16 +2,16 @@ import React, {useContext, useState} from 'react';
 import classes from "../style/LoginForm.module.css";
 import {pageState} from "../utils/pageState.js";
 import ValidationCode from "./ValidationCode.jsx";
-import HeaderContext from "../context/HeaderContext.jsx";
+import PageStateContext from "../context/PageStateContext.jsx";
 
 const ForgetPwdForm = () => {
     const [email, setEmail] = useState('')
     const [validationCode, setValidationCode] = useState('')
 
-    const ctx = useContext(HeaderContext);
+    const ctx = useContext(PageStateContext);
 
     const handleSubmit = (e) => {
-
+        ctx.dispatch({type:pageState.CONFIRM})
     }
 
     return (

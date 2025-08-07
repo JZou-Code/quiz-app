@@ -1,13 +1,13 @@
 import React, {useContext, useState} from 'react';
 import classes from "../style/LoginForm.module.css";
 import {pageState} from "../utils/pageState.js";
-import HeaderContext from "../context/HeaderContext.jsx";
+import PageStateContext from "../context/PageStateContext.jsx";
 
 const LoginForm = () => {
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
 
-    const ctx = useContext(HeaderContext);
+    const ctx = useContext(PageStateContext);
 
     const handleSubmit = (e) => {
 

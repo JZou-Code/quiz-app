@@ -2,8 +2,7 @@ import React from 'react';
 import SetupAccount from "../components/SetupAccount.jsx";
 import Header from "../components/Header.jsx";
 
-const SignupPage = () => {
-
+const LoginPage = () => {
     return (
         <div>
             <Header/>
@@ -12,4 +11,4 @@ const SignupPage = () => {
     );
 };
 
-export default SignupPage;
+export default LoginPage;

@@ -5,12 +5,12 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faXmark} from "@fortawesome/free-solid-svg-icons";
 import SignUpForm from "./SignUpForm.jsx";
 import {pageState} from "../utils/pageState.js";
-import HeaderContext from "../context/HeaderContext.jsx";
 import ForgetPwdForm from "./ForgetPwdForm.jsx";
 import ConfirmForm from "./ConfirmForm.jsx";
+import PageStateContext from "../context/PageStateContext.jsx";
 
 const TopCorner = (props) => {
-    const ctx = useContext(HeaderContext);
+    const ctx = useContext(PageStateContext);
 
     return <div className={`${classes.Container} popup`}>
         <div onClick={props.onClose}>

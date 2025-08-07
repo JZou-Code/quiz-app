@@ -1,11 +1,11 @@
-import React, {useContext, useReducer, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import classes from '../style/LoginForm.module.css'
-import CaptCha from "./captCha.jsx";
-import {requestSignUp, requestValidationCode} from "../api/signUp.js";
+import Captcha from "./Captcha.jsx";
+import {requestSignUp} from "../api/signUp.js";
 import {isValidEmail, isValidPassword, isValidUsername} from "../utils/regex.js";
 import {pageState} from "../utils/pageState.js";
-import HeaderContext from "../context/HeaderContext.jsx";
 import ValidationCode from "./ValidationCode.jsx";
+import PageStateContext from "../context/PageStateContext.jsx";
 
 const SignUpForm = () => {
     // Input values, all string
@@ -19,7 +19,7 @@ const SignUpForm = () => {
 
     const [errorMsg, setErrorMsg] = useState('')
 
-    const ctx = useContext(HeaderContext);
+    const ctx = useContext(PageStateContext);
 
     const validationRules = [
         {
@@ -57,7 +57,13 @@ const SignUpForm = () => {
             validationCode,
             captcha
         }).then(result => {
-            console.log(result)
+            // console.log(result)
+            // const {data} = result;
+            // if(data.code === '200'){
+            //     ctx.dispatch(pageState.LOGIN)
+            // }else{
+            //     setErrorMsg(data.message);
+            // }
             ctx.dispatch(pageState.LOGIN)
         }).catch(e => {
             setErrorMsg(e.message)
@@ -118,14 +124,14 @@ const SignUpForm = () => {
                         className={classes.CaptchaInput}
                         type="text"
                         value={captcha}
-                        onChange={(e) => setCaptcha(e.target.value)}
+                        onChange={(e) => setCaptcha(e.target.value.toLowerCase())}
                         required
                         placeholder={'Captcha'}
                     />
                     <div
                         className={classes.CaptchaImg}
                     >
-                        <CaptCha setCaptchaId={setCaptchaId}/>
+                        <Captcha setCaptchaId={setCaptchaId}/>
                     </div>
                 </div>
                 <button

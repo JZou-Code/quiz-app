@@ -1,15 +1,13 @@
 import React from 'react';
-import SetupAccount from "../components/SetupAccount.jsx";
 import Header from "../components/Header.jsx";
 
-const SignupPage = () => {
-
+const DetailPage = () => {
     return (
         <div>
             <Header/>
-            <SetupAccount/>
+            DetailPage
         </div>
     );
 };
 
-export default SignupPage;
+export default DetailPage;
