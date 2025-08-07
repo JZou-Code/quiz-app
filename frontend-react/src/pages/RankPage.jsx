@@ -1,13 +1,13 @@
 import React from 'react';
 import Header from "../components/Header.jsx";
 
-const Rank = () => {
+const RankPage = () => {
     return (
         <div>
             <Header/>
-            Guidelines Page
+            Rank Page
         </div>
     );
 };
 
-export default Rank;
+export default RankPage;

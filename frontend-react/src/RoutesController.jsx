@@ -3,10 +3,10 @@ import {Outlet, Route, Routes} from "react-router-dom";
 import LoginPage from "./pages/LoginPage.jsx";
 import ErrorBoundary from "./utils/ErrorBoundary.jsx";
 import WelcomePage from "./pages/WelcomePage.jsx";
-import Rank from "./pages/Rank.jsx";
 import QuizPage from "./pages/QuizPage.jsx";
 import ResultPage from "./pages/ResultPage.jsx";
 import DetailPage from "./pages/DetailPage.jsx";
+import RankPage from "./pages/RankPage.jsx";
 
 const RoutesController = () => {
     return (
@@ -14,7 +14,7 @@ const RoutesController = () => {
             <ErrorBoundary>
                 <Routes>
                     <Route path='/' element={<WelcomePage/>}></Route>
-                    <Route path='/rank' element={<Rank/>}></Route>
+                    <Route path='/rank' element={<RankPage/>}></Route>
                     <Route path='/quiz' element={<Outlet/>}>
                         <Route path='test' element={<QuizPage/>}></Route>
                         <Route path='result' element={<ResultPage/>}></Route>
