@@ -2,20 +2,23 @@ import React, {useContext, useState} from 'react';
 import classes from "../style/Forms.module.css";
 import {pageState} from "../utils/pageState.js";
 import PageStateContext from "../context/PageStateContext.jsx";
-import AccountContext from "../context/AccountContext.jsx";
+import AuthContext from "../context/AuthContext.jsx";
 import {login} from "../api/login.js";
 import ErrorMsg from "./ErrorMsg.jsx";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 
-const LoginForm = () => {
+const LoginForm = ({}) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errorMsg, setErrorMsg] = useState('');
 
     const pageCtx = useContext(PageStateContext);
-    const accountCtx = useContext(AccountContext);
+    const accountCtx = useContext(AuthContext);
 
     const navigate = useNavigate();
+
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -27,7 +30,7 @@ const LoginForm = () => {
                     accountCtx.setIsLogin(true);
                     accountCtx.setUsername(username);
                     pageCtx.dispatch({type:pageState.NONE});
-                    navigate('/')
+                    navigate(from, { replace: true })
                 }else {
                     setErrorMsg(data.message);
                 }

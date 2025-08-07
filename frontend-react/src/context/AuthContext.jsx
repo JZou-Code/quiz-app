@@ -1,6 +1,6 @@
 import React from "react";
 
-const AccountContext = React.createContext({
+const AuthContext = React.createContext({
     isLogin: false,
     username: '',
     email: '',
@@ -9,4 +9,4 @@ const AccountContext = React.createContext({
     setEmail:()=>{}
 });
 
-export default AccountContext;
+export default AuthContext;

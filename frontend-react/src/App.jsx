@@ -1,23 +1,22 @@
 import React from "react";
 import classes from './style/App.module.css'
 import RoutesController from "./RoutesController.jsx";
-import Header from "./components/Header.jsx";
 import PageStateProvider from "./context/PageStateProvider.jsx";
 import QuizProvider from "./context/QuizProvider.jsx";
-import AccountProvider from "./context/AccountProvider.jsx";
+import AuthProvider from "./context/AuthProvider.jsx";
 
 
 function App() {
     return (
-        <AccountProvider>
+        <AuthProvider>
             <QuizProvider>
                 <PageStateProvider>
-                    <div className={classes.Container}>
+                    <div className={classes.Body}>
                         <RoutesController/>
                     </div>
                 </PageStateProvider>
             </QuizProvider>
-        </AccountProvider>
+        </AuthProvider>
     )
 }
 

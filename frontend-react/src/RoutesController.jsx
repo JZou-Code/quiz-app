@@ -8,6 +8,7 @@ import ResultPage from "./pages/ResultPage.jsx";
 import RankPage from "./pages/RankPage.jsx";
 import AccountPage from "./pages/AccountPage.jsx";
 import SignupPage from "./pages/SignupPage.jsx";
+import PrivateRoute from "./components/PrivateRoute.jsx";
 
 const RoutesController = () => {
     return (
@@ -16,14 +17,21 @@ const RoutesController = () => {
                 <Routes>
                     <Route path='/' element={<HomePage/>}></Route>
                     <Route path='/rank' element={<RankPage/>}></Route>
-                    <Route path='/quiz' element={<Outlet/>}>
-                        <Route path='test' element={<QuizPage/>}></Route>
-                        <Route path='result' element={<ResultPage/>}></Route>
+
+                    <Route element={<PrivateRoute/>}>
+                        <Route path='/quiz' element={<Outlet/>}>
+                            <Route path='test' element={<QuizPage/>}></Route>
+                            <Route path='result' element={<ResultPage/>}></Route>
+                        </Route>
                     </Route>
+
                     <Route path='/account' element={
-                            <Outlet/>
+                        <Outlet/>
                     }>
-                        <Route path='' element={<AccountPage/>}></Route>
+                        <Route element={<PrivateRoute/>}>
+                            <Route path='' element={<AccountPage/>}></Route>
+                        </Route>
+
                         <Route path='login' element={<LoginPage/>}></Route>
                         <Route path='sign-up' element={<SignupPage/>}></Route>
                     </Route>

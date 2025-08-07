@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
-import AccountContext from "./AccountContext.jsx";
+import AuthContext from "./AuthContext.jsx";
 
-export default function AccountProvider({children}) {
+export default function AuthProvider({children}) {
     const [isLogin, setIsLogin] = useState(false);
     const [username, setUsername] = useState('Kidd');
     const [email, setEmail] = useState('');
 
     return (
-        <AccountContext.Provider
+        <AuthContext.Provider
             value={{
                 isLogin,
                 username,
@@ -18,6 +18,6 @@ export default function AccountProvider({children}) {
             }}
         >
             {children}
-        </AccountContext.Provider>
+        </AuthContext.Provider>
     );
 }

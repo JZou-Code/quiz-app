@@ -14,7 +14,7 @@ const QuizPage = () => {
         if (!forceQuit) {
             return
         }
-        navigate('/');
+        navigate('/', {replace: true});
     }
 
     useEffect(() => {

@@ -4,12 +4,12 @@ import classes from '../style/Header.module.css'
 import {pageState} from "../utils/pageState.js";
 import PageStateContext from "../context/PageStateContext.jsx";
 import HeaderLogin from "./HeaderLogin.jsx";
-import AccountContext from "../context/AccountContext.jsx";
+import AuthContext from "../context/AuthContext.jsx";
 import HeaderAccount from "./HeaderAccount.jsx";
 
 
 const Header = () => {
-    const ctx = useContext(AccountContext);
+    const ctx = useContext(AuthContext);
 
     return (
         <>
