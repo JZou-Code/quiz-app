@@ -1,19 +1,15 @@
 .Container{
     width: 100%;
-    padding: 2rem 0;
-    height: 40rem;
-    border: 2px solid skyblue;
 }
 
 .Input{
     display: block;
-    width: 90%;
-    margin: 0 auto;
-    padding-left: 0.3rem;
-    height: 1.5rem;
-    font-size: 1rem;
-    border: 1px solid black;
-    border-radius: 0.5rem;
+    width: 100%;
+    padding-left: 1rem;
+    height: 2rem;
+    font-size: 0.8rem;
+    border: 1px solid lightgray;
+    border-radius: 0.3rem;
 }
 
 .Clear{

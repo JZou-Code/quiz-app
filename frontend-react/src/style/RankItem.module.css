@@ -1,0 +1,46 @@
+.Container{
+    border-bottom: 1px solid gray;
+    height: 3.5rem;
+    color: #787878;
+    display: flex;
+    align-items: center;
+}
+
+.Icon{
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+    border-radius: 50%;
+}
+
+.Rank1{
+    color: #fff;
+    background-color: #f9c858;
+}
+
+.Rank2{
+    color: #fff;
+    background-color: #cccccc;
+}
+
+.Rank3{
+    color: #fff;
+    background-color: #9b844f;
+}
+
+.Content{
+    display: flex;
+    flex: 1;
+    padding: 0 1rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Username{
+
+}
+
+.Score{
+
+}

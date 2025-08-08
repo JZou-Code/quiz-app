@@ -1,20 +1,11 @@
 import axios from "axios";
 
-export const validateEmail = (email,code) => {
+export const confirmPwd = (prevPwd, newPwd, confirm) => {
     return axios.post(
         '/api/user/login',
         {
-            email,
-            code,
-        }
-    )
-}
-
-export const confirmPwd = (password, confirm) => {
-    return axios.post(
-        '/api/user/login',
-        {
-            password,
+            prevPwd,
+            newPwd,
             confirm
         }
     )

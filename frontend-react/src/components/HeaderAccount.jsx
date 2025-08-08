@@ -13,10 +13,10 @@ const HeaderAccount = () => {
 
     return (
         <div className={classes.AccountContainer}>
-            <div className={classes.GreetingContainer}>
-                <div className={classes.Greeting}>Welcome,&nbsp;</div>
-                <div onClick={()=>{navigate('/account')}} className={classes.Account}>{ctx.username}</div>
-            </div>
+            {/*<div className={classes.GreetingContainer}>*/}
+            {/*    <div className={classes.Greeting}>Welcome,&nbsp;</div>*/}
+            {/*    <div onClick={()=>{navigate('/account')}} className={classes.Account}>{ctx.username}</div>*/}
+            {/*</div>*/}
             <div
                 onClick={onLogOut}
                 className={classes.Button}>
