@@ -1,9 +1,22 @@
-.Header{
+.Title{
     width: 100%;
-    height: 10rem;
-    background-color: skyblue;
-    font-size: 5rem;
+    height: 5rem;
+    line-height: 5rem;
+    font-size: 3rem;
     text-align: center;
+    border-bottom: 1px solid #787878;
+}
+
+.TitleContainer{
+
+}
+
+.TitleLogo{
+    color: #0065c2;
+}
+
+.TitleChunk{
+
 }
 
 .ScoreContainer{
@@ -16,9 +29,23 @@
     border-radius: 2rem;
 }
 
-.Container{
+.QuizContainer{
     width: 100%;
-    padding: 0 10%;
+    padding: 1rem 20rem;
+}
+
+.TimerContainer{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.Timer{
+    padding: 0.6rem 1rem;
+    border: 1px solid #b4b4b4;
+    color: #787878;
+    border-radius: 0.5rem;
 }
 
 .ButtonContainer{
@@ -34,14 +61,14 @@
     padding: 0.5rem 1rem;
     text-align: center;
     border-radius: 2rem;
-    border: 2px solid skyblue;
+    background-color: #0064c0;
+    color: #ffffff;
 }
 
 .ButtonContainer button:hover{
     cursor: pointer;
-    color: white;
-    background-color: skyblue;
-    box-shadow: 0 0 5px 2px gray;
+    background-color: rgba(37, 20, 154, 0.8);
+    box-shadow: 0 0 5px 2px lightgray;
 }
 
 .ButtonContainer button:active{

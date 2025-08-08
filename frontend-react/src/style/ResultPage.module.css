@@ -1,24 +1,57 @@
-.Header{
-    width: 100%;
-    height: 10rem;
-    background-color: skyblue;
-    font-size: 5rem;
-    text-align: center;
+/*.Header{*/
+/*    width: 100%;*/
+/*    height: 10rem;*/
+/*    background-color: skyblue;*/
+/*    font-size: 5rem;*/
+/*    text-align: center;*/
+/*}*/
+
+.Container{
+    padding: 0 20%;
 }
 
 .ScoreContainer{
-    width: 80%;
+    font-size: 1.2rem;
     margin: 1rem auto;
     text-align: center;
-    font-size: 2rem;
-    padding: 2rem;
-    border: 2px solid skyblue;
+    padding: 2rem 30%;
+    /*border: 2px solid skyblue;*/
     border-radius: 2rem;
 }
 
-.Container{
+.ScoreText{
+    text-align: center;
+}
+
+.Score{
+    text-align: center;
+    font-size: 4rem;
+    height: 10rem;
+    line-height: 10rem;
+}
+
+.Answer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.Content{
+
+}
+
+.Middle{
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 1rem;
+    border-bottom: 2px solid #ccc;
+}
+
+.QuizContainer{
+    margin-top: 3rem;
     width: 100%;
-    padding: 0 10%;
 }
 
 .ButtonContainer{
@@ -35,14 +68,14 @@
     padding: 0.5rem 1rem;
     text-align: center;
     border-radius: 2rem;
-    border: 2px solid skyblue;
+    background-color: #0064c0;
+    color: #ffffff;
 }
 
 .ButtonContainer button:hover{
     cursor: pointer;
-    color: white;
-    background-color: skyblue;
-    box-shadow: 0 0 5px 2px gray;
+    background-color: rgba(37, 20, 154, 0.8);
+    box-shadow: 0 0 5px 2px lightgray;
 }
 
 .ButtonContainer button:active{

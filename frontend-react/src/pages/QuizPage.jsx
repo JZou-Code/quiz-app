@@ -30,11 +30,18 @@ const QuizPage = () => {
 
     return (
         <>
-            <div className={classes.Header}>
-                Logo
-                <Timer seconds={20 * 60} onTimeOver={ctx.submit}/>
+            <div className={classes.Title}>
+                <div className={classes.TitleContainer}>
+                    <span className={classes.TitleLogo}>SciQ</span>
+                    <span className={classes.TitleChunk}>Insight</span>
+                </div>
             </div>
-            <div className={classes.Container}>
+            <div className={classes.TimerContainer}>
+                <div className={classes.Timer}>
+                    <Timer seconds={20 * 60} onTimeOver={ctx.submit}/>
+                </div>
+            </div>
+            <div className={classes.QuizContainer}>
                 {ctx.quizArr.map((item, index) =>
                     <QuestionBlock
                         quizData={item}

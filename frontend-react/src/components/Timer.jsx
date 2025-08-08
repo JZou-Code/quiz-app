@@ -1,12 +1,15 @@
 import {useState, useEffect, useRef} from 'react'
-import QuizContext from "../context/QuizContext.jsx";
 
 function formatMMSS(ms) {
-    return new Date(ms + 999).toISOString().slice(14, 19)
+    const time = new Date(ms + 999).toISOString()
+    return [time.slice(14, 16),time.slice(17, 19)]
 }
 
 export default function Timer({seconds = 10, onTimeOver}) {
-    const [timeLeft, setTimeLeft] = useState(formatMMSS(seconds * 1000))
+    const time = formatMMSS(seconds * 1000)
+    const min = time[0]
+    const sec = time[1]
+    const [timeLeft, setTimeLeft] = useState(`${min} Minutes ${sec} Seconds left`)
     const callbackRef = useRef(onTimeOver);
 
     useEffect(() => {
@@ -19,11 +22,14 @@ export default function Timer({seconds = 10, onTimeOver}) {
         const id = setInterval(() => {
             const left = end - Date.now()
             if (left <= 0) {
-                setTimeLeft("00:00")
+                setTimeLeft('Time Out')
                 clearInterval(id)
                 callbackRef.current({isTimeOver: true});
             } else {
-                setTimeLeft(formatMMSS(left))
+                const time = formatMMSS(left)
+                const min = time[0]
+                const sec = time[1]
+                setTimeLeft(`${min} Minutes ${sec} Seconds left`)
             }
         }, 1000)
 
