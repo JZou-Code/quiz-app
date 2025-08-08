@@ -32,12 +32,12 @@ const Header = () => {
                         to='/' end>
                         Home
                     </NavLink>
-                    <NavLink
-                        className={({isActive}) => isActive ?
-                            `${classes.Active} ${classes.Link}` : classes.Link}
-                        to='/Rank' end>
-                        Rank
-                    </NavLink>
+                    {/*<NavLink*/}
+                    {/*    className={({isActive}) => isActive ?*/}
+                    {/*        `${classes.Active} ${classes.Link}` : classes.Link}*/}
+                    {/*    to='/Rank' end>*/}
+                    {/*    Rank*/}
+                    {/*</NavLink>*/}
                     <NavLink
                         className={({isActive}) => isActive ?
                             `${classes.Active} ${classes.Link}` : classes.Link}

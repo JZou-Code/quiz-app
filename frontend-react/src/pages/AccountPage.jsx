@@ -1,22 +1,25 @@
 import React from 'react';
 import Header from "../components/Header.jsx";
 import classes from '../style/AccountPage.module.css'
-import History from "../components/History.jsx";
+import {fakeHistory} from '../mock/fakeHistory.js'
+import {generateTime} from "../utils/generateTime.js";
+import HistoryBlock from "../components/HistoryBlock.jsx";
 
 const AccountPage = () => {
     return (
         <div>
             <Header/>
             <div className={classes.Container}>
-                <div className={`${classes.History} ${classes.Block}`}>
-                    <History/>
-                </div>
-                <div className={`${classes.Record} ${classes.Block}`}>
-                    Record Area
-                </div>
-                <div className={`${classes.Visualization} ${classes.Block}`}>
-                    Visualization Area
-                </div>
+                {
+                    fakeHistory
+                        .toSorted((a, b) => new Date(b.time) - new Date(a.time))
+                        .map((item) => (
+                            <HistoryBlock
+                                key={item.time}
+                                data={{ ...item, time: generateTime(item.time) }}
+                            />
+                        ))
+                }
             </div>
         </div>
     );

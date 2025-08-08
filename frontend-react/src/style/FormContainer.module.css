@@ -4,6 +4,6 @@
     height: 100%;
     border: 2px solid #86b9ea;
     border-radius: 2rem;
-    box-shadow: 5px 5px 10px 5px rgb(174, 214, 248);
+    /*box-shadow: 5px 5px 10px 5px rgb(174, 214, 248);*/
     position: relative;
 }

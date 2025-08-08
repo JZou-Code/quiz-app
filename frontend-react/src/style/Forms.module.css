@@ -63,18 +63,20 @@
     margin-top: 1rem;
 }
 
-.Button:hover{
+.Button:hover,
+.Send:hover{
     cursor: pointer;
     color: white;
     box-shadow: 0 0 2px 2px skyblue;
 }
 
-.Button:active{
+.Button:active,
+.Send:active{
     box-shadow: none;
 }
 
 .Send{
-    border: 1px solid gray;
+    /*border: 1px solid gray;*/
     padding: 0.3rem 1rem;
     border-radius: 0.5rem;
     height: 2rem;

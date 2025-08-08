@@ -12,7 +12,7 @@ const QuestionBlock = (props) => {
         <div className={classes.Container}>
             <div className={classes.Quiz}>
                 <div className={classes.QuizContent}>
-                    {quizData.quiz}
+                    {props.quizNum + 1 + '.' + quizData.quiz}
                 </div>
             </div>
             <div className={classes.OptionContainer}>
