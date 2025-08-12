@@ -4,7 +4,7 @@ import RoutesController from "./RoutesController.jsx";
 import PageStateProvider from "./context/PageStateProvider.jsx";
 import QuizProvider from "./context/QuizProvider.jsx";
 import AuthProvider from "./context/AuthProvider.jsx";
-
+import SharePage from "./pages/SharePage.jsx";
 
 function App() {
     return (
