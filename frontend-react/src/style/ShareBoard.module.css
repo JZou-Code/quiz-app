@@ -1,0 +1,81 @@
+.Container {
+    background-color: #fff;
+    width: 30rem;
+    height: 15rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 1.2rem;
+    box-shadow: 2px 2px 5px 2px gray;
+}
+
+.Title {
+    font-size: 1.8rem;
+    color: #404040;
+    padding: 2rem;
+    text-align: center;
+}
+
+.LinkContainer {
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.Link{
+    border: 1px solid #787878;
+    width: 90%;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    color: #787878;
+}
+
+.ButtonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.Button {
+    font-size: 1.2rem;
+    background-color: #0165c2;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    color: #ffffff;
+    margin: 0 1rem;
+}
+
+.Button:hover{
+    box-shadow: 0 0 5px #0165c2;
+}
+
+.Button:active{
+    box-shadow: none;
+}
+
+.Disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.Message{
+    width: 40%;
+    height: 40%;
+    border-radius: 1rem;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 2px 2px 5px 2px gray;
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

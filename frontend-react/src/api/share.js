@@ -1,7 +1,8 @@
 import axios from "axios";
 import mockShare from "../mock/fakeShare.js";
+import mockStoreShare from "../mock/fakeStoreShare.js";
 
-export const fetchShare = (username,password) => {
+export const fetchShare = (id) => {
     // return axios.post(
     //     '/api/user/login',
     //     {
@@ -11,4 +12,8 @@ export const fetchShare = (username,password) => {
     // )
 
     return mockShare();
+}
+
+export const fetchStoreShare = (data) => {
+    return mockStoreShare();
 }

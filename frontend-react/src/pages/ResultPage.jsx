@@ -1,11 +1,19 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import classes from '../style/ResultPage.module.css';
 import QuestionBlock from "../components/QuestionBlock.jsx";
-import {useNavigate} from 'react-router-dom'
+import {useLocation, useNavigate, useParams} from 'react-router-dom'
 import QuizContext from "../context/QuizContext.jsx";
 import Header from "../components/Header.jsx";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faShareNodes} from "@fortawesome/free-solid-svg-icons";
+import Backdrop from "../UI/Backdrop/Backdrop.jsx";
+import ShareBoard from "../components/ShareBoard.jsx";
+import {fetchStoreShare} from "../api/share.js";
 
 const QuizPage = () => {
+    const [isSharing, setIsSharing] = useState(false)
+    const [shareId, setShareId] = useState('')
+
     const ctx = useContext(QuizContext);
     const navigate = useNavigate();
 
@@ -28,32 +36,32 @@ const QuizPage = () => {
     }
 
     const onShare = async () => {
-      const sharedData = {
-        username: ctx.username,
-        score: ctx.score,
-        quizTag: ctx.quizArr,
-        time: new Date().toISOString()
-      }
-      
-      try{
-        const res = await fetch(`/api/share`,{
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify(sharedData),
-        });
-        const data = await res.json();
-        if(data.shareId){
-          navigate(`share/${data.shareId}`);
-        }
-      }catch(err){
-        console.error('share failed: ', err);
-      }
+        setIsSharing(true);
+        fetchStoreShare()
+            .then(res => {
+                if (res.data.code === '200') {
+                    setShareId(res.data.data.token);
+                } else {
+                    const error = new Error('Something went wrong');
+                    error.status = 500;
+                    throw error
+                }
+            }).catch(e => {
+
+        })
+    }
+
+    const handleCancelShare = () => {
+        setIsSharing(false)
     }
 
     return (
         <>
             <Header/>
             <div className={classes.Container}>
+                <div className={classes.Share} onClick={onShare}>
+                    <FontAwesomeIcon icon={faShareNodes}/>
+                </div>
                 <div className={classes.ScoreContainer}>
                     <div className={classes.ScoreText}>
                         Your Final Score is:
@@ -94,9 +102,15 @@ const QuizPage = () => {
                     <div className={classes.ButtonContainer}>
                         <button onClick={onRestart} className={classes.Restart}>Restart</button>
                         <button onClick={onCancel} className={classes.Cancel}>Cancel</button>
-                        <button onClick={onShare} className={classes.Share}>Share</button>
                     </div>
                 </div>
+                {
+                    isSharing ?
+                        <Backdrop>
+                            <ShareBoard url={`http://localhost:5173/share/${shareId}`} onCancel={handleCancelShare}/>
+                        </Backdrop>
+                        : ''
+                }
             </div>
         </>
     );
