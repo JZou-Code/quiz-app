@@ -2,35 +2,27 @@ import React, {useEffect, useState} from 'react';
 import classes from '../style/SharePage.module.css';
 import {useParams} from 'react-router-dom';
 import {fetchShare} from "../api/share.js";
+import Header from "../components/Header.jsx";
 
 
 const SharePage = () => {
     const [data, setData] = useState(null);
     const {shareId = 'test-id'} = useParams();
 
-    const resultLevel = {
-        EXPERT: 'Expert',
-        ADVANCED: 'Advanced',
-        PROFICIENT: 'Proficient',
-        DEVELOPING: 'Developing',
-        BEGINNER: 'Beginner',
-        WRONG: 'Something went wrong, please try again later',
-    }
+    const LEVELS = [
+        {min: 19, message: 'Expert'},
+        {min: 16, message: 'Advanced'},
+        {min: 11, message: 'Proficient'},
+        {min: 6, message: 'Developing'},
+        {min: 0, message: 'Beginner'},
+    ];
 
     const getLevel = (score) => {
-        if (score >= 19) {
-            return resultLevel.EXPERT
-        } else if (score >= 16) {
-            return resultLevel.ADVANCED
-        } else if (score >= 11) {
-            return resultLevel.PROFICIENT
-        } else if (score >= 6) {
-            return resultLevel.DEVELOPING
-        } else if (score >= 0) {
-            return resultLevel.EXPERT
-        } else {
-            return resultLevel.WRONG
+        if (typeof score !== 'number' || Number.isNaN(score) || score < 0) {
+            return 'Something went wrong, please try again later';
         }
+        const result = LEVELS.find(({min}) => score >= min);
+        return result ? result.message : 'Something went wrong, please try again later';
     }
 
     useEffect(() => {
@@ -63,58 +55,61 @@ const SharePage = () => {
 
 
     return (
-        <div className={classes.Container}>
-            <img src="/congrat.jpg" alt="congratulations"/>
-            <h2 className={classes.Title}>
-                Well done! {data.username}!
-            </h2>
-            <div className={classes.TextContainer}>
-                <div className={classes.Text}>Your Score Is</div>
-                <div className={classes.ScoreContainer}>
-                    <div className={`${classes.Score} popup`}>{data.score}</div>
-                </div>
-                <div className={classes.Line}>
-                    <div className={classes.Text}>
-                        Correct:
+        <>
+            <Header/>
+            <div className={classes.Container}>
+                <img src="/congrat.jpg" alt="congratulations"/>
+                <h2 className={classes.Title}>
+                    Well done! {data.username}!
+                </h2>
+                <div className={classes.TextContainer}>
+                    <div className={classes.Text}>Your Score Is</div>
+                    <div className={classes.ScoreContainer}>
+                        <div className={`${classes.Score} popup`}>{data.score}</div>
                     </div>
-                    <div className={classes.Text}>
-                        {data.score}
+                    <div className={classes.Line}>
+                        <div className={classes.Text}>
+                            Correct:
+                        </div>
+                        <div className={classes.Text}>
+                            {data.score}
+                        </div>
                     </div>
-                </div>
-                <div className={classes.Line}>
-                    <div className={classes.Text}>
-                        Incorrect:
+                    <div className={classes.Line}>
+                        <div className={classes.Text}>
+                            Incorrect:
+                        </div>
+                        <div className={classes.Text}>
+                            {data.total - data.score}
+                        </div>
                     </div>
-                    <div className={classes.Text}>
-                        {data.total - data.score}
+                    <div className={classes.Line}>
+                        <div className={classes.Text}>
+                            Accuracy:
+                        </div>
+                        <div className={classes.Text}>
+                            {data.rate}
+                        </div>
                     </div>
-                </div>
-                <div className={classes.Line}>
-                    <div className={classes.Text}>
-                        Accuracy:
+                    <div className={classes.Line}>
+                        <div className={classes.Text}>
+                            Date:
+                        </div>
+                        <div className={classes.Text}>
+                            {data.newTime}
+                        </div>
                     </div>
-                    <div className={classes.Text}>
-                        {data.rate}
-                    </div>
-                </div>
-                <div className={classes.Line}>
-                    <div className={classes.Text}>
-                        Date:
-                    </div>
-                    <div className={classes.Text}>
-                        {data.newTime}
-                    </div>
-                </div>
-                <div className={classes.Line}>
-                    <div className={classes.Text}>
-                        Level:
-                    </div>
-                    <div className={classes.Text}>
-                        {data.level}
+                    <div className={classes.Line}>
+                        <div className={classes.Text}>
+                            Level:
+                        </div>
+                        <div className={classes.Text}>
+                            {data.level}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 };
 
