@@ -9,6 +9,7 @@ import RankPage from "./pages/RankPage.jsx";
 import AccountPage from "./pages/AccountPage.jsx";
 import SignupPage from "./pages/SignupPage.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
+import SharePage from './pages/SharePage.jsx';
 
 const RoutesController = () => {
     return (
@@ -17,11 +18,12 @@ const RoutesController = () => {
                 <Routes>
                     <Route path='/' element={<HomePage/>}></Route>
                     <Route path='/rank' element={<RankPage/>}></Route>
+                    <Route path="/share/:shareId" element={<SharePage />} />
 
                     <Route element={<PrivateRoute/>}>
                         <Route path='/quiz' element={<Outlet/>}>
                             <Route path='test' element={<QuizPage/>}></Route>
-                            <Route path='result' element={<ResultPage/>}></Route>
+                            <Route path='result' element={<ResultPage/>}></Route>                           
                         </Route>
                     </Route>
 

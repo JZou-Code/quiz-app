@@ -27,6 +27,29 @@ const QuizPage = () => {
         navigate('/quiz/test', {replace: true})
     }
 
+    const onShare = async () => {
+      const sharedData = {
+        username: ctx.username,
+        score: ctx.score,
+        quizTag: ctx.quizArr,
+        time: new Date().toISOString()
+      }
+      
+      try{
+        const res = await fetch(`/api/share`,{
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(sharedData),
+        });
+        const data = await res.json();
+        if(data.shareId){
+          navigate(`share/${data.shareId}`);
+        }
+      }catch(err){
+        console.error('share failed: ', err);
+      }
+    }
+
     return (
         <>
             <Header/>
@@ -71,6 +94,7 @@ const QuizPage = () => {
                     <div className={classes.ButtonContainer}>
                         <button onClick={onRestart} className={classes.Restart}>Restart</button>
                         <button onClick={onCancel} className={classes.Cancel}>Cancel</button>
+                        <button onClick={onShare} className={classes.Share}>Share</button>
                     </div>
                 </div>
             </div>
