@@ -6,5 +6,5 @@ export const pageState = {
     PROCESSING: 3,
     FAIL: 4,
     FORGET: 5,
-    CONFIRM:6
+    CONFIRM: 6
 }
