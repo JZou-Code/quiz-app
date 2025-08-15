@@ -69,18 +69,18 @@ const SharePage = () => {
                     </div>
                     <div className={classes.Line}>
                         <div className={classes.Text}>
-                            Correct:
+                            Category:
                         </div>
                         <div className={classes.Text}>
-                            {data.score}
+                            {data.category}
                         </div>
                     </div>
                     <div className={classes.Line}>
                         <div className={classes.Text}>
-                            Incorrect:
+                            Correct:
                         </div>
                         <div className={classes.Text}>
-                            {data.total - data.score}
+                            {data.score + '/' + data.total}
                         </div>
                     </div>
                     <div className={classes.Line}>
