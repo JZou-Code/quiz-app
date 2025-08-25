@@ -7,13 +7,13 @@ import {login} from "../api/login.js";
 import ErrorMsg from "./ErrorMsg.jsx";
 import {useLocation, useNavigate} from "react-router-dom";
 
-const LoginForm = ({}) => {
+const LoginForm = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errorMsg, setErrorMsg] = useState('');
 
     const pageCtx = useContext(PageStateContext);
-    const accountCtx = useContext(AuthContext);
+    const authCtx = useContext(AuthContext);
 
     const navigate = useNavigate();
 
@@ -27,8 +27,8 @@ const LoginForm = ({}) => {
                 const {data} = result;
 
                 if (data.code === '200') {
-                    accountCtx.setIsLogin(true);
-                    accountCtx.setUsername(username);
+                    authCtx.setIsLogin(true);
+                    authCtx.setUsername(username);
                     pageCtx.dispatch({type:pageState.NONE});
                     navigate(from, { replace: true })
                 }else {

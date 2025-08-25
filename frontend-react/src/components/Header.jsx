@@ -32,12 +32,6 @@ const Header = () => {
                         to='/' end>
                         Home
                     </NavLink>
-                    {/*<NavLink*/}
-                    {/*    className={({isActive}) => isActive ?*/}
-                    {/*        `${classes.Active} ${classes.Link}` : classes.Link}*/}
-                    {/*    to='/Rank' end>*/}
-                    {/*    Rank*/}
-                    {/*</NavLink>*/}
                     <NavLink
                         className={({isActive}) => isActive ?
                             `${classes.Active} ${classes.Link}` : classes.Link}
@@ -47,8 +41,14 @@ const Header = () => {
                     <NavLink
                         className={({isActive}) => isActive ?
                             `${classes.Active} ${classes.Link}` : classes.Link}
-                        to='/account' end>
-                        Account
+                        to='/account/history' end>
+                        History
+                    </NavLink>
+                    <NavLink
+                        className={({isActive}) => isActive ?
+                            `${classes.Active} ${classes.Link}` : classes.Link}
+                        to='/account/profile' end>
+                        Profile
                     </NavLink>
                 </div>
 

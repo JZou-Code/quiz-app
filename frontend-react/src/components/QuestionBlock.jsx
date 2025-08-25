@@ -36,7 +36,6 @@ const QuestionBlock = (props) => {
                             }
                         }
 
-
                         return <label
                             className={`${classes.Option} ${extraClass}`}
                             key={index}

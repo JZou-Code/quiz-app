@@ -1,0 +1,51 @@
+.Container {
+    width: 100%;
+}
+
+.BodyContent {
+    width: 80%;
+    padding-top: 3rem;
+    margin: 0 auto;
+}
+
+.Title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+}
+
+.Item {
+    padding: 1rem 0;
+    border-bottom: 1px solid #bebebe;
+}
+
+.ItemTitle {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.ItemContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.Text {
+    color: #707070;
+}
+
+.Button {
+    padding: 0.5rem 0.8rem;
+    border-radius: 5px;
+    border: solid 1px #000;
+    cursor: pointer;
+}
+
+.Button:hover{
+    box-shadow: 0 0 3px 2px gray;
+}
+
+.Button:active{
+    box-shadow: none;
+}

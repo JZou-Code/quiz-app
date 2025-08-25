@@ -9,12 +9,15 @@ import {faShareNodes} from "@fortawesome/free-solid-svg-icons";
 import Backdrop from "../UI/Backdrop/Backdrop.jsx";
 import ShareBoard from "../components/ShareBoard.jsx";
 import {fetchStoreShare} from "../api/share.js";
+import {store} from "../mock/fakeShareData.js";
+import AuthContext from "../context/AuthContext.jsx";
 
 const QuizPage = () => {
     const [isSharing, setIsSharing] = useState(false)
     const [shareId, setShareId] = useState('')
 
     const ctx = useContext(QuizContext);
+    const authCtx = useState(AuthContext);
     const navigate = useNavigate();
 
     const onCancel = () => {
@@ -37,7 +40,13 @@ const QuizPage = () => {
 
     const onShare = async () => {
         setIsSharing(true);
-        fetchStoreShare()
+        store({
+            username: authCtx.username,
+            total: 20,
+            score: ctx.score,
+            time: new Date(),
+            category: 'Math'
+        })
             .then(res => {
                 if (res.data.code === '200') {
                     setShareId(res.data.data.token);
@@ -105,11 +114,10 @@ const QuizPage = () => {
                     </div>
                 </div>
                 {
-                    isSharing ?
+                    isSharing &&
                         <Backdrop>
                             <ShareBoard url={`http://localhost:5173/share/${shareId}`} onCancel={handleCancelShare}/>
                         </Backdrop>
-                        : ''
                 }
             </div>
         </>

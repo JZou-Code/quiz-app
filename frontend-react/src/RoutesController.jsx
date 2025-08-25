@@ -10,6 +10,7 @@ import AccountPage from "./pages/AccountPage.jsx";
 import SignupPage from "./pages/SignupPage.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
 import SharePage from './pages/SharePage.jsx';
+import ProfilePage from "./pages/ProfilePage.jsx";
 
 const RoutesController = () => {
     return (
@@ -23,15 +24,14 @@ const RoutesController = () => {
                     <Route element={<PrivateRoute/>}>
                         <Route path='/quiz' element={<Outlet/>}>
                             <Route path='test' element={<QuizPage/>}></Route>
-                            <Route path='result' element={<ResultPage/>}></Route>                           
+                            <Route path='result' element={<ResultPage/>}></Route>
                         </Route>
                     </Route>
 
-                    <Route path='/account' element={
-                        <Outlet/>
-                    }>
+                    <Route path='/account' element={<Outlet/>}>
                         <Route element={<PrivateRoute/>}>
-                            <Route path='' element={<AccountPage/>}></Route>
+                            <Route path='history' element={<AccountPage/>}></Route>
+                            <Route path='profile' element={<ProfilePage/>}></Route>
                         </Route>
 
                         <Route path='login' element={<LoginPage/>}></Route>
