@@ -46,7 +46,6 @@
     height: 2rem;
     width: 80%;
     border: 1px solid #d8d8d8;
-    padding-left: 0.3rem;
     padding-left: 1rem;
 }
 
@@ -95,6 +94,11 @@
 .disabled{
     background-color: lightgray;
     color: white;
+}
+
+.disabled:hover{
+    box-shadow: none;
+    cursor: default;
 }
 
 .Notification{
