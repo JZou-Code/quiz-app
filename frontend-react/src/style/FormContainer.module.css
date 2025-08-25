@@ -2,8 +2,6 @@
     padding-top: 3rem;
     width: 100%;
     height: 100%;
-    border: 2px solid #86b9ea;
-    border-radius: 2rem;
-    /*box-shadow: 5px 5px 10px 5px rgb(174, 214, 248);*/
     position: relative;
+    border: 1px solid rgba(0, 101, 194, 0.5);
 }

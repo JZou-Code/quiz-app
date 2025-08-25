@@ -142,22 +142,9 @@ const SignUpForm = () => {
                 >
                     Sign Up
                 </button>
-                {/*<div className={classes.Message}>*/}
-                {/*    {errorMsg}*/}
-                {/*</div>*/}
                 <ErrorMsg errorMsg={errorMsg}/>
             </form>
 
-            <div className={classes.Notification_Login}>
-                <div className={classes.LinkContainer}>
-                    <div>
-                        Already have an account?
-                    </div>
-                    <div onClick={() => ctx.dispatch({type: pageState.LOGIN})} className={classes.Link}>
-                        &nbsp;Login
-                    </div>
-                </div>
-            </div>
         </>
     );
 };

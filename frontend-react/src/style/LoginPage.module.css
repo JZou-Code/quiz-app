@@ -1,16 +1,21 @@
+/*.Outer{*/
+/*    background-color: #e4f2ff;*/
+/*    height: 100vw;*/
+/*}*/
+
 .Container{
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    margin-top: 10rem;
+    padding-top: 10rem;
 }
 
 .AnimContainer{
-    width: 22.25rem;
+    width: 25.5rem;
     height: 31.5rem;
 }
 
 .FormContainer{
-    width: 20rem;
+    width: 25.5rem;
     height: 31.5rem;
 }

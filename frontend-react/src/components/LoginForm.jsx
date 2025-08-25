@@ -42,8 +42,8 @@ const LoginForm = () => {
     return (
         <>
             <form className={classes.FormContainer} onSubmit={handleSubmit} style={{marginTop: '1.5rem'}}>
-                <div className={classes.Title}>User Login</div>
-                <div className={classes.InputContainer}>
+                <div className={classes.Title}>Login</div>
+                <div style={{marginTop:'3rem'}} className={classes.InputContainer}>
                     <input
                         className={classes.Input}
                         value={username}
@@ -64,24 +64,14 @@ const LoginForm = () => {
                 </div>
                 <button className={classes.Button} type='submit'>Login</button>
             </form>
-
-            <ErrorMsg errorMsg={errorMsg}/>
-
             <div className={classes.Notification}>
                 <div className={classes.Forget} onClick={() => pageCtx.dispatch({type: pageState.FORGET})}>
                 <span className={classes.Link}>
                     Forgot password?
                 </span>
                 </div>
-                <div className={classes.LinkContainer}>
-                    <div>
-                        Not registered yet?
-                    </div>
-                    <div onClick={() => pageCtx.dispatch({type: pageState.SIGNUP})} className={classes.Link}>
-                        &nbsp;Signup for an account
-                    </div>
-                </div>
             </div>
+            <ErrorMsg errorMsg={errorMsg}/>
         </>
     );
 };
