@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import classes from '../style/Forms.module.css'
 import Captcha from "./Captcha.jsx";
 import {requestSignUp} from "../api/signUp.js";
@@ -7,6 +7,7 @@ import {pageState} from "../utils/pageState.js";
 import ValidationCode from "./ValidationCode.jsx";
 import PageStateContext from "../context/PageStateContext.jsx";
 import ErrorMsg from "./ErrorMsg.jsx";
+import {useNavigate} from "react-router-dom";
 
 const SignUpForm = () => {
     // Input values, all string

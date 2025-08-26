@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import classes from "../style/Forms.module.css";
 import {pageState} from "../utils/pageState.js";
 import PageStateContext from "../context/PageStateContext.jsx";
@@ -38,6 +38,10 @@ const LoginForm = () => {
                 setErrorMsg('Internal server error, please try again later.');
         })
     }
+
+    useEffect(() => {
+        pageCtx.dispatch({type: pageState.LOGIN})
+    },[]);
 
     return (
         <>
