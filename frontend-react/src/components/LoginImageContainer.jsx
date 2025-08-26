@@ -24,8 +24,6 @@ const LoginImageContainer = () => {
         ctx.state === pageState.SIGNUP ? setPageContent(contents[0]) : setPageContent(contents[1]);
     }, [ctx.state]);
 
-    console.log(pageContent)
-
     return (
         <div className={classes.Container}>
             <div className={classes.ImageBox}>

@@ -32,7 +32,7 @@ const LoginForm = () => {
                     pageCtx.dispatch({type:pageState.NONE});
                     navigate(from, { replace: true })
                 }else {
-                    setErrorMsg(data.message);
+                    setErrorMsg('Invalid account or password, please try again later.');
                 }
             }).catch(e=>{
                 setErrorMsg('Internal server error, please try again later.');

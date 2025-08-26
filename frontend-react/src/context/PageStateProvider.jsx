@@ -20,8 +20,6 @@ export default function PageStateProvider({children}) {
                     return pageState.FAIL;
                 case pageState.FORGET:
                     return pageState.FORGET;
-                case pageState.CONFIRM:
-                    return pageState.CONFIRM;
                 default:
                     return prevState
             }

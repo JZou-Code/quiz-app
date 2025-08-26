@@ -8,6 +8,14 @@ const SetupAccount = () => {
     return (
         <div className={classes.Outer}>
             <div className={classes.Container}>
+                <div className={classes.Logo}>
+                    <span className={classes.LogoLeft}>
+                        SciQ
+                    </span>
+                    <span className={classes.LogoRight}>
+                        &nbsp;Insight
+                    </span>
+                </div>
                 <div className={classes.FormContainer}>
                     <FormContainer/>
                 </div>

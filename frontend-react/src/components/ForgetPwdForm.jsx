@@ -15,14 +15,14 @@ const ForgetPwdForm = () => {
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
-        navigate('/');
-        ctx.dispatch({type:pageState.NONE})
+        ctx.dispatch({type:pageState.LOGIN})
+        navigate('/account/login');
     }
 
     return (
         <>
             <form className={classes.FormContainer} onSubmit={handleSubmit} style={{marginTop: '1.5rem'}}>
-                <div className={classes.Title}>Forget Password</div>
+                <div className={classes.Title}>Reset Password</div>
                 <div className={classes.InputContainer}>
                     <input
                         className={classes.Input}
@@ -56,13 +56,6 @@ const ForgetPwdForm = () => {
                 </div>
                 <button className={classes.Button} type='sumbit'>Submit</button>
             </form>
-            {/*<div className={classes.Notification}>*/}
-            {/*    <div className={classes.LinkContainer}>*/}
-            {/*        <div onClick={() => ctx.dispatch({type: pageState.LOGIN})} className={classes.Link}>*/}
-            {/*            LOG IN*/}
-            {/*        </div>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
         </>
     );
 };

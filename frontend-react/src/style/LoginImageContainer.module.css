@@ -35,7 +35,6 @@
     border-radius: 2rem;
     max-width: 65%;
     padding: 0.5rem 1rem;
-    cursor: pointer;
     margin: 0 auto;
 }
 
@@ -49,4 +48,5 @@
 
 .Link{
     font-weight: bold;
+    cursor: pointer;
 }
