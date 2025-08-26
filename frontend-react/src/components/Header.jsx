@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import classes from '../style/Header.module.css'
 import HeaderLogin from "./HeaderLogin.jsx";
 import AuthContext from "../context/AuthContext.jsx";
@@ -8,13 +8,16 @@ import HeaderAccount from "./HeaderAccount.jsx";
 
 const Header = () => {
     const ctx = useContext(AuthContext);
+    const navigate = useNavigate();
 
     return (
         <>
             <div className={classes.Container}>
                 <div className={classes.TitleArea}>
 
-                    <div className={classes.TitleContainer}>
+                    <div
+                        onClick={()=>{navigate('/')}}
+                        className={classes.TitleContainer}>
                         <span className={classes.TitleLogo}>SciQ</span>
                         <span className={classes.TitleChunk}>Insight</span>
                     </div>

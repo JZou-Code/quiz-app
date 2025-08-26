@@ -39,10 +39,6 @@ const LoginForm = () => {
         })
     }
 
-    useEffect(() => {
-        pageCtx.dispatch({type: pageState.LOGIN})
-    },[]);
-
     return (
         <>
             <form className={classes.FormContainer} onSubmit={handleSubmit} style={{marginTop: '1.5rem'}}>
