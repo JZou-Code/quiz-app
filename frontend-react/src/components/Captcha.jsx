@@ -14,8 +14,8 @@ const Captcha = (props) => {
         requestCaptcha()
             .then(result => {
                 console.log(result)
-                props.setCaptchaId(result.data.data['captcha_id']);
-                setCaptchaSrc(result.data.data.image);
+                props.setCaptchaId(result.data.data.CaptchaId);
+                setCaptchaSrc(result.data.data.Image);
                 setIsCaptchaLoading(false);
             }).catch(e => {
                 setIsCaptchaLoading(false);

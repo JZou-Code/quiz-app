@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import classes from '../style/Forms.module.css'
 import Captcha from "./Captcha.jsx";
 import {requestSignUp} from "../api/signUp.js";

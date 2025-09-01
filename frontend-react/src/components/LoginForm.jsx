@@ -26,16 +26,19 @@ const LoginForm = () => {
             .then(result => {
                 const {data} = result;
 
-                if (data.code === '200') {
+                if (data.code === 200) {
                     authCtx.setIsLogin(true);
                     authCtx.setUsername(username);
-                    pageCtx.dispatch({type:pageState.NONE});
-                    navigate(from, { replace: true })
-                }else {
-                    setErrorMsg('Invalid account or password, please try again later.');
+                    pageCtx.dispatch({type: pageState.NONE});
+
+                    localStorage.setItem('access_token', data.data.AccessToken);
+
+                    navigate(from, {replace: true})
+                } else {
+                    setErrorMsg('Invalid account or password, please try again.');
                 }
-            }).catch(e=>{
-                setErrorMsg('Internal server error, please try again later.');
+            }).catch(e => {
+            setErrorMsg('Internal server error, please try again.');
         })
     }
 
@@ -43,7 +46,7 @@ const LoginForm = () => {
         <>
             <form className={classes.FormContainer} onSubmit={handleSubmit} style={{marginTop: '1.5rem'}}>
                 <div className={classes.Title}>Login</div>
-                <div style={{marginTop:'3rem'}} className={classes.InputContainer}>
+                <div style={{marginTop: '3rem'}} className={classes.InputContainer}>
                     <input
                         className={classes.Input}
                         value={username}
