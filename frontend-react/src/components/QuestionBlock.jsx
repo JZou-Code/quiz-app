@@ -39,7 +39,7 @@ const QuestionBlock = (props) => {
                         let incorrectOpt = -1;
                         let extraClass = '';
 
-                        if (LETTERS[index] === selectedOpt) {
+                        if (item.label === selectedOpt) {
                             extraClass += classes.Selected
                         }
 
@@ -47,9 +47,9 @@ const QuestionBlock = (props) => {
                             if (quizData.answerKey !== selectedOpt) {
                                 incorrectOpt = selectedOpt;
                             }
-                            if (LETTERS[index] === incorrectOpt) {
+                            if (item.label === incorrectOpt) {
                                 extraClass += ` ${classes.Incorrect}`;
-                            } else if (LETTERS[index] === correctOpt) {
+                            } else if (item.label === correctOpt) {
                                 extraClass += ` ${classes.Correct}`;
                             }
                         }

@@ -63,9 +63,10 @@ export default function QuizProvider({children}) {
                     quizId: quizArr[i]?.id
                 })
             }
+
             const res = await submitResults({
                 answers,
-                correctNumber: score
+                correctNumber: count
             })
 
             if (res.data.code === 401 || res.data.code === '401') {
