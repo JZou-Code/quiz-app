@@ -33,7 +33,7 @@ export default function AuthProvider({children}) {
         localStorage.removeItem('username');
         setIsLogin(false);
         setUsername('');
-        window.location.assign('/login');
+        window.location.assign('/account/login');
     }, []);
 
     const didMount = useRef(false);
