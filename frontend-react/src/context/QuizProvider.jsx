@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import QuizContext from './QuizContext';
-import {fetchQuizzes} from '../api/quizzes.js';
+import {fetchQuizzes, submitResults} from '../api/quizzes.js';
 import {useNavigate} from "react-router-dom";
 
 export default function QuizProvider({children}) {
@@ -29,7 +29,7 @@ export default function QuizProvider({children}) {
             .finally(() => setLoading(false));
     }
 
-    const submit = (options) => {
+    const submit = async (options) => {
         const tempAnswer = userAnswers.find(e => e === 'X');
         if (!options.isTimeOver && tempAnswer) {
             const forceSubmit = confirm("You haven't finished yet. Are you sure you wanna submit now?")
@@ -49,8 +49,23 @@ export default function QuizProvider({children}) {
         setScore(count);
         setIsResult(true);
 
-        navigate('/quiz/result', {replace: true})
-        window.scroll(0, 0)
+        try {
+            const answers = [];
+            for (let i = 0; i < quizArr.length; i++) {
+                answers.push({
+                    answer: userAnswers[i],
+                    quizId: quizArr[i]?.id
+                })
+            }
+            const result = await submitResults({
+                answers,
+                correctNumber: score
+            })
+            navigate('/quiz/result', {replace: true})
+            window.scroll(0, 0)
+        }catch(e){
+            return false
+        }
     };
 
     const reset = () => {
@@ -59,7 +74,6 @@ export default function QuizProvider({children}) {
         setIsResult(false);
 
         setLoading(true);
-        setNewQuiz();
         window.scroll(0, 0)
     };
 

@@ -6,3 +6,11 @@ export const fetchQuizzes = () => {
         url:'quiz/list'
     })
 }
+
+export const submitResults = (results) => {
+    return api({
+        method: 'POST',
+        url:'quiz/submit',
+        data: results
+    })
+}
