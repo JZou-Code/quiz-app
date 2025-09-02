@@ -21,7 +21,10 @@ export default function QuizProvider({children}) {
                     const items = res?.data?.data?.items;
                     setQuizArr(items);
                     setUserAnswers(new Array(items.length).fill('X'));
-                } else {
+                } else if(res.data.code === 401 || res.data.code === '401'){
+                    localStorage.setItem('access_token', null);
+                    navigate('/account/login')
+                }else {
                     throw new Error(res.data.message)
                 }
             })
@@ -57,10 +60,16 @@ export default function QuizProvider({children}) {
                     quizId: quizArr[i]?.id
                 })
             }
-            const result = await submitResults({
+            const res = await submitResults({
                 answers,
                 correctNumber: score
             })
+
+            if(res.data.code === 401 || res.data.code === '401'){
+                localStorage.setItem('access_token', null);
+                navigate('/account/login')
+            }
+
             navigate('/quiz/result', {replace: true})
             window.scroll(0, 0)
         }catch(e){
