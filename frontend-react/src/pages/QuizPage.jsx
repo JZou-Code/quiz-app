@@ -46,7 +46,7 @@ const QuizPage = () => {
                     <QuestionBlock
                         quizData={item}
                         quizNum={index}
-                        key={index}
+                        key={item.id}
                         selected={ctx.userAnswers[index]}
                         onAnswer={ans => {
                             const copy = [...ctx.userAnswers];

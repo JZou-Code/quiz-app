@@ -1,14 +1,13 @@
 import React, {useContext, useEffect, useState} from 'react';
 import classes from '../style/ResultPage.module.css';
 import QuestionBlock from "../components/QuestionBlock.jsx";
-import {useLocation, useNavigate, useParams} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import QuizContext from "../context/QuizContext.jsx";
 import Header from "../components/Header.jsx";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faShareNodes} from "@fortawesome/free-solid-svg-icons";
 import Backdrop from "../UI/Backdrop/Backdrop.jsx";
 import ShareBoard from "../components/ShareBoard.jsx";
-import {fetchStoreShare} from "../api/share.js";
 import {store} from "../mock/fakeShareData.js";
 import AuthContext from "../context/AuthContext.jsx";
 
@@ -104,7 +103,7 @@ const QuizPage = () => {
                     {ctx.quizArr.map((item, index) =>
                         <QuestionBlock
                             quizNum={index}
-                            key={index}
+                            key={item.id}
                         />
                     )}
 

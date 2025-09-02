@@ -9,8 +9,6 @@ export default function PrivateRoute() {
     const {dispatch} = useContext(PageStateContext)
     const location = useLocation();
 
-    console.log(location)
-
     useEffect(() => {
         if (!isLogin) {
             dispatch({type: pageState.LOGIN});

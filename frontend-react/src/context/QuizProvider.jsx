@@ -13,26 +13,24 @@ export default function QuizProvider({children}) {
 
     const navigate = useNavigate();
 
-    const setNewQuiz = () => {
+    const setNewQuiz = async () => {
         fetchQuizzes()
-            .then(data => {
-                if (data.code === '200') {
-                    setQuizArr(data.quizArr);
-                    setUserAnswers(new Array(data.quizArr.length).fill(-1));
+            .then(res => {
+                console.log(res)
+                if (res.data.code === 200) {
+                    const items = res?.data?.data?.items;
+                    setQuizArr(items);
+                    setUserAnswers(new Array(items.length).fill('X'));
                 } else {
-                    throw new Error(data.message)
+                    throw new Error(res.data.message)
                 }
             })
             .catch(err => setError(err.message))
             .finally(() => setLoading(false));
     }
 
-    useEffect(() => {
-        setNewQuiz();
-    }, []);
-
     const submit = (options) => {
-        const tempAnswer = userAnswers.find(e => e === -1);
+        const tempAnswer = userAnswers.find(e => e === 'X');
         if (!options.isTimeOver && tempAnswer) {
             const forceSubmit = confirm("You haven't finished yet. Are you sure you wanna submit now?")
             if (!forceSubmit) {
@@ -40,8 +38,9 @@ export default function QuizProvider({children}) {
             }
         }
 
+
         const count = quizArr.reduce((sum, q, i) => {
-            return sum + (userAnswers[i] === q.answer ? 1 : 0);
+            return sum + (userAnswers[i] === q.answerKey ? 1 : 0);
         }, 0);
 
         console.log(quizArr);
@@ -53,6 +52,7 @@ export default function QuizProvider({children}) {
         navigate('/quiz/result', {replace: true})
         window.scroll(0, 0)
     };
+
     const reset = () => {
         setUserAnswers(new Array(quizArr.length).fill(-1));
         setScore(0);
@@ -60,7 +60,7 @@ export default function QuizProvider({children}) {
 
         setLoading(true);
         setNewQuiz();
-        window.scroll(0,0)
+        window.scroll(0, 0)
     };
 
     return (

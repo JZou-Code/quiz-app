@@ -1,37 +1,55 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import classes from '../style/QuestionBlock.module.css'
 import QuizContext from "../context/QuizContext.jsx";
 
 const QuestionBlock = (props) => {
 
     const ctx = useContext(QuizContext);
-    const quizData = ctx.quizArr[props.quizNum]
-    const selectedOpt = ctx.userAnswers[props.quizNum]
+    const quizData = ctx.quizArr[props.quizNum];
+    const choices = [];
+    const selectedOpt = ctx.userAnswers[props.quizNum];
+
+    for (let i = 0; i < quizData?.choices?.label?.length; i++) {
+        const choiceObj = {
+            label: quizData?.choices.label[i],
+            text: quizData?.choices.text[i],
+        }
+        choices.push(choiceObj);
+    }
+
+    const LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+    // console.log(quizData)
+
+    if (!quizData) {
+        console.log('hello world')
+        return null;
+    }
 
     return (
         <div className={classes.Container}>
             <div className={classes.Quiz}>
                 <div className={classes.QuizContent}>
-                    {props.quizNum + 1 + '.' + quizData.quiz}
+                    {props.quizNum + 1 + '.' + quizData.question}
                 </div>
             </div>
             <div className={classes.OptionContainer}>
-                {quizData.options.map((item, index) => {
-                        const correctOpt = quizData.answer;
+                {choices.map((item, index) => {
+                        const correctOpt = quizData.answerKey;
                         let incorrectOpt = -1;
                         let extraClass = '';
 
-                        if (index === selectedOpt) {
+                        if (LETTERS[index] === selectedOpt) {
                             extraClass += classes.Selected
                         }
 
                         if (ctx.isResult) {
-                            if (quizData.answer !== selectedOpt) {
+                            if (quizData.answerKey !== selectedOpt) {
                                 incorrectOpt = selectedOpt;
                             }
-                            if (index === incorrectOpt) {
+                            if (LETTERS[index] === incorrectOpt) {
                                 extraClass += ` ${classes.Incorrect}`;
-                            } else if (index === correctOpt) {
+                            } else if (LETTERS[index] === correctOpt) {
                                 extraClass += ` ${classes.Correct}`;
                             }
                         }
@@ -46,10 +64,10 @@ const QuestionBlock = (props) => {
                                 id={props.quizNum + '' + index}
                                 value={index}
                                 checked={selectedOpt === index}
-                                onChange={() => props.onAnswer(index)}
+                                onChange={() => props.onAnswer(item.label)}
                                 disabled={ctx.isResult}
                             />
-                            <span>{String.fromCharCode(65 + index) + '. ' + item}</span>
+                            <span>{item.label+'. '+item.text}</span>
                         </label>
                     }
                 )}
