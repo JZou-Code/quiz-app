@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import QuizContext from './QuizContext';
 import {fetchQuizzes, submitResults} from '../api/quizzes.js';
 import {useNavigate} from "react-router-dom";
@@ -21,14 +21,17 @@ export default function QuizProvider({children}) {
                     const items = res?.data?.data?.items;
                     setQuizArr(items);
                     setUserAnswers(new Array(items.length).fill('X'));
-                } else if(res.data.code === 401 || res.data.code === '401'){
+                } else if (res.data.code === 401 || res.data.code === '401') {
                     localStorage.setItem('access_token', null);
                     navigate('/account/login')
-                }else {
+                } else {
                     throw new Error(res.data.message)
                 }
             })
-            .catch(err => setError(err.message))
+            .catch(err => {
+                console.log(err)
+                setError(err.message)
+            })
             .finally(() => setLoading(false));
     }
 
@@ -65,15 +68,15 @@ export default function QuizProvider({children}) {
                 correctNumber: score
             })
 
-            if(res.data.code === 401 || res.data.code === '401'){
+            if (res.data.code === 401 || res.data.code === '401') {
                 localStorage.setItem('access_token', null);
                 navigate('/account/login')
             }
 
             navigate('/quiz/result', {replace: true})
             window.scroll(0, 0)
-        }catch(e){
-            return false
+        } catch (e) {
+            console.log(e)
         }
     };
 

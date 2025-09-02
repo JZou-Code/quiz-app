@@ -1,7 +1,7 @@
-import axios from "axios";
+import api from "./api.js";
 
 export const login = (username,password) => {
-    return axios.post(
+    return api.post(
         '/api/user/login',
         {
             username,

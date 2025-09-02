@@ -3,10 +3,10 @@ import axios from "axios";
 const api = axios.create({ baseURL: "/api" });
 
 api.interceptors.request.use((config) => {
-    const t = localStorage.getItem("access_token");
-    if (t) {
+    const token = localStorage.getItem("access_token");
+    if (token) {
         config.headers = config.headers || {};
-        config.headers.Authorization = `Bearer ${t}`;
+        config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
 });

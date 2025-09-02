@@ -20,18 +20,16 @@ const LoginForm = () => {
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         login(username, password)
             .then(result => {
                 const {data} = result;
 
-                if (data.code === 200) {
-                    authCtx.setIsLogin(true);
-                    authCtx.setUsername(username);
+                if (data.code === 200 || data.code === '200') {
+                    const token = data?.data?.AccessToken
+                    authCtx.login({token, username});
                     pageCtx.dispatch({type: pageState.NONE});
-
-                    localStorage.setItem('access_token', data.data.AccessToken);
 
                     navigate(from, {replace: true})
                 } else {

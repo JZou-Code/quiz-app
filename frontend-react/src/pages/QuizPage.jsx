@@ -42,7 +42,7 @@ const QuizPage = () => {
                 </div>
             </div>
             <div className={classes.QuizContainer}>
-                {ctx.quizArr.map((item, index) =>
+                {ctx.loading ? <div className={classes.Loading}>Loading...</div> : ctx.quizArr.map((item, index) =>
                     <QuestionBlock
                         quizData={item}
                         quizNum={index}
