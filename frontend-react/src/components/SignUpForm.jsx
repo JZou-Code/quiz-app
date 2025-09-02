@@ -62,7 +62,7 @@ const SignUpForm = () => {
         }).then(result => {
             console.log(result)
             const {data} = result;
-            if(data.code === '200'){
+            if(data.code === '200' || data.code === 200){
                 ctx.dispatch(pageState.LOGIN)
             }else{
                 setErrorMsg(data.message);
