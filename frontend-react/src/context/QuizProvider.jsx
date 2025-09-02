@@ -17,7 +17,7 @@ export default function QuizProvider({children}) {
         fetchQuizzes()
             .then(res => {
                 console.log(res)
-                if (res.data.code === 200) {
+                if (res.data.code === 200 || res.data.code === '200') {
                     const items = res?.data?.data?.items;
                     setQuizArr(items);
                     setUserAnswers(new Array(items.length).fill('X'));
@@ -68,12 +68,13 @@ export default function QuizProvider({children}) {
         }
     };
 
-    const reset = () => {
+    const reset = async () => {
         setUserAnswers(new Array(quizArr.length).fill(-1));
         setScore(0);
         setIsResult(false);
 
         setLoading(true);
+        await setNewQuiz();
         window.scroll(0, 0)
     };
 

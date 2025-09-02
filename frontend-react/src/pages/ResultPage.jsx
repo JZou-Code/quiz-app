@@ -33,7 +33,6 @@ const QuizPage = () => {
     }, []);
 
     const onRestart = () => {
-        ctx.reset()
         navigate('/quiz/test', {replace: true})
     }
 
