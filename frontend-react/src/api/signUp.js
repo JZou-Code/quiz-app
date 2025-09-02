@@ -8,7 +8,7 @@ export const requestCaptcha = () => {
 
 export const requestValidationCode = (email)=>{
     return axios.post(
-        '/api/send-validation-code',
+        '/api/email/send',
         {
             email
         }
@@ -16,7 +16,6 @@ export const requestValidationCode = (email)=>{
 }
 
 export const requestSignUp = (data)=>{
-    console.log(data.captchaId)
     return axios.post(
         '/api/user/register',
         data

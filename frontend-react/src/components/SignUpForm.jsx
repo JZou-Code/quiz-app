@@ -22,6 +22,7 @@ const SignUpForm = () => {
     const [errorMsg, setErrorMsg] = useState('')
 
     const ctx = useContext(PageStateContext);
+    const navigate = useNavigate();
 
     const validationRules = [
         {
@@ -59,16 +60,17 @@ const SignUpForm = () => {
             validationCode,
             captcha
         }).then(result => {
-            // console.log(result)
-            // const {data} = result;
-            // if(data.code === '200'){
-            //     ctx.dispatch(pageState.LOGIN)
-            // }else{
-            //     setErrorMsg(data.message);
-            // }
-            ctx.dispatch(pageState.LOGIN)
+            console.log(result)
+            const {data} = result;
+            if(data.code === '200'){
+                ctx.dispatch(pageState.LOGIN)
+            }else{
+                setErrorMsg(data.message);
+            }
+            ctx.dispatch(pageState.LOGIN);
+            navigate('/account/login')
         }).catch(e => {
-            setErrorMsg(e.message)
+            setErrorMsg(e.response)
         })
     }
 
