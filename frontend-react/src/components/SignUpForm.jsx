@@ -16,7 +16,7 @@ const SignUpForm = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [captchaId, setCaptchaId] = useState('')
-    const [validationCode, setValidationCode] = useState('')
+    const [code, setCode] = useState('')
     const [captcha, setCaptcha] = useState('');
 
     const [errorMsg, setErrorMsg] = useState('')
@@ -56,8 +56,8 @@ const SignUpForm = () => {
             username,
             email,
             password,
+            code,
             captchaId,
-            validationCode,
             captcha
         }).then(result => {
             console.log(result)
@@ -102,7 +102,7 @@ const SignUpForm = () => {
                         placeholder={'Email'}
                     />
                 </div>
-                <ValidationCode code={validationCode} setCode={setValidationCode} email={email}></ValidationCode>
+                <ValidationCode code={code} setCode={setCode} email={email}></ValidationCode>
                 <div className={classes.InputContainer}>
                     <input
                         className={classes.Input}
