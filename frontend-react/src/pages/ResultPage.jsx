@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import classes from '../style/ResultPage.module.css';
 import QuestionBlock from "../components/QuestionBlock.jsx";
-import {useNavigate} from 'react-router-dom'
+import {useLocation, useNavigate} from 'react-router-dom'
 import QuizContext from "../context/QuizContext.jsx";
 import Header from "../components/Header.jsx";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -11,13 +11,14 @@ import ShareBoard from "../components/ShareBoard.jsx";
 import {store} from "../mock/fakeShareData.js";
 import AuthContext from "../context/AuthContext.jsx";
 
-const QuizPage = () => {
+const ResultPage = () => {
     const [isSharing, setIsSharing] = useState(false)
     const [shareId, setShareId] = useState('')
 
     const ctx = useContext(QuizContext);
     const authCtx = useState(AuthContext);
     const navigate = useNavigate();
+    const {state} = useLocation();
 
     const onCancel = () => {
         navigate('/');
@@ -54,7 +55,7 @@ const QuizPage = () => {
                     throw error
                 }
             }).catch(e => {
-
+            console.log(e)
         })
     }
 
@@ -106,20 +107,23 @@ const QuizPage = () => {
                         />
                     )}
 
-                    <div className={classes.ButtonContainer}>
-                        <button onClick={onRestart} className={classes.Restart}>Restart</button>
-                        <button onClick={onCancel} className={classes.Cancel}>Cancel</button>
-                    </div>
+                    {
+                        !state?.isDetail &&
+                        <div className={classes.ButtonContainer}>
+                            <button onClick={onRestart} className={classes.Restart}>Restart</button>
+                            <button onClick={onCancel} className={classes.Cancel}>Cancel</button>
+                        </div>
+                    }
                 </div>
                 {
                     isSharing &&
-                        <Backdrop>
-                            <ShareBoard url={`http://localhost:5173/share/${shareId}`} onCancel={handleCancelShare}/>
-                        </Backdrop>
+                    <Backdrop>
+                        <ShareBoard url={`http://localhost:5173/share/${shareId}`} onCancel={handleCancelShare}/>
+                    </Backdrop>
                 }
             </div>
         </>
     );
 };
 
-export default QuizPage;
+export default ResultPage;

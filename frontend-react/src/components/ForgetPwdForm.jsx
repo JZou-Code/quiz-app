@@ -22,7 +22,7 @@ const ForgetPwdForm = () => {
     return (
         <>
             <form className={classes.FormContainer} onSubmit={handleSubmit} style={{marginTop: '1.5rem'}}>
-                <div className={classes.Title}>Reset Password</div>
+                <div className={classes.Title}>Forget Password</div>
                 <div className={classes.InputContainer}>
                     <input
                         className={classes.Input}

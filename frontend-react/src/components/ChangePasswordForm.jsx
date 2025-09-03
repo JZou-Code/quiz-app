@@ -9,7 +9,7 @@ const ChangePasswordForm = (props) => {
     return (
         <div>
             <div className={classes.Title}>
-                Change Password
+                Reset Password
             </div>
             <div className={classes.InputContainer}>
                 <div className={classes.InputTitle}>

@@ -91,3 +91,9 @@
     transform: scale(0.95);
     box-shadow: none;
 }
+
+.Notification{
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+}

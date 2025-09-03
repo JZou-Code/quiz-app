@@ -6,7 +6,7 @@
     cursor: pointer;
 }
 
-.Container:hover{
+.Container:hover {
     transform: scale(1.02);
     box-shadow: 0 0 10px 2px lightgray;
 }
@@ -32,4 +32,20 @@
     margin-top: 0.6rem;
     display: flex;
     justify-content: flex-end;
+}
+
+.Notification {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    background-color: #f2f2f2;
+    width: 20rem;
+    height: 10rem;
+    border-radius: 0.2rem;
+    padding: 1rem;
 }

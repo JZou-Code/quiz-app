@@ -6,7 +6,7 @@ import HomePage from "./pages/HomePage.jsx";
 import QuizPage from "./pages/QuizPage.jsx";
 import ResultPage from "./pages/ResultPage.jsx";
 import RankPage from "./pages/RankPage.jsx";
-import AccountPage from "./pages/AccountPage.jsx";
+import HistoryPage from "./pages/HistoryPage.jsx";
 import SignupPage from "./pages/SignupPage.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
 import SharePage from './pages/SharePage.jsx';
@@ -30,7 +30,7 @@ const RoutesController = () => {
 
                     <Route path='/account' element={<Outlet/>}>
                         <Route element={<PrivateRoute/>}>
-                            <Route path='history' element={<AccountPage/>}></Route>
+                            <Route path='history' element={<HistoryPage/>}></Route>
                             <Route path='profile' element={<ProfilePage/>}></Route>
                         </Route>
 

@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext} from 'react';
 import classes from '../style/QuestionBlock.module.css'
 import QuizContext from "../context/QuizContext.jsx";
 
@@ -17,9 +17,6 @@ const QuestionBlock = (props) => {
         choices.push(choiceObj);
     }
 
-    const LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
-    // console.log(quizData)
 
     if (!quizData) {
         console.log('hello world')

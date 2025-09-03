@@ -64,10 +64,16 @@ export default function QuizProvider({children}) {
                 })
             }
 
-            const res = await submitResults({
+            console.log(answers)
+
+            const submitObj = {
                 answers,
                 correctNumber: count
-            })
+            }
+
+            console.log(submitObj)
+
+            const res = await submitResults(submitObj)
 
             if (res.data.code === 401 || res.data.code === '401') {
                 localStorage.setItem('access_token', null);
@@ -100,7 +106,10 @@ export default function QuizProvider({children}) {
                 score,
                 userAnswers,
                 isResult,
+                setQuizArr,
                 setUserAnswers,
+                setScore,
+                setIsResult,
                 submit,
                 reset,
             }}
