@@ -8,6 +8,7 @@ import {getHistory} from "../api/quizzes.js";
 const HistoryPage = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [isError, setIsError] = useState(false);
+    const [isEmpty, setIsEmpty] = useState(false);
     const [history, setHistory] = useState([]);
     const fetchHistory = async () => {
         try {
@@ -15,6 +16,7 @@ const HistoryPage = () => {
 
             if (data.code === 200 || data.code === '200') {
                 setHistory(data.data)
+                setIsEmpty(data.data.length === 0)
             } else {
                 setIsError(true)
             }
@@ -40,7 +42,7 @@ const HistoryPage = () => {
                             .toSorted((a, b) => new Date(b.CreateAt) - new Date(a.CreateAt))
                             .map((item) => (
                                 <HistoryBlock
-                                    key={item.time}
+                                    key={item.CreateAt}
                                     data={{
                                         ...item,
                                         quizNum: 20,
@@ -51,6 +53,10 @@ const HistoryPage = () => {
                 }
                 {
                     isError && <div className={classes.Notification}>Something went wrong, please try again later.</div>
+                }
+                {
+                    isEmpty &&
+                    <div className={classes.Notification}>No data found</div>
                 }
             </div>
         </div>

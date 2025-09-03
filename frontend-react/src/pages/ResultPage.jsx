@@ -63,6 +63,10 @@ const ResultPage = () => {
         setIsSharing(false)
     }
 
+    const handleBackward = ()=>{
+        navigate('/account/history')
+    }
+
     return (
         <>
             <Header/>
@@ -112,6 +116,12 @@ const ResultPage = () => {
                         <div className={classes.ButtonContainer}>
                             <button onClick={onRestart} className={classes.Restart}>Restart</button>
                             <button onClick={onCancel} className={classes.Cancel}>Cancel</button>
+                        </div>
+                    }
+                    {
+                        state?.isDetail &&
+                        <div className={classes.ButtonContainer}>
+                            <button onClick={handleBackward} className={classes.Cancel}>Back</button>
                         </div>
                     }
                 </div>
