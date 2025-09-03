@@ -1,13 +1,17 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import classes from '../style/QuizPage.module.css';
 import QuestionBlock from "../components/QuestionBlock.jsx";
 import {useNavigate} from 'react-router-dom'
 import Timer from "../components/Timer.jsx";
 import QuizContext from "../context/QuizContext.jsx";
+import Backdrop from "../UI/Backdrop/Backdrop.jsx";
 
 const QuizPage = () => {
     const ctx = useContext(QuizContext);
     const navigate = useNavigate();
+
+    const [processing, setProcessing] = useState(false)
+    const [isError, setIsError] = useState(false)
 
     const onCancel = () => {
         const forceQuit = confirm("Are you sure you wanna quit now?");
@@ -15,6 +19,24 @@ const QuizPage = () => {
             return
         }
         navigate('/', {replace: true});
+    }
+
+    const handleSubmit = async ()=>{
+        setProcessing(true);
+        const res = await ctx.submit();
+        console.log(res)
+        if(res.flag){
+            setProcessing(false)
+            navigate('/quiz/result', {replace: true})
+            window.scroll(0, 0)
+        }else {
+            console.log(res)
+        }
+    }
+
+    const handleCancel = () => {
+        setProcessing(false)
+        setIsError(false);
     }
 
     useEffect(() => {
@@ -57,10 +79,25 @@ const QuizPage = () => {
                 )}
 
                 <div className={classes.ButtonContainer}>
-                    <button onClick={ctx.submit} className={classes.Submit}>Submit</button>
+                    <button onClick={handleSubmit} className={classes.Submit}>Submit</button>
                     <button onClick={onCancel} className={classes.Cancel}>Cancel</button>
                 </div>
             </div>
+            {
+                processing &&
+                <Backdrop>
+                    <div onClick={handleCancel} className={classes.Notification}>
+                        Processing...
+                    </div>
+                </Backdrop>
+            }
+            {
+                isError && <Backdrop>
+                    <div onClick={handleCancel} className={classes.Notification}>
+                        Something went wrong.
+                    </div>
+                </Backdrop>
+            }
         </>
     );
 };

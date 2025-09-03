@@ -39,7 +39,7 @@ const HistoryPage = () => {
                 {
                     isLoading ? <div className={classes.Notification}>Loading...</div> :
                         history
-                            .toSorted((a, b) => new Date(b.CreateAt) - new Date(a.CreateAt))
+                            // .toSorted((a, b) => new Date(b.CreateAt) - new Date(a.CreateAt))
                             .map((item) => (
                                 <HistoryBlock
                                     key={item.CreateAt}

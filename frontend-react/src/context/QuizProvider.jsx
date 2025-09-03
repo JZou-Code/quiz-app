@@ -21,10 +21,12 @@ export default function QuizProvider({children}) {
                     const items = res?.data?.data?.items;
                     setQuizArr(items);
                     setUserAnswers(new Array(items.length).fill('X'));
-                } else if (res.data.code === 401 || res.data.code === '401') {
-                    localStorage.setItem('access_token', null);
-                    navigate('/account/login')
-                } else {
+                }
+                    // else if (res.data.code === 401 || res.data.code === '401') {
+                    //     localStorage.setItem('access_token', null);
+                    //     navigate('/account/login')
+                // }
+                else {
                     throw new Error(res.data.message)
                 }
             })
@@ -37,7 +39,10 @@ export default function QuizProvider({children}) {
 
     const submit = async (options) => {
         const tempAnswer = userAnswers.find(e => e === 'X');
-        if (!options.isTimeOver && tempAnswer) {
+
+        console.log(options)
+
+        if (!options?.isTimeOver && tempAnswer) {
             const forceSubmit = confirm("You haven't finished yet. Are you sure you wanna submit now?")
             if (!forceSubmit) {
                 return;
@@ -64,26 +69,36 @@ export default function QuizProvider({children}) {
                 })
             }
 
-            console.log(answers)
-
             const submitObj = {
                 answers,
                 correctNumber: count
             }
-
             console.log(submitObj)
 
             const res = await submitResults(submitObj)
 
-            if (res.data.code === 401 || res.data.code === '401') {
-                localStorage.setItem('access_token', null);
-                navigate('/account/login')
-            }
+            // if (res.data.code === 401 || res.data.code === '401') {
+            //     localStorage.setItem('access_token', null);
+            //     navigate('/account/login')
+            // }
 
-            navigate('/quiz/result', {replace: true})
-            window.scroll(0, 0)
+            if (res.data.code === 200 || res.data.code === '201') {
+                return {
+                    flag: true,
+                    data: res
+                }
+            } else {
+                return {
+                    flag: false,
+                    data: res
+                }
+            }
         } catch (e) {
             console.log(e)
+            return {
+                flag: false,
+                data: e
+            }
         }
     };
 
