@@ -81,19 +81,3 @@
     font-weight: bold;
     text-align: center;
 }
-
-.Notification {
-    font-size: 1.5rem;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    inset: 0;
-    margin: auto;
-    background-color: #f2f2f2;
-    width: 20rem;
-    height: 10rem;
-    border-radius: 0.2rem;
-    padding: 1rem;
-}

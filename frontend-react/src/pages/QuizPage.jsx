@@ -5,6 +5,7 @@ import {useNavigate} from 'react-router-dom'
 import Timer from "../components/Timer.jsx";
 import QuizContext from "../context/QuizContext.jsx";
 import Backdrop from "../UI/Backdrop/Backdrop.jsx";
+import PlainMessage from "../components/PlainMessage.jsx";
 
 const QuizPage = () => {
     const ctx = useContext(QuizContext);
@@ -84,19 +85,20 @@ const QuizPage = () => {
                 </div>
             </div>
             {
-                processing &&
-                <Backdrop>
-                    <div onClick={handleCancel} className={classes.Notification}>
-                        Processing...
-                    </div>
-                </Backdrop>
+                processing &&<PlainMessage message={'Processing...'} canBeClosed={false}/>
+                // <Backdrop>
+                //     <div onClick={handleCancel} className={classes.Notification}>
+                //         Processing...
+                //     </div>
+                // </Backdrop>
             }
             {
-                isError && <Backdrop>
-                    <div onClick={handleCancel} className={classes.Notification}>
-                        Something went wrong.
-                    </div>
-                </Backdrop>
+                isError && <PlainMessage onCancel={handleCancel} message={'Something went wrong.'} canBeClosed={true}/>
+                // <Backdrop>
+                //     <div onClick={handleCancel} className={classes.Notification}>
+                //         Something went wrong.
+                //     </div>
+                // </Backdrop>
             }
         </>
     );

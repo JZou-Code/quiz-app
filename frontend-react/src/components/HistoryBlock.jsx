@@ -4,6 +4,7 @@ import {useNavigate} from "react-router-dom";
 import {getDetailHistoryById} from "../api/quizzes.js";
 import QuizContext from "../context/QuizContext.jsx";
 import Backdrop from "../UI/Backdrop/Backdrop.jsx";
+import PlainMessage from "./PlainMessage.jsx";
 
 const HistoryBlock = (props) => {
     const navigate = useNavigate();
@@ -67,19 +68,20 @@ const HistoryBlock = (props) => {
                 {props.data.time}
             </div>
             {
-                isLoading &&
-                <Backdrop>
-                    <div onClick={handleCancel} className={classes.Notification}>
-                        Loading...
-                    </div>
-                </Backdrop>
+                isLoading && <PlainMessage message={'Loading...'} canBeClosed={false}/>
+                // <Backdrop>
+                //     <div onClick={handleCancel} className={classes.Notification}>
+                //         Loading...
+                //     </div>
+                // </Backdrop>
             }
             {
-                isError && <Backdrop>
-                    <div onClick={handleCancel} className={classes.Notification}>
-                        Something went wrong.
-                    </div>
-                </Backdrop>
+                isError && <PlainMessage onCancel={handleCancel} message={'Something went wrong.'} canBeClosed={true}/>
+                // <Backdrop>
+                //     <div onClick={handleCancel} className={classes.Notification}>
+                //         Something went wrong.
+                //     </div>
+                // </Backdrop>
             }
 
         </div>
