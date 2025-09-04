@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import classes from "../style/Forms.module.css";
-import {requestValidationCode} from "../api/signUp.js";
+import {requestValidationCode} from "../api/account.js";
 
 const ValidationCode = (props) => {
     const [buttonContent, setButtonContent] = useState('Send')

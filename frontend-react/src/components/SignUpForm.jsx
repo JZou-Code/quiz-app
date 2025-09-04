@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react';
 import classes from '../style/Forms.module.css'
 import Captcha from "./Captcha.jsx";
-import {requestSignUp} from "../api/signUp.js";
+import {requestSignUp} from "../api/account.js";
 import {isValidEmail, isValidPassword, isValidUsername} from "../utils/regex.js";
 import {pageState} from "../utils/pageState.js";
 import ValidationCode from "./ValidationCode.jsx";

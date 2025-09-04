@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {requestCaptcha} from "../api/signUp.js";
+import {requestCaptcha} from "../api/account.js";
 
 const Captcha = (props) => {
     const [captchaSrc, setCaptchaSrc] = useState('')

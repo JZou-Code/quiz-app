@@ -1,9 +1,9 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import classes from "../style/Forms.module.css";
 import {pageState} from "../utils/pageState.js";
 import PageStateContext from "../context/PageStateContext.jsx";
 import AuthContext from "../context/AuthContext.jsx";
-import {login} from "../api/login.js";
+import {login} from "../api/account.js";
 import ErrorMsg from "./ErrorMsg.jsx";
 import {useLocation, useNavigate} from "react-router-dom";
 
