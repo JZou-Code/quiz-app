@@ -4,9 +4,11 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faXmark} from "@fortawesome/free-solid-svg-icons";
 import ChangePasswordForm from "./ChangePasswordForm.jsx";
 import ChangeMessage from "./ChangeMessage.jsx";
+import {requestResetPassword} from "../api/account.js";
+import PlainMessage from "./PlainMessage.jsx";
 
 const ChangePassword = (props) => {
-    const [isPending, setIsPending] = useState(false);
+    const [isProcessing, setIsProcessing] = useState(false);
     const [isFinished, setIsFinished] = useState(false);
     const [data, setData] = useState(null)
 
@@ -21,14 +23,24 @@ const ChangePassword = (props) => {
         },
     ]
 
-    const changeHandler = (data) => {
-        setIsPending(true);
-        const {newPwd, confirm} = data;
+    const changeHandler = async (data) => {
+        setIsProcessing(true);
 
-        const error = newPwd !== confirm;
-        setIsFinished(true);
-        setData({ ...(error ? messages[1] : messages[0]), isError: error });
-        setIsPending(false);
+        try {
+            const res = await requestResetPassword(data);
+            if (res.data.code === 200 || res.data.code === '200') {
+                console.log('hello')
+                setData({...messages[0], isError: false});
+            }else {
+                setData({...messages[1], isError: true});
+            }
+        } catch (e) {
+            setData({...messages[1], isError: true});
+            console.log(e)
+        } finally {
+            setIsFinished(true);
+            setIsProcessing(false);
+        }
     }
 
     return (
@@ -38,15 +50,13 @@ const ChangePassword = (props) => {
                 className='dismiss'
                 icon={faXmark}/>
             {
-                (!isFinished && !isPending) && <ChangePasswordForm onChange={changeHandler}/>
+                (!isFinished && !isProcessing) && <ChangePasswordForm onChange={changeHandler}/>
             }
             {
-                isFinished &&
-                <ChangeMessage data={data}/>
+                isFinished && <ChangeMessage data={data}/>
             }
             {
-                isPending &&
-                <div>Pending......</div>
+                isProcessing && <PlainMessage message={'Processing...'} canBeClosed={false}/>
             }
         </div>
     );

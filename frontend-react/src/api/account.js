@@ -1,4 +1,5 @@
 import axios from "axios";
+import api from "./api.js";
 
 export const login = (username,password) => {
     return axios.post(
@@ -39,4 +40,13 @@ export const requestForgetPassword = (data)=>{
         '/api/user/password/forget',
         data
     )
+}
+
+export const requestResetPassword = (data)=>{
+    console.log(data);
+    return api({
+        method: 'POST',
+        url: '/user/password/reset',
+        data
+    })
 }

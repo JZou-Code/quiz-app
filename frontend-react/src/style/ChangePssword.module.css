@@ -1,6 +1,6 @@
 .Card{
     width: 40rem;
-    height: 22rem;
+    height: 24rem;
     background-color: white;
     position: absolute;
     top: 30%;
@@ -69,7 +69,7 @@
 }
 
 .MessageContainer{
-    padding: 3rem;
+    padding: 4rem 1rem;
 }
 
 .ImageBox{
