@@ -128,7 +128,7 @@ const SignUpForm = () => {
                         className={classes.CaptchaInput}
                         type="text"
                         value={captcha}
-                        onChange={(e) => setCaptcha(e.target.value.toLowerCase())}
+                        onChange={(e) => setCaptcha(e.target.value)}
                         required
                         placeholder={'Captcha'}
                     />
