@@ -48,15 +48,14 @@ const SignUpForm = () => {
 
     const onSignUp = async (e) => {
         e.preventDefault();
-        setProcessing(true);
 
         const invalid = validationRules.find(rule => !rule.check());
         if (invalid) {
             setErrorMsg(invalid.message);
-            setProcessing(true);
             return;
         }
 
+        setProcessing(true);
         try {
             const {data} = await requestSignUp({
                 username,
