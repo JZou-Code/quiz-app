@@ -1,4 +1,5 @@
 import api from "./api.js";
+import axios from "axios";
 
 export const fetchQuizzes = () => {
     return api({
@@ -28,5 +29,23 @@ export const getDetailHistoryById = (sessionId) => {
         method: 'POST',
         url: 'quiz/sessions/details',
         data: {sessionId}
+    })
+}
+
+export const getShareLink = (data) => {
+    return api({
+        method: 'POST',
+        url: 'quiz/share/create',
+        data
+    })
+}
+
+export const getShareContent = (shareId) => {
+    return axios({
+        method: 'GET',
+        url: `/api/quiz/share/view/${shareId}`,
+        headers: {
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJUZXN0MDIiLCJleHAiOjE3NTcwMzYxMTh9.xoyVT2NkWJW36rlkNVI0AMJzx3VKVghmAjRVbZvzw2A`,
+        }
     })
 }
