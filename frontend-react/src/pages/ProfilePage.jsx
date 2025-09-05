@@ -40,7 +40,7 @@ const ProfilePage = () => {
                     </div>
                     <div className={classes.Item}>
                         <div className={classes.ItemTitle}>
-                            Username
+                            Email
                         </div>
                         <div className={classes.ItemContent}>
                             <div className={classes.Text}>
@@ -50,7 +50,7 @@ const ProfilePage = () => {
                     </div>
                     <div className={classes.Item}>
                         <div className={classes.ItemTitle}>
-                            Username
+                            Change Password
                         </div>
                         <div className={classes.ItemContent}>
                             <div className={classes.Text}>
