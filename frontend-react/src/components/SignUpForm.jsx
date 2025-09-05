@@ -53,6 +53,7 @@ const SignUpForm = () => {
         const invalid = validationRules.find(rule => !rule.check());
         if (invalid) {
             setErrorMsg(invalid.message);
+            setProcessing(true);
             return;
         }
 
@@ -80,7 +81,6 @@ const SignUpForm = () => {
             console.log(e)
         } finally {
             setProcessing(false)
-
         }
     }
 
