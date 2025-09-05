@@ -46,7 +46,8 @@ const HistoryPage = () => {
                                     data={{
                                         ...item,
                                         quizNum: 20,
-                                        time: generateTime(new Date(item?.CreateAt))
+                                        time: generateTime(new Date(item?.CreateAt)),
+                                        createAt: item?.CreateAt
                                     }}
                                 />
                             ))

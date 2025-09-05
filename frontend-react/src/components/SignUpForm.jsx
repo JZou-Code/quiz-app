@@ -8,6 +8,7 @@ import ValidationCode from "./ValidationCode.jsx";
 import PageStateContext from "../context/PageStateContext.jsx";
 import ErrorMsg from "./ErrorMsg.jsx";
 import {useNavigate} from "react-router-dom";
+import PlainMessage from "./PlainMessage.jsx";
 
 const SignUpForm = () => {
     // Input values, all string
@@ -20,6 +21,8 @@ const SignUpForm = () => {
     const [captcha, setCaptcha] = useState('');
 
     const [errorMsg, setErrorMsg] = useState('')
+    const [processing, setProcessing] = useState(false)
+    const [isSuccessful, setIsSuccessful] = useState(false)
 
     const ctx = useContext(PageStateContext);
     const navigate = useNavigate();
@@ -43,8 +46,9 @@ const SignUpForm = () => {
         },
     ];
 
-    const onSignUp = (e) => {
+    const onSignUp = async (e) => {
         e.preventDefault();
+        setProcessing(true);
 
         const invalid = validationRules.find(rule => !rule.check());
         if (invalid) {
@@ -52,26 +56,36 @@ const SignUpForm = () => {
             return;
         }
 
-        requestSignUp({
-            username,
-            email,
-            password,
-            code,
-            captchaId,
-            captcha
-        }).then(result => {
-            console.log(result)
-            const {data} = result;
-            if(data.code === '200' || data.code === 200){
+        try {
+            const {data} = await requestSignUp({
+                username,
+                email,
+                password,
+                code,
+                captchaId,
+                captcha
+            });
+
+            console.log(data)
+
+            if (data.code === '200' || data.code === 200) {
                 ctx.dispatch(pageState.LOGIN)
-            }else{
+                setIsSuccessful(true);
+            } else {
                 setErrorMsg(data.message);
             }
-            ctx.dispatch(pageState.LOGIN);
-            navigate('/account/login')
-        }).catch(e => {
-            setErrorMsg(e.response)
-        })
+
+        } catch (e) {
+            setErrorMsg(e.response);
+            console.log(e)
+        } finally {
+            setProcessing(false)
+
+        }
+    }
+
+    const handleJump = () => {
+        navigate('/account/login')
     }
 
     return (
@@ -147,7 +161,12 @@ const SignUpForm = () => {
                 </button>
                 <ErrorMsg errorMsg={errorMsg}/>
             </form>
-
+            {
+                processing && <PlainMessage message={'Processing...'} canBeClosed={false}/>
+            }
+            {
+                isSuccessful && <PlainMessage onClick={handleJump} message={'Sign up successfully'} canBeClosed={true}/>
+            }
         </>
     );
 };

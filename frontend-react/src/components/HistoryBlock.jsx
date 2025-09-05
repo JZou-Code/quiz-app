@@ -43,7 +43,7 @@ const HistoryBlock = (props) => {
     const handleClick = async () => {
         // navigate('/account/history/detail', {state:{sessionId:props.data.Id, score: props.data.CorrectNumber}})
         await fetchDetail();
-        navigate('/quiz/result', {state: {isDetail: true}});
+        navigate('/quiz/result', {state: {isDetail: true, createAt: props.data.createAt}});
     }
 
     const handleCancel = () => {

@@ -86,19 +86,9 @@ const QuizPage = () => {
             </div>
             {
                 processing &&<PlainMessage message={'Processing...'} canBeClosed={false}/>
-                // <Backdrop>
-                //     <div onClick={handleCancel} className={classes.Notification}>
-                //         Processing...
-                //     </div>
-                // </Backdrop>
             }
             {
                 isError && <PlainMessage onCancel={handleCancel} message={'Something went wrong.'} canBeClosed={true}/>
-                // <Backdrop>
-                //     <div onClick={handleCancel} className={classes.Notification}>
-                //         Something went wrong.
-                //     </div>
-                // </Backdrop>
             }
         </>
     );

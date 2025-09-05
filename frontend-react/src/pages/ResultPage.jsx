@@ -8,17 +8,15 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faShareNodes} from "@fortawesome/free-solid-svg-icons";
 import Backdrop from "../UI/Backdrop/Backdrop.jsx";
 import ShareBoard from "../components/ShareBoard.jsx";
-import {store} from "../mock/fakeShareData.js";
-import AuthContext from "../context/AuthContext.jsx";
+import {getShareLink} from "../api/quizzes.js";
 
 const ResultPage = () => {
     const [isSharing, setIsSharing] = useState(false)
-    const [shareId, setShareId] = useState('')
 
     const ctx = useContext(QuizContext);
-    const authCtx = useState(AuthContext);
     const navigate = useNavigate();
     const {state} = useLocation();
+    const [url, setUrl] = useState('')
 
     const onCancel = () => {
         navigate('/');
@@ -39,31 +37,31 @@ const ResultPage = () => {
 
     const onShare = async () => {
         setIsSharing(true);
-        store({
-            username: authCtx.username,
-            total: 20,
-            score: ctx.score,
-            time: new Date(),
-            category: 'Math'
-        })
-            .then(res => {
-                if (res.data.code === '200') {
-                    setShareId(res.data.data.token);
-                } else {
-                    const error = new Error('Something went wrong');
-                    error.status = 500;
-                    throw error
-                }
-            }).catch(e => {
+        try {
+            setUrl('Loading...')
+            const data = {
+                correctNumber: ctx.score,
+                totalNumber: 20,
+                category: "Math",
+                date: state.createAt
+            }
+            const res = await getShareLink(data);
+            console.log(res)
+
+            if(res.data.code === 200 || res.data.code === '200'){
+                setUrl(`http://localhost:5173/share/${res.data?.data?.shareId}`)
+            }
+        } catch (e) {
+            setUrl('Something went wrong, please try again.')
             console.log(e)
-        })
+        }
     }
 
     const handleCancelShare = () => {
         setIsSharing(false)
     }
 
-    const handleBackward = ()=>{
+    const handleBackward = () => {
         navigate('/account/history')
     }
 
@@ -128,7 +126,7 @@ const ResultPage = () => {
                 {
                     isSharing &&
                     <Backdrop>
-                        <ShareBoard url={`http://localhost:5173/share/${shareId}`} onCancel={handleCancelShare}/>
+                        <ShareBoard url={url} onCancel={handleCancelShare}/>
                     </Backdrop>
                 }
             </div>

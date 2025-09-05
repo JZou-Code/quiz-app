@@ -45,7 +45,7 @@ export const getShareContent = (shareId) => {
         method: 'GET',
         url: `/api/quiz/share/view/${shareId}`,
         headers: {
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJUZXN0MDIiLCJleHAiOjE3NTcwMzYxMTh9.xoyVT2NkWJW36rlkNVI0AMJzx3VKVghmAjRVbZvzw2A`,
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJUZXN0MDIiLCJleHAiOjE3NTcwMzg2Mjd9.x6qbo1LiRufc0eAU15fyppv4gmAX8e6ewRip1K2eD7U`,
         }
     })
 }

@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import classes from '../style/SharePage.module.css';
 import {useParams} from 'react-router-dom';
-import {fetchShare} from "../api/share.js";
 import Header from "../components/Header.jsx";
 import {getShareContent} from "../api/quizzes.js";
 import PlainMessage from "../components/PlainMessage.jsx";
