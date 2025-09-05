@@ -50,7 +50,7 @@ const ProfilePage = () => {
                     </div>
                     <div className={classes.Item}>
                         <div className={classes.ItemTitle}>
-                            Change Password
+                            Password
                         </div>
                         <div className={classes.ItemContent}>
                             <div className={classes.Text}>
