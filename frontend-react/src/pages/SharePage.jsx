@@ -79,28 +79,6 @@ const SharePage = () => {
     }
 
     useEffect(() => {
-        // fetchShare(shareId)
-        //     .then(res => {
-        //         console.log(res)
-        //
-        //         const {username, total, score, time, category} = res.data.data;
-        //         const rate = Math.round(score / total * 10000) / 100 + '%'
-        //         const newTime = time.toLocaleString('en-NZ', {
-        //             dateStyle: 'short'
-        //         })
-        //         const level = getLevel(score)
-        //         setData({
-        //             username,
-        //             score,
-        //             total,
-        //             rate,
-        //             newTime,
-        //             category,
-        //             level
-        //         });
-        //     }).catch(e => {
-        //
-        // })
         loadData();
     }, []);
 

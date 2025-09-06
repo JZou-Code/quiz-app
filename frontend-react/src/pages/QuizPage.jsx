@@ -4,7 +4,6 @@ import QuestionBlock from "../components/QuestionBlock.jsx";
 import {useNavigate} from 'react-router-dom'
 import Timer from "../components/Timer.jsx";
 import QuizContext from "../context/QuizContext.jsx";
-import Backdrop from "../UI/Backdrop/Backdrop.jsx";
 import PlainMessage from "../components/PlainMessage.jsx";
 
 const QuizPage = () => {
