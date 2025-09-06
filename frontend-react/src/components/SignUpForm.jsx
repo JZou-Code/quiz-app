@@ -164,7 +164,7 @@ const SignUpForm = () => {
                 processing && <PlainMessage message={'Processing...'} canBeClosed={false}/>
             }
             {
-                isSuccessful && <PlainMessage onClick={handleJump} message={'Sign up successfully'} canBeClosed={true}/>
+                isSuccessful && <PlainMessage onCancel={handleJump} message={'Sign up successfully'} canBeClosed={true}/>
             }
         </>
     );

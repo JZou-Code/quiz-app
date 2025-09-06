@@ -41,7 +41,6 @@ const HistoryBlock = (props) => {
     }
 
     const handleClick = async () => {
-        // navigate('/account/history/detail', {state:{sessionId:props.data.Id, score: props.data.CorrectNumber}})
         await fetchDetail();
         navigate('/quiz/result', {state: {isDetail: true, createAt: props.data.createAt}});
     }
@@ -69,19 +68,9 @@ const HistoryBlock = (props) => {
             </div>
             {
                 isLoading && <PlainMessage message={'Loading...'} canBeClosed={false}/>
-                // <Backdrop>
-                //     <div onClick={handleCancel} className={classes.Notification}>
-                //         Loading...
-                //     </div>
-                // </Backdrop>
             }
             {
                 isError && <PlainMessage onCancel={handleCancel} message={'Something went wrong.'} canBeClosed={true}/>
-                // <Backdrop>
-                //     <div onClick={handleCancel} className={classes.Notification}>
-                //         Something went wrong.
-                //     </div>
-                // </Backdrop>
             }
 
         </div>
