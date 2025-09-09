@@ -18,7 +18,7 @@ const RoutesController = () => {
             <ErrorBoundary>
                 <Routes>
                     <Route path='/' element={<HomePage/>}></Route>
-                    <Route path='/rank' element={<RankPage/>}></Route>
+                    {/*<Route path='/rank' element={<RankPage/>}></Route>*/}
                     <Route path="/share/:shareId" element={<SharePage />} />
 
                     <Route element={<PrivateRoute/>}>

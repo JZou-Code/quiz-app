@@ -2,7 +2,7 @@ import React from 'react';
 import classes from '../style/RankItem.module.css'
 
 const RankItem = (props) => {
-    const {name,score,rank} = props.data
+    const {username,totalCorrect,rank} = props.data
     return (
         <div className={classes.Container}>
             <div className={`${classes.Icon} ${classes[`Rank${rank}`]}`}>
@@ -10,10 +10,10 @@ const RankItem = (props) => {
             </div>
             <div className={classes.Content}>
                 <div className={classes.Username}>
-                    {name}
+                    {username}
                 </div>
                 <div className={classes.Score}>
-                    {score}
+                    {totalCorrect}
                 </div>
             </div>
         </div>
