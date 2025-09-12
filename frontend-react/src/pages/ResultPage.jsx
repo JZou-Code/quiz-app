@@ -37,6 +37,9 @@ const ResultPage = () => {
 
     const onShare = async () => {
         setIsSharing(true);
+
+        console.log(state)
+
         try {
             setUrl('Loading...')
             const data = {

@@ -27,7 +27,7 @@ const QuizPage = () => {
         console.log(res)
         if(res.flag){
             setProcessing(false)
-            navigate('/quiz/result', {replace: true})
+            navigate('/quiz/result', {replace: true, state:{createAt: new Date()}})
             window.scroll(0, 0)
         }else {
             console.log(res)

@@ -56,7 +56,7 @@ const HistoryBlock = (props) => {
             className={classes.Container}>
             <div className={classes.Top}>
                 <div className={classes.Category}>
-                    Hello World
+                    Biology
                 </div>
                 <div className={classes.Score}>
                     {props.data.CorrectNumber} / {props.data.quizNum}
