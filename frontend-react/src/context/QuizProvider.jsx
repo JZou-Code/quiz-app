@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import QuizContext from './QuizContext';
 import {fetchQuizzes, submitResults} from '../api/quizzes.js';
-import {useNavigate} from "react-router-dom";
 
 export default function QuizProvider({children}) {
     const [quizArr, setQuizArr] = useState([]);
@@ -10,8 +9,6 @@ export default function QuizProvider({children}) {
     const [error, setError] = useState(null);
     const [score, setScore] = useState(0)
     const [isResult, setIsResult] = useState(false);
-
-    const navigate = useNavigate();
 
     const setNewQuiz = async () => {
         fetchQuizzes()
@@ -40,12 +37,10 @@ export default function QuizProvider({children}) {
     const submit = async (options) => {
         const tempAnswer = userAnswers.find(e => e === 'X');
 
-        console.log(options)
-
         if (!options?.isTimeOver && tempAnswer) {
             const forceSubmit = confirm("You haven't finished yet. Are you sure you wanna submit now?")
             if (!forceSubmit) {
-                return;
+                return {force: true};
             }
         }
 
@@ -76,11 +71,6 @@ export default function QuizProvider({children}) {
             console.log(submitObj)
 
             const res = await submitResults(submitObj)
-
-            // if (res.data.code === 401 || res.data.code === '401') {
-            //     localStorage.setItem('access_token', null);
-            //     navigate('/account/login')
-            // }
 
             if (res.data.code === 200 || res.data.code === '201') {
                 return {

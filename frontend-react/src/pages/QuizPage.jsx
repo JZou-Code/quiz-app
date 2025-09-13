@@ -22,9 +22,14 @@ const QuizPage = () => {
     }
 
     const handleSubmit = async ()=>{
-        setProcessing(true);
         const res = await ctx.submit();
-        console.log(res)
+
+        if(res.force){
+            console.log('test')
+            return;
+        }
+        setProcessing(true);
+
         if(res.flag){
             setProcessing(false)
             navigate('/quiz/result', {replace: true, state:{createAt: new Date()}})
