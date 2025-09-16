@@ -9,17 +9,11 @@ const SearchBar = (props) => {
         setSearchContent(val)
         props.onSearch(val);
     }
-
-    // const onClear = () => {
-    //     setSearchContent('')
-    //     props.onSearch('');
-    // }
-
     return (
         <div className={classes.Container}>
             <input
                 className={classes.Input}
-                placeholder={'Find a setting'}
+                placeholder={'Search...'}
                 value={searchContent}
                 onChange={searchCard}
             />
