@@ -4,7 +4,7 @@ import classes from '../style/RankItem.module.css'
 const RankItem = (props) => {
     const {username,totalCorrect,rank} = props.data
     return (
-        <div className={classes.Container}>
+        <div key={rank} className={classes.Container}>
             <div className={`${classes.Icon} ${classes[`Rank${rank}`]}`}>
                 {rank}
             </div>

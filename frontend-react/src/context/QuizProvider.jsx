@@ -13,16 +13,11 @@ export default function QuizProvider({children}) {
     const setNewQuiz = async () => {
         fetchQuizzes()
             .then(res => {
-                console.log(res)
                 if (res.data.code === 200 || res.data.code === '200') {
                     const items = res?.data?.data?.items;
                     setQuizArr(items);
                     setUserAnswers(new Array(items.length).fill('X'));
                 }
-                    // else if (res.data.code === 401 || res.data.code === '401') {
-                    //     localStorage.setItem('access_token', null);
-                    //     navigate('/account/login')
-                // }
                 else {
                     throw new Error(res.data.message)
                 }

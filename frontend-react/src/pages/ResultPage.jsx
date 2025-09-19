@@ -9,6 +9,7 @@ import {faShareNodes} from "@fortawesome/free-solid-svg-icons";
 import Backdrop from "../UI/Backdrop/Backdrop.jsx";
 import ShareBoard from "../components/ShareBoard.jsx";
 import {getShareLink} from "../api/quizzes.js";
+import {baseURL} from "../utils/urlConfig.js";
 
 const ResultPage = () => {
     const [isSharing, setIsSharing] = useState(false)
@@ -52,7 +53,7 @@ const ResultPage = () => {
             console.log(res)
 
             if(res.data.code === 200 || res.data.code === '200'){
-                setUrl(`http://localhost:5173/share/${res.data?.data?.shareId}`)
+                setUrl(`${baseURL}/${res.data?.data?.shareId}`)
             }
         } catch (e) {
             setUrl('Something went wrong, please try again.')

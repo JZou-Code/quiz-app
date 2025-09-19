@@ -6,6 +6,7 @@ import RankItem from "./RankItem.jsx";
 import {requestRank} from "../api/otherUtils.js";
 import ShareBoard from "./ShareBoard.jsx";
 import Backdrop from "../UI/Backdrop/Backdrop.jsx";
+import {baseURL} from "../utils/urlConfig.js";
 
 const Rank = () => {
     const [loading, setLoading] = useState(false);
@@ -62,7 +63,7 @@ const Rank = () => {
                 (!loading && !isError && !isEmpty) &&
                 <div className={classes.RankData}>
                     {
-                        rank.map((item, index) => <RankItem data={{...item, rank: index + 1}} key={item.rank}/>)
+                        rank.map((item, index) => <RankItem data={{...item, rank: index + 1}}/>)
                     }
                 </div>
             }
@@ -79,7 +80,7 @@ const Rank = () => {
             {
                 isSharing &&
                 <Backdrop>
-                    <ShareBoard url={'http://localhost:5173'} onCancel={() => {
+                    <ShareBoard url={baseURL} onCancel={() => {
                         setIsSharing(false)
                     }}/>
                 </Backdrop>
