@@ -4,7 +4,7 @@ const options = {
     year: "numeric",
     hour: "numeric",
     minute: "2-digit",
-    hour12: true, // AM/PM 制
+    hour12: true,
 };
 
 export const generateTime = (time)=>{
