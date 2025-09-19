@@ -53,7 +53,7 @@ const ResultPage = () => {
             console.log(res)
 
             if(res.data.code === 200 || res.data.code === '200'){
-                setUrl(`${baseURL}/${res.data?.data?.shareId}`)
+                setUrl(`${baseURL}/share/${res.data?.data?.shareId}`)
             }
         } catch (e) {
             setUrl('Something went wrong, please try again.')
