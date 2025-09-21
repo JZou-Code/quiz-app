@@ -36,7 +36,6 @@ const HomePage = () => {
     return (
         <>
             <Header/>
-            <h1 style={{fontSize:'3rem', fontWeight:'bold'}}>TEST AUTOMATED DEPLOYMENT!!!</h1>
             <div className={classes.Container}>
                 <div className={classes.Left}>
                     <SearchBar onSearch={onSearch}/>
