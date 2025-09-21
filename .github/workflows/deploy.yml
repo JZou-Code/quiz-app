@@ -42,7 +42,8 @@ jobs:
         run: npm ci
 
       - name: Build
-
+        run: npm run build
+        
       # ----- configuration（OIDC）-----
       - name: Configure AWS credentials (OIDC)
         uses: aws-actions/configure-aws-credentials@v4
