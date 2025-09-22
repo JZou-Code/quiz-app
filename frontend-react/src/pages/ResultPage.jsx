@@ -39,14 +39,12 @@ const ResultPage = () => {
     const onShare = async () => {
         setIsSharing(true);
 
-        console.log(state)
-
         try {
             setUrl('Loading...')
             const data = {
                 correctNumber: ctx.score,
                 totalNumber: 20,
-                category: "Math",
+                category: ctx.category,
                 date: state.createAt
             }
             const res = await getShareLink(data);

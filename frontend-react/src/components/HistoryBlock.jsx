@@ -1,10 +1,11 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import classes from '../style/HistoryBlock.module.css'
 import {useNavigate} from "react-router-dom";
 import {getDetailHistoryById} from "../api/quizzes.js";
 import QuizContext from "../context/QuizContext.jsx";
 import Backdrop from "../UI/Backdrop/Backdrop.jsx";
 import PlainMessage from "./PlainMessage.jsx";
+import {categories} from "../utils/categories.js";
 
 const HistoryBlock = (props) => {
     const navigate = useNavigate();
@@ -12,6 +13,7 @@ const HistoryBlock = (props) => {
 
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
+    const [category, setCategory] = useState('');
 
     const fetchDetail = async () => {
         try {
@@ -29,6 +31,7 @@ const HistoryBlock = (props) => {
                 ctx.setUserAnswers(userAnswers);
                 ctx.setScore(props.data.CorrectNumber);
                 ctx.setIsResult(true);
+                ctx.setCategory(category);
 
                 setIsLoading(false)
             } else {
@@ -50,13 +53,21 @@ const HistoryBlock = (props) => {
         setIsError(false);
     }
 
+    useEffect(() => {
+        for (const item of categories) {
+            if (item.param === props.data.Category){
+                setCategory(item.name)
+            }
+        }
+    }, []);
+
     return (
         <div
             onClick={handleClick}
             className={classes.Container}>
             <div className={classes.Top}>
                 <div className={classes.Category}>
-                    Biology
+                    {category}
                 </div>
                 <div className={classes.Score}>
                     {props.data.CorrectNumber} / {props.data.quizNum}
