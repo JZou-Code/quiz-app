@@ -63,7 +63,7 @@ const Rank = () => {
                 (!loading && !isError && !isEmpty) &&
                 <div className={classes.RankData}>
                     {
-                        rank.map((item, index) => <RankItem data={{...item, rank: index + 1}}/>)
+                        rank.map((item, index) => <RankItem key={index} data={{...item, rank: index + 1}}/>)
                     }
                 </div>
             }

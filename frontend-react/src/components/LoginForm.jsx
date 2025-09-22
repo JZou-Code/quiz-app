@@ -25,10 +25,10 @@ const LoginForm = () => {
         login(username, password)
             .then(result => {
                 const {data} = result;
-
                 if (data.code === 200 || data.code === '200') {
-                    const token = data?.data?.AccessToken
-                    authCtx.login({token, username});
+                    const token = data?.data?.AccessToken;
+                    const email = data?.data?.Email;
+                    authCtx.login({token, username, email});
                     pageCtx.dispatch({type: pageState.NONE});
 
                     navigate(from, {replace: true})

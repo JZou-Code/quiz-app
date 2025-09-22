@@ -44,8 +44,8 @@ const ProfilePage = () => {
                         </div>
                         <div className={classes.ItemContent}>
                             <div className={classes.Text}>
-                                {/*{authCtx.email}*/}
-                                Example@gmail.com
+                                {authCtx.email}
+                                {/*Example@gmail.com*/}
                             </div>
                         </div>
                     </div>

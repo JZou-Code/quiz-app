@@ -5,6 +5,7 @@ import {setupAuthInterceptors} from "../utils/setupAxios.js";
 export default function AuthProvider({children}) {
     const [isLogin, setIsLogin] = useState(false);
     const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
 
     useEffect(() => {
         const token = localStorage.getItem('access_token');
@@ -15,17 +16,19 @@ export default function AuthProvider({children}) {
         }
     }, []);
 
-    const login = useCallback(({token, username}) => {
+    const login = useCallback(({token, username, email}) => {
         if (token) {
             localStorage.setItem('access_token', token)
         }
         if (username) {
             localStorage.setItem('username', username)
-        }
-        setIsLogin(true);
-        if (username) {
             setUsername(username)
         }
+        if (email) {
+            localStorage.setItem('email', email)
+            setEmail(email)
+        }
+        setIsLogin(true);
     }, []);
 
     const logout = useCallback(() => {
@@ -50,8 +53,10 @@ export default function AuthProvider({children}) {
             value={{
                 isLogin,
                 username,
+                email,
                 setIsLogin,
                 setUsername,
+                setEmail,
                 login,
                 logout
             }}
