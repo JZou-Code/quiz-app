@@ -1,10 +1,11 @@
 import api from "./api.js";
 import axios from "axios";
 
-export const fetchQuizzes = () => {
+export const fetchQuizzes = (category) => {
     return api({
-        method: 'GET',
-        url: 'quiz/list'
+        method: 'POST',
+        url: 'quiz/list',
+        data: {category}
     })
 }
 

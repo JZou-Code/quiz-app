@@ -1,14 +1,20 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import classes from '../style/QuizCard.module.css'
 import {useNavigate} from "react-router-dom";
+import QuizContext from "../context/QuizContext.jsx";
 
-const QuizCard = ({title}) => {
+const QuizCard = ({data}) => {
     const navigate = useNavigate();
+    const ctx = useContext(QuizContext);
+
     return (
         <div
-            onClick={()=>{navigate('/quiz/test')}}
+            onClick={() => {
+                ctx.setCategory(data.param);
+                navigate('/quiz/test')
+            }}
             className={classes.CardContainer}>
-          {title}
+            {data.name}
         </div>
     );
 };

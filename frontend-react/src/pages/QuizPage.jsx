@@ -25,7 +25,6 @@ const QuizPage = () => {
         const res = await ctx.submit();
 
         if(res.force){
-            console.log('test')
             return;
         }
         setProcessing(true);

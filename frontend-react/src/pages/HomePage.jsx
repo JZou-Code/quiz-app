@@ -5,21 +5,22 @@ import classes from '../style/HomePage.module.css';
 import {fetchQuizCards} from "../api/quizCards.js";
 import Header from "../components/Header.jsx";
 import Rank from "../components/Rank.jsx";
+import {categories} from "../utils/categories.js";
 
 const HomePage = () => {
-    const [tags, setTags] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
+    // const [tags, setTags] = useState([]);
+    // const [isLoading, setIsLoading] = useState(true);
     const originalTags = useRef([]);
     const [timer, setTimer] = useState()
 
-    useEffect(() => {
-        fetchQuizCards()
-            .then(res => {
-                originalTags.current = [...res.data];
-                setTags(res.data);
-                setIsLoading(false)
-            })
-    }, []);
+    // useEffect(() => {
+    //     fetchQuizCards()
+    //         .then(res => {
+    //             originalTags.current = [...res.data];
+    //             setTags(res.data);
+    //             setIsLoading(false)
+    //         })
+    // }, []);
 
     const onSearch = (keyword) => {
         if (timer) {
@@ -39,17 +40,22 @@ const HomePage = () => {
             <div className={classes.Container}>
                 <div className={classes.Left}>
                     <SearchBar onSearch={onSearch}/>
-                    {isLoading ?
-                        <p>
-                            Loading...
-                        </p>
-                        :
-                        <div className={classes.CardContainer}>
-                            {tags.map((title, idx) => (
-                                <QuizCard key={idx} title={title}/>
-                            ))}
-                        </div>
-                    }
+                    {/*{isLoading ?*/}
+                    {/*    <p>*/}
+                    {/*        Loading...*/}
+                    {/*    </p>*/}
+                    {/*    :*/}
+                    {/*    <div className={classes.CardContainer}>*/}
+                    {/*        {categories.map((title, idx) => (*/}
+                    {/*            <QuizCard key={idx} title={title}/>*/}
+                    {/*        ))}*/}
+                    {/*    </div>*/}
+                    {/*}*/}
+                    <div className={classes.CardContainer}>
+                        {categories.map((item, idx) => (
+                            <QuizCard key={idx} data={item}/>
+                        ))}
+                    </div>
                 </div>
                 <div className={classes.Right}>
                     <Rank/>

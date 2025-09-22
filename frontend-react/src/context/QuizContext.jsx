@@ -6,6 +6,7 @@ const QuizContext = React.createContext({
     error: null,
     userAnswers: [],
     isResult: false,
+    category: '',
     setQuizArr: () => {
     },
     setUserAnswers: () => {
@@ -13,6 +14,8 @@ const QuizContext = React.createContext({
     setScore: () => {
     },
     setIsResult: () => {
+    },
+    setCategory: () => {
     },
     submit: () => {
     },

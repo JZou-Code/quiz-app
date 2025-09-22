@@ -9,12 +9,16 @@ export default function QuizProvider({children}) {
     const [error, setError] = useState(null);
     const [score, setScore] = useState(0)
     const [isResult, setIsResult] = useState(false);
+    const [category, setCategory] = useState('');
 
     const setNewQuiz = async () => {
-        fetchQuizzes()
+        console.log(category)
+
+        fetchQuizzes(category)
             .then(res => {
                 if (res.data.code === 200 || res.data.code === '200') {
                     const items = res?.data?.data?.items;
+                    console.log(items)
                     setQuizArr(items);
                     setUserAnswers(new Array(items.length).fill('X'));
                 }
@@ -61,13 +65,14 @@ export default function QuizProvider({children}) {
 
             const submitObj = {
                 answers,
-                correctNumber: count
+                correctNumber: count,
+                category
             }
             console.log(submitObj)
 
             const res = await submitResults(submitObj)
 
-            if (res.data.code === 200 || res.data.code === '201') {
+            if (res.data.code === 200 || res.data.code === '200') {
                 return {
                     flag: true,
                     data: res
@@ -104,12 +109,14 @@ export default function QuizProvider({children}) {
                 loading,
                 error,
                 score,
+                category,
                 userAnswers,
                 isResult,
                 setQuizArr,
                 setUserAnswers,
                 setScore,
                 setIsResult,
+                setCategory,
                 submit,
                 reset,
             }}
