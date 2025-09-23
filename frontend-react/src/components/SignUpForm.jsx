@@ -61,7 +61,7 @@ const SignUpForm = () => {
                 username,
                 email,
                 password,
-                code,
+                // code,
                 captchaId,
                 captcha
             });

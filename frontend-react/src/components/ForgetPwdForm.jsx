@@ -19,6 +19,7 @@ const ForgetPwdForm = () => {
     const [isError, setIsError] = useState(false);
     const [isSuccessful, setIsSuccessful] = useState(false);
     const [errorMsg, setErrorMsg] = useState('')
+    const [notImplemented, setNotImplemented] = useState(false);
 
     const ctx = useContext(PageStateContext);
     const navigate = useNavigate();
@@ -45,31 +46,32 @@ const ForgetPwdForm = () => {
             setErrorMsg(invalid.message);
             return;
         }
-        setIsProcessing(true);
 
-        try {
-            const {data} = await requestForgetPassword({
-                email,
-                code,
-                newPassword: password
-            });
-            if(data.code === 200 || data.code === '200'){
-                setIsSuccessful(true);
-            }
-        } catch (e) {
-            setIsError(true);
-            setErrorMsg(e.response);
-            console.log(e)
-        } finally {
-            setIsProcessing(false)
-        }
-
+        // setIsProcessing(true);
+        // try {
+        //     const {data} = await requestForgetPassword({
+        //         email,
+        //         code,
+        //         newPassword: password
+        //     });
+        //     if(data.code === 200 || data.code === '200'){
+        //         setIsSuccessful(true);
+        //     }
+        // } catch (e) {
+        //     setIsError(true);
+        //     setErrorMsg(e.response);
+        //     console.log(e)
+        // } finally {
+        //     setIsProcessing(false)
+        // }
+        setNotImplemented(true);
     }
 
     const handleCancel = ()=>{
         setIsProcessing(false);
         setIsError(false);
         setIsSuccessful(false);
+        setNotImplemented(false);
     }
 
     const handleJump = ()=>{
@@ -123,6 +125,9 @@ const ForgetPwdForm = () => {
             }
             {
                 isSuccessful && <PlainMessage onCancel={handleJump} message={'Reset successfully'} canBeClosed={true}/>
+            }
+            {
+                notImplemented && <PlainMessage onCancel={handleCancel} message={'Not implemented yet'} canBeClosed={true}/>
             }
         </>
     );

@@ -6,10 +6,10 @@ const ValidationCode = (props) => {
     const [buttonContent, setButtonContent] = useState('Send')
     const [disabled, setDisabled] = useState(false)
 
-    const onSendCode = () => {
+    const onSendCode = async () => {
         let seconds = 60
         setDisabled(true);
-        requestValidationCode(props.email)
+        // await requestValidationCode(props.email)
         setButtonContent(`${seconds}s`)
 
         const timer = setInterval(() => {
